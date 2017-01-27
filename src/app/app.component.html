@@ -1,3 +1,86 @@
 <h1>
-  {{title}}
+    {{title}}
 </h1>
+
+<div class="conteiner col-sm-6">
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)" (submit)="saveData($event)">
+
+        <div class="form-group">
+            <!--<form (submit)="saveData($event)">-->
+            <label>Recipe Name</label>
+            <input type="text" #nameRef="ngModel" required minlength="3" maxlength="15" class="form-control" name="name" ngModel>
+            <div *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class="alert alert-danger">
+                <div [hidden]="!nameRef.errors.required">
+                    Please enter a name
+                </div>
+                <div [hidden]="!nameRef.errors.minlength">
+                    Please enter atleast 3 characters
+                </div>
+                <div [hidden]="!nameRef.errors.maxlength">
+                    Please enter 15 characters max
+                </div>
+            </div>
+            <b>{{nameRef.className}}</b>
+             <!--</form>-->
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" name="description" [ngModel]="description">
+        </div>
+        <div class="form-group">
+            <label>Done recipe</label>
+            <input type="checkbox" name="done" [ngModel]="doneRecipe">
+        </div>
+        <div class="form-group">
+            <label>Favorite Recipe</label>
+            <input type="checkbox" name="favourite" [ngModel]="favouriteRecipe">
+        </div>
+        <!--<div class="form-group">
+        <label>Ingredient </label>
+           <input type="text" class="form-control" name="ingredient"[ngModel]="ingredient">
+        </div>
+        <div class="form-group">
+        <label>Measurement </label>
+        <input type="text" class="form-control" name="measurement"[ngModel]="measurement">
+        </div>
+        <div class="form-group">
+        <label>Quantity </label>
+        <input type="text" class="form-control" name="quantity"[ngModel]="quantity">
+        </div>-->
+
+        <button [disabled]="!userForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+</div>
+
+<div class="conteiner col-sm-6">
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Recipe Name</th>
+                    <th>Done </th>
+                    <th>Favourite </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let recipe of recipes">
+                    <td>{{recipe.Name}}</td>
+                    <td>
+                        <label> 
+                <!--<input type="checkbox" name="done"  value="{{label.Id}}">-->
+                <input type="checkbox" name="options" value="{{recipe.Done}}"/>
+                           <!--[checked]="options.indexOf(option) >= 0"
+                           (change)="updateCheckedOptions(option, $event)"/>-->
+              </label>
+                        <!--{{recipe.Done}}-->
+                    </td>
+                    <input type="checkbox" name="options" value="{{recipe.Done}}" />
+                    <!--<td>{{recipe.Favorite}}</td>-->
+                    <!--<td>{{recipe.Description}}</td>-->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
