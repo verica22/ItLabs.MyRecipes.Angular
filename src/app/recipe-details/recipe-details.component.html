@@ -1,0 +1,35 @@
+<div class="recipe-detail center-text" *ngIf="_loading">
+  Loading Recipe Details...
+</div>
+<div *ngIf="recipe">
+  <br/>
+  <div class="conteiner col-sm-12 panel panel-danger">
+    <div class="panel-heading">
+      <h2 class="panel-title"><b>Details for {{recipe.Name}}!</b> </h2>
+    </div>
+    <div>
+      <br/>
+      <div class="form-group">
+        <label>Recipe Name:</label> {{recipe.Name}}
+      </div>
+      <div class="form-group">
+        <label class="item item-input">
+            Description:</label>
+        <p>{{recipe.Description}} </p>
+      </div>
+      <div class="conteiner">
+        <div class="form-group col-sm-6">
+          <label>Done Recipe </label>
+          <input type="checkbox" [(ngModel)]="recipe.IsDone" placeholder="done" disabled="disabled" />
+        </div>
+        <div class="form-group col-sm-6">
+          <label>Favorite Recipe </label>
+          <input type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" disabled="disabled" />
+        </div>
+      </div>
+    </div>
+    <div class="conteiner">
+      <label>Ingredients:</label>
+    </div>
+  </div>
+</div>
