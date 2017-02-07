@@ -1,61 +1,92 @@
-<div class="recipe-detail center-text" *ngIf="_loading">
+<!--<div class="recipe-detail center-text" *ngIf="_loading">
   Loading Recipe...
-</div>
+</div>-->
 <div *ngIf="recipe">
-  <br/>
+  <!--<br/>-->
   <div class="conteiner col-sm-12 panel panel-danger">
     <div class="panel-heading">
       <h2 class="panel-title"><b>Edit {{recipe.Name}}!</b> </h2>
     </div>
+     <div class="panel-body">
     <div>
       <br/>
-       <div class="form-group">
+      <div class="form-group">
         <label>Recipe Name:</label>
         <input [(ngModel)]="recipe.Name" placeholder="name" />
-       </div>
-       <div class="form-group">
+      </div>
+      <div class="form-group">
         <label class="item item-input">
             Description:</label>
         <textarea style="margin: 0px; width: 541px; height: 138px;" [(ngModel)]="recipe.Description" placeholder="description" ></textarea>
-       </div>
-      <div class="conteiner">
-         <div class="form-group col-sm-3">
-            <label>Done Recipe </label>
-            <input type="checkbox" [(ngModel)]="recipe.IsDone" placeholder="done" />
-         </div>
-          <div class="form-group col-sm-6">
-            <label>Favorite Recipe </label>
-            <input type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" />
-         </div>
-      </div>
+</div>
+<div class="conteiner">
+  <div class="form-group col-sm-3">
+    <label>Done Recipe </label>
+    <input type="checkbox" [(ngModel)]="recipe.IsDone" placeholder="done" />
   </div>
+  <div class="form-group col-sm-6">
+    <label>Favorite Recipe </label>
+    <input type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" />
+  </div>
+</div>
+</div>
 <div class="conteiner col-sm-12">
   <div class="col-sm-5 form-group">
-     <label>Ingredient </label>
-      <input class="form-control" #searchBox id="search-box" (keyup)="getIngredients(searchBox.value)" />
-      <div>
-        <div *ngFor="let ingredient of ingredients" class="search-result" (click)="searchBox.value=ingredient.Name">
-          {{ingredient.Name}}
-        </div>
+    <label>Ingredient </label>
+    <input class="form-control" #searchBox id="search-box" (keyup)="getIngredients(searchBox.value)" />
+    <div>
+      <div *ngFor="let ingredient of ingredients" class="search-result" (click)="searchBox.value=ingredient.Name">
+        {{ingredient.Name}}
       </div>
-   </div>
+    </div>
+  </div>
   <div class="col-sm-3 form-group">
-      <label>Measurement</label>
-      <select class="form-control">
+    <label>Measurement</label>
+    <select class="form-control">
         <option value="g">g</option>
         <option value="l">l</option>
         <option value="spoon">Spoon</option>
         <option value="teaspoon">Teaspoon</option>
       </select>
-   </div>
+  </div>
   <div class="col-sm-2 form-group">
-      <label>Quantity </label>
-      <input type="text" class="form-control" name="quantity" [ngModel]="quantity">
-   </div>
+    <label>Quantity </label>
+    <input type="text" class="form-control" name="quantity" [ngModel]="quantity">
+  </div>
   <div class="col-sm-2">
     <br/>
     <button click="addIngredient(ingredient)" class="btn btn-success">Add</button>
   </div>
+</div>
+<div class="conteiner col-sm-12">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title"> Ingredients </h3>
+    </div>      
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Ingredient Name</th>
+            <th>Quantity </th>
+            <th>Measurement </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let recipeIngredient of recipe.RecipeIngredients">
+            <td>{{ recipeIngredient.IngredientName | uppercase}}</td>
+            <td>{{ recipeIngredient.Quantity }}</td>
+            <td>{{ recipeIngredient.Measurement | lowercase }}</td>
+            <td><button class="btn btn-danger">Remove</button> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+   <div class="conteiner col-sm-10"></div>
+   <button type="submit" class="btn btn-danger">Save</button>
+</div>
 </div>
 </div>
 </div>

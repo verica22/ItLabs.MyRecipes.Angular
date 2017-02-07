@@ -46,24 +46,29 @@ export class RecipeCreateComponent implements OnInit {
   //     });
   // }
 
-   // saveRecipe(e) {
-  //   e.preventDefault();
-  //   this._recipeService.saveRecipe({ name: e.target.name.value, description: e.target.description.value, done: e.target.done.value, favourite: e.target.favourite.value })
-  //     .subscribe(recipes => {
-  //       this.addRecipe();
-  //     });
-  // }
+   saveRecipe(e) {
+    e.preventDefault();
+    this._recipeService.saveRecipe({ name: e.target.name.value, description: e.target.description.value, done: e.target.done.value, favourite: e.target.favourite.value })
+      .subscribe(recipes => {
+        this.recipes=recipes;
+      });
+  }
   getIngredients(term) {
     this._recipeService.getIngredient(term).subscribe(ingredients => {
       this.ingredients = ingredients;
     });
   }
 
-  addedIngredients: any = [];
-  addIngredient(ingredient: any) {
-    this.addedIngredients.push(ingredient);
-    // console.log(recipe);
-  }
+  // addedIngredients: any = [];
+  // addIngredient(ingredient: any) {
+  //   this.addedIngredients.push(ingredient);
+  //   // console.log(recipe);
+  // }
+
+ addedIngredients: any = [];
+  addIngredient(searchBox,measurement,quantity) {
+    this.addedIngredients.push(searchBox,measurement,quantity);
+     }
 
   removeIngredient(ingredient: any) {
     this.addedIngredients.splice(this.addedIngredients.indexOf(ingredient));

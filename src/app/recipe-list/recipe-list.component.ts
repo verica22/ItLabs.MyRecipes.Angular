@@ -15,6 +15,7 @@ export class RecipeListComponent implements OnInit {
   title = 'My Recipes!';
   recipes: Recipe[];
   selectedRecipe: Recipe;
+   selectedRecipe2: Recipe;
 
   constructor(private _recipeService: RecipeService,
     private _router: RouterModule) { }
@@ -38,7 +39,7 @@ export class RecipeListComponent implements OnInit {
     this.selectedRecipe = recipe;
   }
   onEdit(recipe: Recipe): void {
-    this.selectedRecipe = recipe;
+    this.selectedRecipe2 = recipe;
   }
 
   deleteRecipe(recipe) {

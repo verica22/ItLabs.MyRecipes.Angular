@@ -1,6 +1,6 @@
-<div class="recipe-detail center-text" *ngIf="_loading">
+<!--<div class="recipe-detail center-text" *ngIf="_loading">
   Loading Recipe Details...
-</div>
+</div>-->
 <div *ngIf="recipe">
   <br/>
   <div class="conteiner col-sm-12 panel panel-danger">
@@ -30,6 +30,19 @@
     </div>
     <div class="conteiner">
       <label>Ingredients:</label>
-    </div>
+            <!--<h3>Ingredients</h3>
+           <p *ngFor="let recipeIngredient of recipe.RecipeIngredients">
+                <span class="name">{{ recipeIngredient.IngredientName | uppercase}}</span>
+                <span class="measure">{{ recipeIngredient.Quantity }}</span>
+                <span class="measurement">{{ recipeIngredient.Measurement | lowercase }}</span>
+            </p>-->
+             <div *ngFor="let recipeIngredient of recipe.RecipeIngredients">
+                <div  class="name col-sm-5">{{ recipeIngredient.IngredientName | uppercase}}</div>
+                <div class="measure col-sm-1">{{ recipeIngredient.Quantity }}</div>
+                <div class="measurement col-sm-2">{{ recipeIngredient.Measurement | lowercase }}</div>
+                <div class="col-sm-4"> </div>
+           </div>
+      </div>
+      <br />
   </div>
 </div>

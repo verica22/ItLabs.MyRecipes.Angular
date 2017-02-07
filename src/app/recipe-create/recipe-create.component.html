@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <label class="item item-input">
                      Description
-                 <textarea style="margin: 0px; width: 541px; height: 138px;" ></textarea>
+                    <textarea style="margin: 0px; width: 541px; height: 138px;" ></textarea>
                     </label>
                 </div>
 <div class="conteiner">
@@ -42,8 +42,9 @@
     </div>
 </div>
  <div class="conteiner col-sm-12">
+     <!--Autocomplete-->
     <div class="col-sm-5 form-group">
-            <label>Ingredient </label>
+            <label>Ingredient</label>
             <input class="form-control" #searchBox id="search-box" (keyup)="getIngredients(searchBox.value)" />
             <div>
                 <div *ngFor="let ingredient of ingredients" class="search-result" (click)="searchBox.value=ingredient.Name">
@@ -51,25 +52,26 @@
                 </div>
             </div>
      </div>
+
     <div class="col-sm-3 form-group">
             <label>Measurement </label>
-            <select class="form-control">
+            <select #measurement class="form-control">
                <option value="g">g</option>
                <option value="l">l</option>
                <option value="spoon">Spoon</option>
                <option value="teaspoon">Teaspoon</option>
            </select>
-   </div>
+    </div>
     <div class="col-sm-2 form-group">
          <label>Quantity </label>
-          <input type="text" class="form-control" name="quantity" [ngModel]="quantity">
+          <input #quantity class="form-control" name="quantity" >
     </div>
     <div class="col-sm-2">
         <br/>
-        <button (click)="addIngredient(ingredient)" class="btn btn-success">Add</button>
+        <button (click)="addIngredient(searchBox.value,measurement.value,quantity.value)" class="btn btn-success">Add</button>
     </div>
 </div>
-<div class="conteiner col-sm-12">
+<!--<div class="conteiner col-sm-12">
     <div class="panel-body">
         <table class="table table-striped">
             <thead>
@@ -90,7 +92,7 @@
             </tbody>
         </table>
     </div>
-</div>
+</div>-->
 <br/>
 <div class="conteiner col-sm-12" *ngIf="addedIngredients.length > 0">
    <div class="panel panel-success">
@@ -102,15 +104,16 @@
                 <thead>
                     <tr>
                         <th>Ingredient Name</th>
-                        <th>Measurement </th>
-                        <th>Quantity </th>
+                        <th>Measurement</th>
+                        <th>Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let ingredient of addedIngredients">
-                        <td>{{ingredient.Name}}</td>
+                        <!--<td>{{ingredient.Name}}</td>
                         <td>{{ingredient.Measurement}}</td>
-                        <td>{{quantity}} </td>
+                        <td>{{quantity}} </td>-->
+                        <td>{{ingredient.searchBox}}</td>
                         <td><button (click)="removeIngredient(ingredient)" class="btn btn-danger">Remove</button> </td>
                     </tr>
                 </tbody>
@@ -118,8 +121,9 @@
         </div>
     </div>
 </div>
-   <div class="conteiner col-sm-10"></div>
-   <button [disabled]="!userForm.form.valid" type="submit" class="btn btn-danger">Save</button>
+   <div class="conteiner col-sm-8"></div>
+   <button [routerLink]="['/recipe-list']" routerLinkActive="active" type="back" class="btn btn-danger"> Back </button>
+   <button [disabled]="!userForm.form.valid" type="submit" class="btn btn-danger"> Save </button>
 </form>
 </div>
 </div>
