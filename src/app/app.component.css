@@ -1,6 +1,5 @@
 input.ng-invalid{border-left: 5px solid red;}
 input.ng-valid{border-left: 5px solid green;}
-
 .footer {
   position: absolute;
   right: 0;
@@ -10,12 +9,7 @@ input.ng-valid{border-left: 5px solid green;}
   background-color: gray;
   text-align: center;
 }
-
 html {
   margin: 2em;
  color: lightgoldenrodyellow;
 }
-/*th{
-    color:#A52A2A;
-   
-}*/
