@@ -1,8 +1,7 @@
 export class Ingredient {
     constructor(
-            public id: number = 0,
-            public name: string = '',
-            public measurement: string = ''
-            ) {
-    }
+        public Name: string = '',
+        public Measurement: string = '',
+        public Quantity: number = 0
+    ) {    }
 }

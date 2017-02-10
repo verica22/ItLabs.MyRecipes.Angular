@@ -13,12 +13,34 @@ import { Ingredient } from '../models/ingredient';
 export class RecipeEditComponent {
   @Input() recipe: Recipe;
   ingredients: Ingredient[];
-
+  recipes: Recipe[];
+  
   constructor(private _recipeService: RecipeService) { }
+
+  addRecipe() {
+    this._recipeService.getRecipe().subscribe(recipes => {
+      this.recipes = recipes;
+    });
+  }
+  saveRecipe(Name, Description, IsDone, IsFavorite, Ingredients) {
+    this._recipeService.saveRecipe({ Name, Description, IsDone, IsFavorite, Ingredients })
+      .subscribe(recipes => {
+        this.addRecipe();
+      });
+  }
 
   getIngredients(term) {
     this._recipeService.getIngredient(term).subscribe(ingredients => {
       this.ingredients = ingredients;
     });
+  }
+
+  addedIngredients: Ingredient[] = [];
+  addIngredient(name: string, measurement: string, quantity: number) {
+    this.addedIngredients.push(new Ingredient(name, measurement, quantity));
+  }
+
+  removeIngredient(ingredient: any) {
+    this.addedIngredients.splice(this.addedIngredients.indexOf(ingredient));
   }
 }

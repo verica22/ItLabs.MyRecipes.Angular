@@ -21,13 +21,12 @@ export class RecipeService {
   }
 
   saveRecipe(recipe) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    return this._http.post('http://recipes-api.devweb.office.it-labs.com/recipes', recipe)
-      .map(res => {
-        console.log(res);
-        return res.json();
-      });
+     return this._http.post('http://recipes-api.devweb.office.it-labs.com/recipes', recipe)
+    .map(res => res.json());
+      // .map(res => {
+      //   console.log(res);
+      //   return res.json();
+      // });
   }
 
   deleteRecipe(recipe) {
