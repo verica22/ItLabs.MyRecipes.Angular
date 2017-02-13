@@ -1,6 +1,6 @@
 <div *ngIf="recipe">
   <br/>
-  <div class="conteiner col-sm-12 panel panel-danger">
+  <div class="conteiner col-sm-12 panel panel-danger" id="details">
     <div class="panel-heading">
       <h2 class="panel-title"><b>Details for {{recipe.Name}}!</b> </h2>
     </div>
@@ -24,7 +24,7 @@
           <input type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" disabled="disabled" />
         </div>
       </div>
-    </div>
+      </div>
     <div class="conteiner">
       <label>Ingredients:</label>
            <div *ngFor="let recipeIngredient of recipe.RecipeIngredients">
@@ -32,8 +32,11 @@
                 <div class="measure col-sm-1">{{ recipeIngredient.Quantity }}</div>
                 <div class="measurement col-sm-2">{{ recipeIngredient.Measurement | lowercase }}</div>
                 <div class="col-sm-4"> </div>
+                <br />
            </div>
+             <br />
       </div>
-      <br />
+    
   </div>
+  
 </div>

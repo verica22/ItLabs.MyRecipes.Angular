@@ -14,6 +14,8 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import {Ng2PaginationModule} from 'ng2-pagination';
+
 
 const appRoutes: Routes = [
   { path: 'recipe-list', component: RecipeListComponent },
@@ -33,12 +35,14 @@ const appRoutes: Routes = [
     RecipeListComponent,
     RecipeEditComponent,
     RecipeDetailsComponent
+   
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-     AppRoutingModule
+     AppRoutingModule,
+      Ng2PaginationModule
     // RouterModule.forRoot(appRoutes)
   ],
   //  exports: [

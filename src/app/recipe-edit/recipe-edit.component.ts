@@ -22,8 +22,8 @@ export class RecipeEditComponent {
       this.recipes = recipes;
     });
   }
-  saveRecipe(Name, Description, IsDone, IsFavorite, Ingredients) {
-    this._recipeService.saveRecipe({ Name, Description, IsDone, IsFavorite, Ingredients })
+  updateRecipe(recipeName: string, name: string, description: string, isDone:boolean, isFavorite:boolean, ingredients) {
+    this._recipeService.updateRecipe(recipeName,new Recipe(name, description, isDone, isFavorite, ingredients))
       .subscribe(recipes => {
         this.addRecipe();
       });

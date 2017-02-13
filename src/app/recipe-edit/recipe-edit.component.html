@@ -2,7 +2,7 @@
   Loading Recipe...
 </div>-->
 <div *ngIf="recipe">
-    <div class="conteiner col-sm-12 panel panel-danger">
+    <div class="conteiner col-sm-12 panel panel-danger" id="edit">
     <div class="panel-heading">
       <h2 class="panel-title"><b>Edit {{recipe.Name}}!</b> </h2>
     </div>
@@ -10,22 +10,22 @@
     <div>
       <br/>
       <div class="form-group">
-        <label>Recipe Name:</label>
-        <input [(ngModel)]="recipe.Name" placeholder="name" />
+          <label>Recipe Name:</label>
+        <input #nameRef [(ngModel)]="recipe.Name" placeholder="name" />
       </div>
       <div class="form-group">
         <label class="item item-input">
             Description:</label>
-        <textarea style="margin: 0px; width: 541px; height: 138px;" [(ngModel)]="recipe.Description" placeholder="description" ></textarea>
+        <textarea #description style="margin: 0px; width: 541px; height: 138px;" [(ngModel)]="recipe.Description" placeholder="description" ></textarea>
 </div>
 <div class="conteiner">
   <div class="form-group col-sm-4">
     <label>Done Recipe </label>
-    <input type="checkbox" [(ngModel)]="recipe.IsDone" placeholder="done" />
+    <input #isDone type="checkbox" [(ngModel)]="recipe.IsDone" placeholder="done" />
   </div>
   <div class="form-group col-sm-7">
     <label>Favorite Recipe </label>
-    <input type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" />
+    <input #isFavorite type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" />
   </div>
 </div>
 </div>
@@ -33,8 +33,7 @@
     <!--Autocomplete-->
     <div class="col-sm-5 form-group">
         <label>Ingredient</label>
-        <input name="name" class="form-control" #ingredientName id="ingredientName" (keyup)="getIngredients(ingredientName.value)"
-        />
+        <input name="name" class="form-control" #ingredientName id="ingredientName" (keyup)="getIngredients(ingredientName.value)"/>
         <div>
             <div *ngFor="let ingredient of ingredients" class="search-result" (click)="ingredientName.value=ingredient.Name">
                 {{ingredient.Name}}
@@ -90,8 +89,8 @@
     </div>
 </div>
 <div class="conteiner col-sm-10"></div>
-     <button (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)" 
-    type="submit" class="btn btn-danger" [routerLink]="['/recipe-list']"> Save </button>
+     <button (click)="updateRecipe(recipe.Name,nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)" 
+    type="submit" class="btn btn-danger"> Save </button>
 
 <!--<div class="conteiner col-sm-12">
   <div class="panel panel-success">

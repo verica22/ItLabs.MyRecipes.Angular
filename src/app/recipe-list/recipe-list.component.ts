@@ -4,6 +4,18 @@ import { FilterPipe } from '../pipes/filter.pipe';
 import { Recipe } from '../models/recipe';
 import { Ingredient } from '../models/ingredient';
 import { RouterModule } from '@angular/router';
+import {Ng2PaginationModule} from 'ng2-pagination';
+import {ChangeDetectionStrategy, Input} from "@angular/core";
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/delay';
+
+// interface IServerResponse {
+//     items: string[];
+//     total: number;
+// }
 
 @Component({
   selector: 'app-recipe-list',
@@ -16,21 +28,27 @@ export class RecipeListComponent implements OnInit {
   recipes: Recipe[];
   selectedRecipe: Recipe;
    selectedRecipe2: Recipe;
+   loading: boolean=false;
+ 
 
   constructor(private _recipeService: RecipeService,
     private _router: RouterModule) { }
   ngOnInit() {
-    this.addRecipe();
+     this.addRecipe();
   }
 
   addRecipe() {
-    this._recipeService.getRecipe().subscribe(recipes => {
+   this.loading = true;
+    this._recipeService.getRecipe().subscribe(recipes => {  
+         
       this.recipes = recipes;
+        this.loading = false;
+      
     });
   }
 
-  searchRecipe(name, done, favorite) {
-    this._recipeService.searchRecipe(name, done, favorite).subscribe(recipes => {
+  searchRecipe(name, done, favorite,currentPage,itemsPerPage) {
+    this._recipeService.searchRecipe(name, done, favorite,currentPage,itemsPerPage).subscribe(recipes => {
       this.recipes = recipes;
     });
   }
