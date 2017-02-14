@@ -42,7 +42,7 @@
     <br/>
     <ul class="recipes">
       <li *ngFor="let recipe of recipes | paginate: { itemsPerPage: 7, currentPage: p }" [class.selected]="recipe === selectedRecipe"
-       value="details" (click)="onSelect(recipe,value)">
+        value="details" (click)="onSelect(recipe,value)">
         <div class="conteiner col-sm-12">
           <div class=" col-sm-6">
             {{recipe.Name | uppercase}}
@@ -59,12 +59,14 @@
           </div>
           <div class=" col-sm-1">
             <label>
-              <button [class.selected]="recipe === selectedRecipe2" value="edit" (click)="onEdit(recipe)" > <img src="../Photos/pencil.png" title="Edit" width="20px" height="20px" value="Edit" /></button>
+              <button [class.selected]="recipe === selectedRecipe2" value="edit" (click)="onEdit(recipe)" > 
+              <img src="../Photos/pencil.png" title="Edit" width="20px" height="20px" value="Edit" /></button>
             </label>
           </div>
           <div class=" col-sm-1">
             <label>
-                 <button (click)="deleteRecipe(recipe)"> <img src="../Photos/IconDelete.png" title="Delete" width="20px" height="20px" value="Delete" /></button>
+                 <button (click)="deleteRecipe(recipe)"> 
+                 <img src="../Photos/IconDelete.png" title="Delete" width="20px" height="20px" value="Delete" /></button>
             </label>
           </div>
         </div>
@@ -76,23 +78,23 @@
 </div>
 <br/>
 <div class="conteiner col-sm-6" ng-if="value=details">
-   <app-recipe-details [recipe]="selectedRecipe"></app-recipe-details>
-<app-recipe-edit hidden></app-recipe-edit>
+  <app-recipe-details [recipe]="selectedRecipe"></app-recipe-details>
+  <!--<app-recipe-edit hidden></app-recipe-edit>-->
 </div>
 <div class="conteiner col-sm-6" ng-if="value=edit">
-   <app-recipe-edit [recipe]="selectedRecipe2"></app-recipe-edit>
-   <app-recipe-details hidden></app-recipe-details>
- 
+  <app-recipe-edit [recipe]="selectedRecipe2"></app-recipe-edit>
+  <!--[oldName]="oldName"-->
+  <!--<app-recipe-details hidden></app-recipe-details>-->
 </div>
 
 
 
 
 <div class="conteiner col-sm-12 text-center">
-  <!--<div class="spinner" ></div>-->
+
   <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" [ngClass]="{ 'hidden': !loading }"></i>
-<!--<i class="fa fa-refresh fa-spin" style="font-size:24px" [ngClass]="{ 'hidden': !loading }"></i>-->
-<!--<i class="fa fa-spinner  fa-spin" style="font-size:24px;"></i>-->
+<!--<i class="fa fa-refresh fa-spin" style="font-size:24px" [ngClass]="{ 'hidden': !loading }"></i>
+  <i class="fa fa-spinner  fa-spin" style="font-size:24px;"></i>-->
 <pagination-controls (pageChange)="p = $event" #api directionLinks="true"></pagination-controls>
-<!--<hr>-->
+
 </div>

@@ -12,11 +12,6 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
 
-// interface IServerResponse {
-//     items: string[];
-//     total: number;
-// }
-
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
@@ -27,12 +22,13 @@ export class RecipeListComponent implements OnInit {
   title = 'My Recipes!';
   recipes: Recipe[];
   selectedRecipe: Recipe;
-   selectedRecipe2: Recipe;
-   loading: boolean=false;
+  selectedRecipe2: Recipe;
+  oldName: string;
+  loading: boolean=false;
  
-
   constructor(private _recipeService: RecipeService,
     private _router: RouterModule) { }
+
   ngOnInit() {
      this.addRecipe();
   }
@@ -40,11 +36,10 @@ export class RecipeListComponent implements OnInit {
   addRecipe() {
    this.loading = true;
     this._recipeService.getRecipe().subscribe(recipes => {  
-         
-      this.recipes = recipes;
-        this.loading = false;
       
-    });
+        this.recipes = recipes;
+        // this.loading = false;
+      });
   }
 
   searchRecipe(name, done, favorite,currentPage,itemsPerPage) {
@@ -58,6 +53,7 @@ export class RecipeListComponent implements OnInit {
   }
   onEdit(recipe: Recipe): void {
     this.selectedRecipe2 = recipe;
+    this.oldName=recipe.Name;
   }
 
   deleteRecipe(recipe) {

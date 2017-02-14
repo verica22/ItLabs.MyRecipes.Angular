@@ -3,13 +3,13 @@ import { RecipeIngredient } from './recipeingredient';
 
 export class Recipe {
     constructor(
-            // public id: number = 0,
-            public name: string = '',
-            public description: string = '',
-            public isDone: boolean = false,
-            public isFavorite: boolean = false,
-            public ingredients: Ingredient[] = []
-            // public recipeIngredients: RecipeIngredient[] = []
+            // public Id: number = 0,
+            public Name: string = '',
+            public Description: string = '',
+            public IsDone: boolean = false,
+            public IsFavorite: boolean = false,
+            public Ingredients: Ingredient[] = []
+            // public RecipeIngredients: RecipeIngredient[] = []
             ) {
     }
 }

@@ -14,7 +14,7 @@ export class RecipeEditComponent {
   @Input() recipe: Recipe;
   ingredients: Ingredient[];
   recipes: Recipe[];
-  
+  oldName: string;
   constructor(private _recipeService: RecipeService) { }
 
   addRecipe() {
@@ -22,8 +22,8 @@ export class RecipeEditComponent {
       this.recipes = recipes;
     });
   }
-  updateRecipe(recipeName: string, name: string, description: string, isDone:boolean, isFavorite:boolean, ingredients) {
-    this._recipeService.updateRecipe(recipeName,new Recipe(name, description, isDone, isFavorite, ingredients))
+  updateRecipe(OldName: string, Name: string, Description: string, IsDone:boolean, IsFavorite:boolean, Ingredients) {
+    this._recipeService.updateRecipe(OldName,new Recipe(Name, Description, IsDone, IsFavorite, Ingredients))
       .subscribe(recipes => {
         this.addRecipe();
       });
