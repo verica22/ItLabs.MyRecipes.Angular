@@ -6,7 +6,6 @@ import { RecipeService } from './services/recipe.service';
 import { AppComponent } from './app.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { AppRoutingModule } from './app-routing.module';
-
 import { RouterModule, Routes } from '@angular/router';
 import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
 import { RecipeSearchComponent } from './recipe-search/recipe-search.component';
@@ -15,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import {Ng2PaginationModule} from 'ng2-pagination';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 
 const appRoutes: Routes = [
@@ -42,7 +42,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
      AppRoutingModule,
-      Ng2PaginationModule
+      Ng2PaginationModule,
+      Ng2AutoCompleteModule
     // RouterModule.forRoot(appRoutes)
   ],
   //  exports: [

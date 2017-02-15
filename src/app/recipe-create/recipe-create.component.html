@@ -6,7 +6,7 @@
         <h3 class="panel-title">Create Recipe </h3>
      </div>
 <div class="panel-body">
-            <!--<form #userForm="ngForm">-->
+            <form #userForm="ngForm">
                 <!--(ngSubmit)="onSubmit(userForm.value)" (submit)="saveRecipe($event)">-->
                 <div class="form-group">
                     <label>Recipe Name</label>
@@ -48,13 +48,21 @@
     <div class="col-sm-5 form-group">
         <label>Ingredient</label>
         <input (onblur)="ingredients=null" name="name" class="form-control"  #ingredientName id="ingredientName" (keyup)="getIngredients(ingredientName.value)"/>
+          <!--<input   (keyup)="getIngredients(ingredientName.value)"
+                   ng2-auto-complete
+                   formControlName="ingredient"
+                   [source]="ingredients"
+                   [list-formatter]="autocompleListFormatter"
+                     display-property-name="Name"
+                  >-->
+
         <!--(onfocusout)="ingredients=null"-->
-        <!--<div ng-if="ingredientName.value = 0">-->
+      
             <div *ngFor="let ingredient of ingredients" class="search-result"
              (click)="ingredientName.value=ingredient.Name && ingredients=null" (onblur)="ingredients=null">
                 {{ingredient.Name}}
             </div>
-        <!--</div>-->
+      
     </div>
 
     <div class="col-sm-3 form-group">
@@ -108,9 +116,9 @@
 </div>
 <div class="conteiner col-sm-8"></div>
     <button [routerLink]="['/recipe-list']" routerLinkActive="active" type="back" class="btn btn-danger"> Back </button>
-    <button (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)" 
+    <button [disabled]="!userForm.form.valid" (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)" 
     type="submit" class="btn btn-danger" [routerLink]="['/recipe-list']"> Save </button>
-<!--</form>-->
+</form>
 </div>
 </div>
 </div>

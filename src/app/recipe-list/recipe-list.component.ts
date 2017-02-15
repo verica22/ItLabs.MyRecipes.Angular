@@ -38,7 +38,7 @@ export class RecipeListComponent implements OnInit {
     this._recipeService.getRecipe().subscribe(recipes => {  
       
         this.recipes = recipes;
-        // this.loading = false;
+        this.loading = false;
       });
   }
 

@@ -14,6 +14,7 @@ module.exports = function (config) {
     files: [
       { pattern: './src/test.ts', watched: false }
     ],
+    
     preprocessors: {
       './src/test.ts': ['angular-cli']
     },
