@@ -1,98 +1,108 @@
-<!--<div class="recipe-detail center-text" *ngIf="_loading">
-  Loading Recipe...
-</div>-->
 <div *ngIf="recipe">
-    <div class="conteiner col-sm-12 panel panel-danger" id="edit">
-    <div class="panel-heading">
-      <h2 class="panel-title"><b>Edit {{recipe.Name}}!</b> </h2>
-    </div>
-     <div class="panel-body">
-    <div>
-      <br/>
-      <div class="form-group">
-          <label>Recipe Name:</label>
-        <input #nameRef [(ngModel)]="recipe.Name" placeholder="name" />
-      </div>
-      <div class="form-group">
-        <label class="item item-input">
-            Description:</label>
-        <textarea #description style="margin: 0px; width: 541px; height: 138px;" [(ngModel)]="recipe.Description" placeholder="description" ></textarea>
-</div>
-<div class="conteiner">
-  <div class="form-group col-sm-4">
-    <label>Done Recipe </label>
-    <input #isDone type="checkbox" [(ngModel)]="recipe.IsDone" placeholder="done" />
-  </div>
-  <div class="form-group col-sm-7">
-    <label>Favorite Recipe </label>
-    <input #isFavorite type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" />
-  </div>
-</div>
-</div>
-<div class="conteiner col-sm-12 form-group">
-    <!--Autocomplete-->
-    <div class="col-sm-5 form-group">
-        <label>Ingredient</label>
-        <input name="name" class="form-control" #ingredientName id="ingredientName" (keyup)="getIngredients(ingredientName.value)"/>
-        <div>
-            <div *ngFor="let ingredient of ingredients" class="search-result" (click)="ingredientName.value=ingredient.Name">
-                {{ingredient.Name}}
+    <div class="bgimg conteiner col-sm-12" id="edit">
+        <div class="edit">
+            <div class="panel-heading">
+                <h2 class="panel-title"><b>Edit {{recipe.Name}}!</b> </h2>
             </div>
-        </div>
-    </div>
+            <div class="panel-body">
+                <div>
+                    <div class="recipeName form-group">
+                        <label>Recipe Name:</label>
+                        <input type="text" required minlength="3" maxlength="25" #nameRef="ngModel" [(ngModel)]="recipe.Name" placeholder="name"
+                        />
+                        <div name="name" *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class="alert alert-danger">
+                            <div [hidden]="!nameRef.errors.required">
+                                Please enter a name
+                            </div>
+                            <div [hidden]="!nameRef.errors.minlength">
+                                Please enter atleast 3 characters
+                            </div>
+                            <div [hidden]="!nameRef.errors.maxlength">
+                                Please enter 25 characters max
+                            </div>
+                        </div>
+                        <b>{{nameRef.className}}</b>
+                    </div>
+                    <div class="description form-group">
+                        <label class="item item-input">Description:</label>
+                        <textarea #description [(ngModel)]="recipe.Description" placeholder="description"></textarea>
+                    </div>
+                    <div class="conteiner">
+                        <div class="form-group col-sm-4">
+                            <label>Done Recipe </label>
+                            <input #isDone type="checkbox" [(ngModel)]="recipe.IsDone" placeholder="done" />
+                        </div>
+                        <div class="form-group col-sm-7">
+                            <label>Favorite Recipe </label>
+                            <input #isFavorite type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" />
+                        </div>
+                    </div>
+                </div>
+                <div class="conteiner col-sm-12 form-group">
+                    <!--Autocomplete-->
+                    <div class="col-sm-5 form-group">
+                        <label>Ingredient</label>
+                        <input name="name" class="form-control" #ingredientName id="ingredientName" (keyup)="getIngredients(ingredientName.value)"
+                        />
+                        <div>
+                            <div *ngFor="let ingredient of ingredients" class="search-result" (click)="ingredientName.value=ingredient.Name">
+                                {{ingredient.Name}}
+                            </div>
+                        </div>
+                    </div>
 
-    <div class="col-sm-3 form-group">
-        <label>Measurement </label>
-        <select #measurement name="measurement" class="form-control">
+                    <div class="col-sm-3 form-group">
+                        <label>Measurement </label>
+                        <select #measurement name="measurement" class="form-control">
                 <option value="g">g</option>
                 <option value="l">l</option>
                 <option value="spoon">Spoon</option>
                 <option value="teaspoon">Teaspoon</option>
             </select>
-    </div>
-    <div class="col-sm-2 form-group">
-        <label>Quantity </label>
-        <input #quantity class="form-control" name="quantity">
-    </div>
-    <div class="col-sm-2">
-        <br/>
-        <button (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)" class="btn btn-success">Add</button>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label>Quantity </label>
+                        <input #quantity class="form-control" name="quantity">
+                    </div>
+                    <div class="col-sm-2">
+                        <br/>
+                        <button (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)" class="btn btn-success">Add</button>
 
-    </div>
-</div>
-<br/>
-<div class="conteiner col-sm-12" *ngIf="addedIngredients.length > 0">
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            <h3 class="panel-title"> Ingredients </h3>
-        </div>
-        <div class="panel-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Ingredient Name</th>
-                        <th>Measurement</th>
-                        <th>Quantity</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let ingredient of addedIngredients">
-                        <td>{{ingredient.Name}}</td>
-                        <td>{{ingredient.Measurement}}</td>
-                        <td>{{ingredient.Quantity}}</td>
-                        <td><button (click)="removeIngredient(ingredient)" class="btn btn-danger">Remove</button> </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<div class="conteiner col-sm-10"></div>
-     <button (click)="updateRecipe(recipe.Name,nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)" 
-    type="submit" class="btn btn-danger"> Save </button>
+                    </div>
+                </div>
+                <br/>
+                <div class="conteiner col-sm-12" *ngIf="addedIngredients.length > 0">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"> Ingredients </h3>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Ingredient Name</th>
+                                        <th>Measurement</th>
+                                        <th>Quantity</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let ingredient of addedIngredients">
+                                        <td>{{ingredient.Name}}</td>
+                                        <td>{{ingredient.Measurement}}</td>
+                                        <td>{{ingredient.Quantity}}</td>
+                                        <td><button (click)="removeIngredient(ingredient)" class="btn btn-danger">Remove</button>                                            </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="conteiner col-sm-10"></div>
+                <button (click)="updateRecipe(recipe.Name,nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)"
+                    type="submit" class="btn btn-danger"> Save </button>
 
-<!--<div class="conteiner col-sm-12">
+                    <!--<div class="conteiner col-sm-12">
   <div class="panel panel-success">
     <div class="panel-heading">
       <h3 class="panel-title"> Ingredients </h3>
@@ -121,6 +131,7 @@
    <div class="conteiner col-sm-10"></div>
    <button type="submit" class="btn btn-danger">Save</button>
 </div>-->
-</div>
-</div>
+            </div>
+        </div>
+    </div>
 </div>

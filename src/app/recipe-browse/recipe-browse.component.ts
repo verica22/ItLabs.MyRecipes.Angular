@@ -1,24 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectionStrategy, Input } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
-import { FilterPipe } from '../pipes/filter.pipe';
 import { Recipe } from '../models/recipe';
 import { Ingredient } from '../models/ingredient';
 import { RouterModule } from '@angular/router';
-import {Ng2PaginationModule} from 'ng2-pagination';
-import {ChangeDetectionStrategy, Input} from "@angular/core";
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/delay';
+import { Ng2PaginationModule } from 'ng2-pagination';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-recipe-list',
-  templateUrl: './recipe-list.component.html',
-  styleUrls: ['./recipe-list.component.css']
+  selector: 'app-recipe-browse',
+  templateUrl: './recipe-browse.component.html',
+  styleUrls: ['./recipe-browse.component.css']
 })
-
-export class RecipeListComponent implements OnInit {
+export class RecipeBrowseComponent implements OnInit {
   title = 'My Recipes!';
   recipes: Recipe[];
   selectedRecipe: Recipe;
@@ -31,12 +24,12 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit() {
      this.addRecipe();
-    
   }
 
   addRecipe() {
    this.loading = true;
     this._recipeService.getRecipe().subscribe(recipes => {  
+      
         this.recipes = recipes;
         this.loading = false;
       });

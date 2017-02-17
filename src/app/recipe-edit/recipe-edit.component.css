@@ -7,9 +7,55 @@ label{
   border-left:1px  solid gray;
   border-right: 1px solid gray;
   cursor: pointer;
-  background-color: white;
+  /*background-color: white;*/
 }
 
-#edit{
-    background-color: OldLace;
+.bgimg {
+    width: 600px;
+    height: 800px;
+    background-image: url('../../Photos/paperTransparent2.png');
+     background-repeat: no-repeat;
+     /*background-position: 6px 6px; */
+     background-size: 100%; 
+     /*background: fixed;*/
+}
+.edit{
+     width: 560px;
+    height: 700px;
+    padding-left: 60px;
+}
+.panel-heading h2{
+/*padding: 35px 15px;*/
+margin-top:15px;
+}
+#description p{
+    /*font:serif;*/
+   font-family: "cursive";
+    font-style: italic;
+    text-align: justify;
+    font-size: larger;
+}
+.bgimg label{
+    font:serif;
+    font-style: bold;
+    color: black;
+    font-size: 15px;
+}
+.description textarea{
+  margin: 0px;
+   width: 500px; 
+   height: 138px;
+    resize: none;
+  text-decoration-style: italic;
+  font-family: "cursive";
+    font-style: italic;
+    text-align: justify;
+    font-size: larger;
+}
+.recipeName input{
+  width: 500px; 
+}
+.alert{
+  margin: 0px;
+   width: 500px;
 }

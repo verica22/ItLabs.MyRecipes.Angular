@@ -1,16 +1,15 @@
 <!--*CREATE RECIPE-->
-<div class="conteiner col-sm-6">
-<br/>
-<div class="panel panel-danger" id="create">
-    <div class="panel-heading">
-        <h3 class="panel-title">Create Recipe </h3>
-     </div>
-<div class="panel-body">
+<div class="img conteiner col-xs-12">
+    <div class="bgimg conteiner col-xs-6">
+        <br/>
+        <div class="panel-heading">
+            <h3 class="panel-title">Create New Recipe </h3>
+        </div>
+        <div class="panel-body">
             <form #userForm="ngForm">
-                <!--(ngSubmit)="onSubmit(userForm.value)" (submit)="saveRecipe($event)">-->
-                <div class="form-group">
+                <div class="recipeName form-group">
                     <label>Recipe Name</label>
-                    <input type="text" #nameRef="ngModel" required minlength="3" maxlength="15" class="form-control" name="name" [ngModel]="Name">
+                    <input type="text" #nameRef="ngModel" required minlength="3" maxlength="25" class="form-control" name="name" [ngModel]="Name">
                     <div *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class="alert alert-danger">
                         <div [hidden]="!nameRef.errors.required">
                             Please enter a name
@@ -19,81 +18,114 @@
                             Please enter atleast 3 characters
                         </div>
                         <div [hidden]="!nameRef.errors.maxlength">
-                            Please enter 15 characters max
+                            Please enter 25 characters max
                         </div>
                     </div>
                     <b>{{nameRef.className}}</b>
                 </div>
-                <div class="form-group">
+                <div class="description form-group">
                     <label class="item item-input">
-                     Description
-                    <textarea #description style="margin: 0px; width: 541px; height: 138px;"name="description" [ngModel]="Description"></textarea>
-                    </label>
-                </div>
-                <div class="conteiner">
-                    <div class="form-group col-sm-3">
-                        <label>Done Recipe
-                             <input #isDone type="checkbox" name="done" ng-true-value="true"> 
-                        </label>
-                     </div>
-                     <div class="form-group col-sm-6">
-                        <label>Favorite Recipe
-                            <input  #isFavorite type="checkbox" name="favourite" ng-true-value="true">
-                        </label>
-                      </div>
-                </div>
+                     Description</label>
+                    <textarea #description="ngModel" required minlength="10" maxlength="1000" name="description" [ngModel]="Description">
+                            </textarea>
 
-<div class="conteiner col-sm-12 form-group">
-    <!--Autocomplete-->
-    <div class="col-sm-5 form-group">
-        <label>Ingredient</label>
-        <input (onblur)="ingredients=null" name="name" class="form-control"  #ingredientName id="ingredientName" (keyup)="getIngredients(ingredientName.value)"/>
-          <!--<input   (keyup)="getIngredients(ingredientName.value)"
+                    <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">
+                        <div [hidden]="!description.errors.required">
+                            Please enter description
+                        </div>
+                        <div [hidden]="!description.errors.minlength">
+                            Recipe Description must be between 10 and 1000 characters
+                        </div>
+                        <div [hidden]="!description.errors.maxlength">
+                            Recipe Description must be between 10 and 1000 characters
+                        </div>
+                    </div>
+                    <b>{{description.className}}</b>
+                </div>
+                <div class="chackboxes conteiner">
+                    <div class="form-group col-xs-5">
+                        <label>
+                        <input #isDone type="checkbox" name="done" ng-true-value="true">
+                        Done Recipe </label>
+
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label>
+                        <input #isFavorite type="checkbox" name="favourite" ng-true-value="true">
+                       Favorite Recipe </label>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bgimg2 conteiner col-xs-6">
+        <br>
+        <div class="panel-heading">
+            <h3 class="panel-title">Add Ingredients </h3>
+        </div>
+        <br>
+        <div class="addIngredient conteiner col-xs-12 form-group">
+            <!--Autocomplete-->
+            <div class="ingredientName col-xs-5 form-group">
+                <label>Ingredient</label>
+                <input type="text" #ingredientName="ngModel" required minlength="3" maxlength="25" (onblur)="ingredients=null" name="ingredientName"
+                    class="form-control" [ngModel]="ingredientName" (keyup)="getIngredients(ingredientName.value)" />
+                <!--<input   (keyup)="getIngredients(ingredientName.value)"
                    ng2-auto-complete
                    formControlName="ingredient"
                    [source]="ingredients"
                    [list-formatter]="autocompleListFormatter"
                      display-property-name="Name"
                   >-->
-
-        <!--(onfocusout)="ingredients=null"-->
-      
-            <div *ngFor="let ingredient of ingredients" class="search-result"
-             (click)="ingredientName.value=ingredient.Name && ingredients=null" (onblur)="ingredients=null">
-                {{ingredient.Name}}
+                <!--(onfocusout)="ingredients=null"-->
+                <div *ngFor="let ingredient of ingredients" class="search-result" (click)="ingredientName.value=ingredient.Name && ingredients=null"
+                    (onblur)="ingredients=null">
+                    {{ingredient.Name}}
             </div>
-      
-    </div>
-
-    <div class="col-sm-3 form-group">
-        <label>Measurement </label>
-        <select #measurement name="measurement" class="form-control">
+            <div *ngIf="ingredientName.errors && (ingredientName.dirty || ingredientName.touched)" class="alert alert-danger">
+                <div [hidden]="!ingredientName.errors.required">
+                    Please enter a name
+                </div>
+                <div [hidden]="!ingredientName.errors.minlength">
+                    Please enter atleast 3 characters
+                </div>
+                <div [hidden]="!ingredientName.errors.maxlength">
+                    Please enter 25 characters max
+                </div>
+            </div>
+            <b>{{ingredientName.className}}</b>
+        </div>
+        <div class="measurement col-xs-3 form-group">
+            <label>Measurement </label>
+            <select #measurement name="measurement" class="form-control">
+                <option value="number">Number</option>
+                <option value="kg">kg</option>
                 <option value="g">g</option>
                 <option value="l">l</option>
                 <option value="spoon">Spoon</option>
                 <option value="teaspoon">Teaspoon</option>
-            </select>
-    </div>
-    <div class="col-sm-2 form-group">
-        <label>Quantity </label>
-        <input #quantity class="form-control" name="quantity">
-    </div>
-    <div class="col-sm-2">
-        <br/>
-        <button (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)" class="btn btn-success">Add</button>
-
-    </div>
-</div>
-
-
-<br/>
-<div class="conteiner col-sm-12" *ngIf="addedIngredients.length > 0">
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            <h3 class="panel-title"> Ingredients </h3>
+                <option value="dessertspoon">Dessertspoon</option>
+                <option value="gallon">Gallon</option>
+                <option value="cup">Cup</option>
+                <option value="litre">Litre</option>
+                  </select>
         </div>
+        <div class="quantity col-xs-2 form-group">
+            <label>Quantity </label>
+            <input #quantity class="form-control" name="quantity">
+        </div>
+        <div class="addButton col-xs-1">
+            <label> </label>
+            <button (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)">
+             <img src="../Photos/Plus.png"  opacity="0" title="Delete" width="20px" height="20px" value="Delete" />
+             </button>
+        </div>
+    </div>
+    <br/>
+    <div class="addedIngredients conteiner col-sm-12" *ngIf="addedIngredients.length > 0">
         <div class="panel-body">
-            <table class="table table-striped">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Ingredient Name</th>
@@ -107,18 +139,17 @@
                         <td>{{ingredient.Name}}</td>
                         <td>{{ingredient.Measurement}}</td>
                         <td>{{ingredient.Quantity}}</td>
-                        <td><button (click)="removeIngredient(ingredient)" class="btn btn-danger">Remove</button> </td>
+                        <td><button (click)="removeIngredient(ingredient)">
+                         <img src="../Photos/minus.png"  opacity="0" title="Delete" width="20px" height="20px" value="Delete" /></button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-</div>
-<div class="conteiner col-sm-8"></div>
-    <button [routerLink]="['/recipe-list']" routerLinkActive="active" type="back" class="btn btn-danger"> Back </button>
-    <button [disabled]="!userForm.form.valid" (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)" 
-    type="submit" class="btn btn-danger" [routerLink]="['/recipe-list']"> Save </button>
-</form>
-</div>
+    <div class="saveButton conteiner col-xs">
+        <button [disabled]="!userForm.form.valid" (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)"
+            type="submit" class="btn btn-default" [routerLink]="['/recipe-list']"> Save </button>
+    </div>
 </div>
 </div>

@@ -5,3 +5,49 @@ label{
 #details{
     background-color: OldLace;
 }
+.bgimg {
+    width: 600px;
+    height: 800px;
+    background-image: url('../../Photos/paperTransparent2.png');
+     background-repeat: no-repeat;
+     /*background-position: 6px 6px; */
+     background-size: 100%; 
+     /*background: fixed;*/
+}
+.details{
+     width: 560px;
+    height: 700px;
+    padding-left: 90px;
+}
+.panel-heading h2{
+/*padding: 35px 15px;*/
+margin-top:25px;
+}
+#description p{
+    /*font:serif;*/
+   font-family: "cursive";
+    font-style: italic;
+    text-align: justify;
+    font-size: larger;
+}
+.bgimg label{
+    font:serif;
+    font-style: bold;
+    color: black;
+    font-size: 15px;
+}
+hr { 
+    display: block;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+} 
+#ingredients{
+     font-family: "cursive";
+    font-style: italic;
+    text-align: justify;
+    
+}
