@@ -11,13 +11,14 @@ label{
 }
 
 .bgimg {
-    width: 600px;
-    height: 800px;
+    /*width: 600px;*/
+     min-height: 700px;
     background-image: url('../../Photos/paperTransparent2.png');
-     background-repeat: no-repeat;
+     background-repeat: repeat-y;
      /*background-position: 6px 6px; */
      background-size: 100%; 
      /*background: fixed;*/
+     max-width: 100%;
 }
 .edit{
      width: 560px;
@@ -41,9 +42,12 @@ margin-top:15px;
     color: black;
     font-size: 15px;
 }
+.description{
+  max-width: 100%;
+}
 .description textarea{
   margin: 0px;
-   width: 500px; 
+   width: 95%;
    height: 138px;
     resize: none;
   text-decoration-style: italic;
@@ -53,7 +57,10 @@ margin-top:15px;
     font-size: larger;
 }
 .recipeName input{
-  width: 500px; 
+  width: 95%;
+}
+.recipeName{
+  max-width: 95%;
 }
 .alert{
   margin: 0px;

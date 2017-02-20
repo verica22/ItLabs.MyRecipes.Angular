@@ -43,4 +43,7 @@ export class RecipeEditComponent {
   removeIngredient(ingredient: any) {
     this.addedIngredients.splice(this.addedIngredients.indexOf(ingredient));
   }
+  chooseIngredient(ingredient) {
+    this.ingredients = [];
+  }
 }

@@ -2,7 +2,7 @@
 <div class="container text-center">
   <div class="col-sm-4">
     <div class="input-group input-group-btn">
-      <input placeholder="Name" #searchName type="text" name='search'>
+      <input type="submit" placeholder="Name" #searchName type="text" name='search' (keyup.enter)="searchRecipe(searchName.value,isDone.checked,isFavorite.checked)">
     </div>
   </div>
   <div class="funkyradio col-sm-2">
@@ -24,68 +24,77 @@
 </div>
 <hr/>
 <!--RECIPES-->
-<div class="conteiner col-xs-6">
-  <div class="row">
-    <div class="conteiner col-sm-12">
-      <div class=" col-sm-6">
-        <label>Recipe Name</label>
-      </div>
-      <div class=" col-sm-2">
-        <label>Done</label>
-      </div>  
-      <div class=" col-sm-2">
-        <label>Favorite</label>
-      </div>
-    </div>
-    <br/>
-    <ul class="recipes">
-      <li *ngFor="let recipe of recipes | paginate: { itemsPerPage: 16, currentPage: p }" [class.selected]="recipe === selectedRecipe"
-        value="details" (click)="onSelect(recipe,value)">
-
-        <div class="conteiner col-xs-12">
-          <div id="recipeName" class="col-xs-6">
-            {{recipe.Name | uppercase}}
+<div class="container">
+  <div class="row content">
+    <div class="col-sm-6 recipeList">
+      <div class="row">
+        <div class="container col-sm-12">
+          <div class=" col-sm-5">
+            <label>Recipe Name</label>
           </div>
-          <div class="col-xs-2">
-            <label>
+          <div class=" col-sm-2">
+            <label>Done</label>
+          </div>
+          <div class=" col-sm-2">
+            <label>Favorite</label>
+          </div>
+        </div>
+        <br/>
+        <ul class="recipes">
+          <li *ngFor="let recipe of recipes | paginate: { itemsPerPage: 14, currentPage: p }" value="details">
+
+            <div class="container col-xs-12">
+              <div id="recipeName" class="col-xs-5">
+                {{recipe.Name | uppercase}}
+              </div>
+              <div class="col-xs-2">
+                <label>
               <input type="checkbox" [(ngModel)]="recipe.IsDone" placeholder="done" disabled="disabled"/> 
             </label>
-          </div>
-          <div class="col-xs-2">
-            <label>
+              </div>
+              <div class="col-xs-2">
+                <label>
                 <input type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" disabled="disabled"/>
              </label>
-          </div>
-          <div class="col-xs-1">
-            <label>
+              </div>
+              <div class="col-xs-1">
+                <label>
+                 <button  [class.selected]="recipe === selectedRecipe" (click)="onSelect(recipe)"> 
+                 <img src="../Photos/view.png"  opacity="0" title="Delete" width="20px" height="20px" value="Select" /></button>
+            </label>
+              </div>
+              <div class="col-xs-1">
+                <label>
               <button [class.selected]="recipe === selectedRecipe2" value="edit" (click)="onEdit(recipe)" > 
               <img src="../Photos/Pencil2.png" title="Edit" width="20px" height="20px" value="Edit" /></button>
             </label>
-          </div>
-          <div class="col-xs-1">
-            <label>
+              </div>
+              <div class="col-xs-1">
+                <label>
                  <button (click)="deleteRecipe(recipe)"> 
                  <img src="../Photos/delete2.png"  opacity="0" title="Delete" width="20px" height="20px" value="Delete" /></button>
             </label>
-          </div>
-        </div>
-        </li>
-    </ul>
+              </div>
+            </div>
+            </li>
+        </ul>
 
+      </div>
+    </div>
+
+    <!--EDIT & DETAILS-->
+    <br/>
+    <div class="col-sm-6" ng-if="value=details">
+      <app-recipe-details [recipe]="selectedRecipe"></app-recipe-details>
+    </div>
+    <div class="col-sm-6" ng-if="value=edit">
+      <app-recipe-edit [recipe]="selectedRecipe2"></app-recipe-edit>
+    </div>
   </div>
 </div>
 
-<!--EDIT & DETAILS-->
-<br/>
-<div class="conteiner col-xs-6" ng-if="value=details">
-  <app-recipe-details [recipe]="selectedRecipe"></app-recipe-details>
- </div>
-<div class="conteiner col-xs-6" ng-if="value=edit">
-  <app-recipe-edit [recipe]="selectedRecipe2"></app-recipe-edit>
-</div>
-
 <!--PAGING-->
-<div class="mypagination conteiner col-xs-12 text-center">
+<div class="mypagination container col-xs-12 text-center">
   <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" [ngClass]="{ 'hidden': !loading }"></i>
   <pagination-controls (pageChange)="p = $event" #api directionLinks="true"></pagination-controls>
 </div>

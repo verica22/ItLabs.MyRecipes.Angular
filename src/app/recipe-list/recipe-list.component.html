@@ -1,24 +1,24 @@
 <!--RECIPES-->
-<div class="conteiner col-xs-6" onload="searchRecipe()">
+<div class="container">
+  <div class="row content">
+<div class="container col-sm-6" onload="searchRecipe()">
   <div class="row">
-    <div class="conteiner col-sm-12">
+    <div class="container col-sm-12">
       <div class=" col-sm-5">
         <label>Recipe Name</label>
       </div>
       <div class=" col-sm-2">
         <label>Done</label>
-      </div>  
+      </div>
       <div class=" col-sm-2">
         <label>Favorite</label>
       </div>
     </div>
     <br/>
     <ul class="recipes">
-      <li *ngFor="let recipe of recipes | paginate: { itemsPerPage: 16, currentPage: p }" 
-     
-        value="details" >
+      <li *ngFor="let recipe of recipes | paginate: { itemsPerPage: 14, currentPage: p }" value="details">
 
-        <div class="conteiner col-xs-12">
+        <div class="container col-xs-12">
           <div id="recipeName" class="col-xs-5">
             {{recipe.Name | uppercase}}
           </div>
@@ -32,7 +32,7 @@
                 <input type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" disabled="disabled"/>
              </label>
           </div>
-           <div class="col-xs-1">
+          <div class="col-xs-1">
             <label>
                  <button  [class.selected]="recipe === selectedRecipe" (click)="onSelect(recipe)"> 
                  <img src="../Photos/view.png"  opacity="0" title="Delete" width="20px" height="20px" value="Select" /></button>
@@ -50,24 +50,12 @@
                  <img src="../Photos/delete2.png"  opacity="0" title="Delete" width="20px" height="20px" value="Delete" /></button>
             </label>
           </div>
-          
+
         </div>
-        </li>
+      </li>
     </ul>
 
   </div>
-</div>
-
-<!--EDIT & DETAILS-->
-<br/>
-<div class="container col-xs-6" ng-if="value=details">
-  <app-recipe-details [recipe]="selectedRecipe"></app-recipe-details>
- </div>
-<div class="container col-xs-6" ng-if="value=edit">
-  <app-recipe-edit [recipe]="selectedRecipe2"></app-recipe-edit>
-</div>
-
-
 
 <!--PAGING-->
 <div class="container col-xs-12 text-center">
@@ -77,3 +65,17 @@
   <pagination-controls style="background: gray" class="mypagination" (pageChange)="p = $event" #api directionLinks="true"></pagination-controls>
 
 </div>
+</div>
+
+<!--EDIT & DETAILS-->
+<br/>
+<div class="container col-sm-6" ng-if="value=details">
+  <app-recipe-details [recipe]="selectedRecipe"></app-recipe-details>
+</div>
+<div class="container col-sm-6" ng-if="value=edit">
+  <app-recipe-edit [recipe]="selectedRecipe2"></app-recipe-edit>
+</div>
+</div>
+</div>
+
+

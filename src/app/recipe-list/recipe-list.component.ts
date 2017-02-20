@@ -52,7 +52,7 @@ export class RecipeListComponent implements OnInit {
     this.selectedRecipe = recipe;
   }
   onEdit(recipe: Recipe): void {
-    this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.Ingredients);
+    this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.Ingredients,recipe.RecipeIngredients);
     this.oldName=recipe.Name;
   }
 

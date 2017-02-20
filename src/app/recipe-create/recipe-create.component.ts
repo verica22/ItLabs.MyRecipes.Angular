@@ -14,14 +14,15 @@ import 'rxjs/Rx';
   templateUrl: './recipe-create.component.html',
   styleUrls: ['./recipe-create.component.css']
 })
+
 export class RecipeCreateComponent implements OnInit {
   recipes: Recipe[];
   ingredients: Ingredient[];
   private searchTerms = new Subject<string>();
-  constructor(private _recipeService: RecipeService  ) { }
+  constructor(private _recipeService: RecipeService) { }
   ngOnInit() {
-
   }
+
   addRecipe() {
     this._recipeService.getRecipe().subscribe(recipes => {
       this.recipes = recipes;
@@ -37,14 +38,12 @@ export class RecipeCreateComponent implements OnInit {
   }
 
   getIngredients(term) {
-    this._recipeService.getIngredient(term).subscribe(ingredients => {
-      this.ingredients = ingredients;
-    });
+    this._recipeService.getIngredient(term)
+      .subscribe(ingredients => {
+        this.ingredients = ingredients;
+        console.log(this.ingredients);
+      });
   }
-
-  //  checkbox(selectedValue) {
-  //  selectedValue = ("on") ? true : false;
-  //   }
 
   addedIngredients: Ingredient[] = [];
   addIngredient(name: string, measurement: string, quantity: number) {
@@ -53,6 +52,9 @@ export class RecipeCreateComponent implements OnInit {
 
   removeIngredient(ingredient: any) {
     this.addedIngredients.splice(this.addedIngredients.indexOf(ingredient));
+  }
+  chooseIngredient(ingredient) {
+    this.ingredients = [];
   }
 
 } 

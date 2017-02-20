@@ -6,36 +6,19 @@ input.ng-valid{border-left: 5px solid green;}
    background-color: papayawhip;
   text-align: center;
 }
-/*html {
-  margin: 2em;
- background-color: OldLace ;
-}*/
-
 #copyright{
   background-color: darkred;
   color: white;
-  /*padding: 1rem;*/
   font-style: italic;
 }
 #nav{
-   /*color: red;*/
-    /*font-style: italic;*/
     font: "Comic Sans MS", sans-serif;
     font-weight: bold;
-        text-transform: uppercase;
+    text-transform: uppercase;
 }
-   footer {
+footer {
       background-color: #f2f2f2;
       padding: 25px;
-    }
-    /*body {
-    background-image: url("../../Photos/lam.png");
-    background-repeat: repeat;
-    
-}*/
-  /*nav {
-    background-image: url("../../Photos/Screenshot_7.png");
-    background-repeat: repeat;
-      
-}*/
+}
+
  

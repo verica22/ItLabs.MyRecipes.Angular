@@ -1,6 +1,6 @@
 <!--*CREATE RECIPE-->
-<div class="img conteiner col-xs-12">
-    <div class="bgimg conteiner col-xs-6">
+<div class="img container">
+    <div class="bgimg container col-sm-6">
         <br/>
         <div class="panel-heading">
             <h3 class="panel-title">Create New Recipe </h3>
@@ -42,7 +42,7 @@
                     </div>
                     <b>{{description.className}}</b>
                 </div>
-                <div class="chackboxes conteiner">
+                <div class="chackboxes">
                     <div class="form-group col-xs-5">
                         <label>
                         <input #isDone type="checkbox" name="done" ng-true-value="true">
@@ -59,50 +59,58 @@
             </form>
         </div>
     </div>
-    <div class="bgimg2 conteiner col-xs-6">
+    <div class="bgimg2 container col-sm-6">
+
         <br>
         <div class="panel-heading">
             <h3 class="panel-title">Add Ingredients </h3>
         </div>
         <br>
-        <div class="addIngredient conteiner col-xs-12 form-group">
+        <div class="addIngredient container col-xs-12 form-group">
             <!--Autocomplete-->
             <div class="ingredientName col-xs-5 form-group">
                 <label>Ingredient</label>
-                <input type="text" #ingredientName="ngModel" required minlength="3" maxlength="25" (onblur)="ingredients=null" name="ingredientName"
-                    class="form-control" [ngModel]="ingredientName" (keyup)="getIngredients(ingredientName.value)" />
-                <!--<input   (keyup)="getIngredients(ingredientName.value)"
-                   ng2-auto-complete
-                   formControlName="ingredient"
-                   [source]="ingredients"
-                   [list-formatter]="autocompleListFormatter"
-                     display-property-name="Name"
-                  >-->
-                <!--(onfocusout)="ingredients=null"-->
-                <div *ngFor="let ingredient of ingredients" class="search-result" (click)="ingredientName.value=ingredient.Name && ingredients=null"
-                    (onblur)="ingredients=null">
-                    {{ingredient.Name}}
+                <input #ingredientName="ngModel" required minlength="3" maxlength="25" type="text" class="form-control" (keyup)="getIngredients(ingredientName.value)"
+                    [(ngModel)]="ingredientname" />
+
+                <div *ngFor="let ingredient of ingredients" class="form-control">
+                    <span (click)="ingredientName.value=ingredient.Name; chooseIngredient(ingredient)"> 
+                       {{ingredient.Name}}
+                   </span>
+                </div>
+
+                <div *ngIf="ingredientName.errors && (ingredientName.dirty || ingredientName.touched)" class="alert alert-danger">
+                    <div [hidden]="!ingredientName.errors.required">
+                        Please enter ingredient
+                    </div>
+                    <div [hidden]="!ingredientName.errors.minlength">
+                        Please enter atleast 3 characters
+                    </div>
+                    <div [hidden]="!ingredientName.errors.maxlength">
+                        Please enter 25 characters max
+                    </div>
+                </div>
+                <!--<b>{{ingredientName.className}}</b>-->
             </div>
-            <div *ngIf="ingredientName.errors && (ingredientName.dirty || ingredientName.touched)" class="alert alert-danger">
-                <div [hidden]="!ingredientName.errors.required">
-                    Please enter a name
+
+            <div class="quantity col-xs-2 form-group">
+                <label>Quantity </label>
+                <input type="text" #quantity="ngModel" required class="form-control" name="quantity" [ngModel]="qua" />
+                <div *ngIf="quantity.errors && (quantity.dirty || quantity.touched)" class="alert alert-danger">
+                    <div [hidden]="!quantity.errors.required" style="margin-left:-13px;">
+                        Required
+                    </div>
+
                 </div>
-                <div [hidden]="!ingredientName.errors.minlength">
-                    Please enter atleast 3 characters
-                </div>
-                <div [hidden]="!ingredientName.errors.maxlength">
-                    Please enter 25 characters max
-                </div>
+                <b>{{quantity.className}}</b>
             </div>
-            <b>{{ingredientName.className}}</b>
-        </div>
-        <div class="measurement col-xs-3 form-group">
-            <label>Measurement </label>
-            <select #measurement name="measurement" class="form-control">
-                <option value="number">Number</option>
+            <div class="measurement col-xs-3 form-group">
+                <label>Measurement </label>
+                <select #measurement name="measurement" class="form-control">
                 <option value="kg">kg</option>
                 <option value="g">g</option>
                 <option value="l">l</option>
+                <option value="number">Number</option>
                 <option value="spoon">Spoon</option>
                 <option value="teaspoon">Teaspoon</option>
                 <option value="dessertspoon">Dessertspoon</option>
@@ -110,46 +118,45 @@
                 <option value="cup">Cup</option>
                 <option value="litre">Litre</option>
                   </select>
-        </div>
-        <div class="quantity col-xs-2 form-group">
-            <label>Quantity </label>
-            <input #quantity class="form-control" name="quantity">
-        </div>
-        <div class="addButton col-xs-1">
-            <label> </label>
-            <button (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)">
+            </div>
+            <!--</form>-->
+            <div class="addButton col-xs-1">
+                <label> </label>
+                <button (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)">
              <img src="../Photos/Plus.png"  opacity="0" title="Delete" width="20px" height="20px" value="Delete" />
              </button>
+            </div>
         </div>
-    </div>
-    <br/>
-    <div class="addedIngredients conteiner col-sm-12" *ngIf="addedIngredients.length > 0">
-        <div class="panel-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Ingredient Name</th>
-                        <th>Measurement</th>
-                        <th>Quantity</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let ingredient of addedIngredients">
-                        <td>{{ingredient.Name}}</td>
-                        <td>{{ingredient.Measurement}}</td>
-                        <td>{{ingredient.Quantity}}</td>
-                        <td><button (click)="removeIngredient(ingredient)">
+        <br/>
+        <div class="addedIngredients container col-sm-12" *ngIf="addedIngredients.length > 0">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Ingredient</th>
+                            <th>Quantity</th>
+                            <th>Measurement</th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ingredient of addedIngredients">
+                            <td>{{ingredient.Name}}</td>
+                            <td>{{ingredient.Quantity}}</td>
+                            <td>{{ingredient.Measurement}}</td>
+
+                            <td><button (click)="removeIngredient(ingredient)">
                          <img src="../Photos/minus.png"  opacity="0" title="Delete" width="20px" height="20px" value="Delete" /></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="saveButton col-xs">
+            <button [disabled]="!userForm.form.valid" (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)"
+                type="submit" class="btn btn-default" [routerLink]="['/recipe-list']"> Save </button>
         </div>
     </div>
-    <div class="saveButton conteiner col-xs">
-        <button [disabled]="!userForm.form.valid" (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)"
-            type="submit" class="btn btn-default" [routerLink]="['/recipe-list']"> Save </button>
-    </div>
-</div>
 </div>

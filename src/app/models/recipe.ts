@@ -8,8 +8,8 @@ export class Recipe {
             public Description: string = '',
             public IsDone: boolean = false,
             public IsFavorite: boolean = false,
-            public Ingredients: Ingredient[] = []
-            // public RecipeIngredients: RecipeIngredient[] = []
+            public Ingredients: Ingredient[] = [],
+            public RecipeIngredients: RecipeIngredient[] = []
             ) {
     }
 }

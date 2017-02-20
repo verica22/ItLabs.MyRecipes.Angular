@@ -6,17 +6,19 @@ label{
     background-color: OldLace;
 }
 .bgimg {
-    width: 600px;
-    height: 800px;
+    /*width: 600px;*/
+    min-height: 700px;
     background-image: url('../../Photos/paperTransparent2.png');
-     background-repeat: no-repeat;
+     background-repeat: repeat-y;
      /*background-position: 6px 6px; */
      background-size: 100%; 
      /*background: fixed;*/
+     max-width: 100%;
 }
 .details{
-     width: 560px;
-    height: 700px;
+     /*width: 560px;*/
+     max-width: 95%;
+   /*height: 500px;*/
     padding-left: 90px;
 }
 .panel-heading h2{
