@@ -11,16 +11,34 @@
 </head>
 
 <body>
-    <div>
-        <img class="img-responsive" src="../Photos/rec.png" alt="Image">
-    </div>
+    <!--<div>
+        <img class="img-responsive" src="../Photos/Screenshot.png" alt="Image">
+    </div>-->
+    <section id="bgContainer">
+        <div id="recipeSearchFormContainer">
+            <form id="recipeSearchForm">
+              
+                <div class="small-10 columns">
+                    <input type="hidden" name="searchType" value="recipe">
+                    <input type="text" id="homeSearchBox" name="searchTerm" class="searchFromField" placeholder="Search for recipes">
+                </div>
+                <div class="small-2 columns">
+                    <button class="icon-search"></button>
+                </div>
+               
+            </form>
+        </div>
+        <div class="fullimagebleed">
+            <img id="bgImage" class="img-responsive" src="../Photos/Screenshot.png">
+        </div>
+    </section>
     <nav id="nav" class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header text-center">
-                <a class="active" class="navbar-brand"  [routerLink]="['/recipe-list']" routerLinkActive="active" href="#">My Recipes</a>
+                <a class="active" class="navbar-brand" [routerLink]="['/recipe-list']" routerLinkActive="active" href="#">My Recipes</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a [routerLink]="['/recipe-browse']" routerLinkActive="active"href="#">Browse Recipe</a></li>
+                <li><a [routerLink]="['/recipe-browse']" routerLinkActive="active" href="#">Browse Recipe</a></li>
                 <li><a [routerLink]="['/recipe-create']" routerLinkActive="active" href="#">New Recipe</a></li>
                 <li><a [routerLink]="['/recipe-about']" routerLinkActive="active" href="#">About</a></li>
                 <li><a [routerLink]="['/recipe-findUs']" routerLinkActive="active" href="#">Find Us</a></li>
@@ -46,7 +64,7 @@
                 <div class="col-xs-4">
                     <div class="widget">
                         <h4 class="widget-title">Contact us</h4>
-                        Email: <a href="mailto:shop@fromageandfrench.com">sample@it-labs.com</a>
+                        Email: <a href="mailto:sample@it-labs.com">sample@it-labs.com</a>
                         <p class="no-margin-bottom">Tel: +389 2 311 1033</p>
 
                     </div>

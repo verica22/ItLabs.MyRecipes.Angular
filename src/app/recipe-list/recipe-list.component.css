@@ -1,16 +1,53 @@
  .selected {
       background-color: gray !important;
       color: white !important;
-      font-weight: bold;
+      /*font-weight: bold;*/
     }
     button .selected:hover {
-      background-color: gray !important;
+       /*background-color: gray !important;*/
     }
+    * {margin: 0; padding: 0;}
+
+/*div {
+  margin: 20px;
+}*/
+
+ul {
+  list-style-type: none;
+  width: 95%;
+}
+
+h4 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif,black;
+   font-family: "fantasy";
+       font:Impact;
+       font-weight: bold;
+}
+
+li img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+li {
+  padding: 12px;
+  /*overflow: auto;*/
+  overflow: hidden;
+}
+
+/*li:hover {
+  background: #eee;
+  cursor: pointer;
+}*/
     .recipes {
       margin: 0 0 2em 0;
       list-style-type: none;
       padding: 0;
-      width: 42em;
+      width: 95%;
       font-family: "cursive";
     }
     .recipes li {
@@ -20,30 +57,40 @@
       background-color: #EEE;
       margin: .5em;
       padding: .3em 0;
-      height: 3.0em;
+      height: 6.0em;
       border-radius: 4px;
-      /*font-family: "fantasy";*/
       font-family: "cursive";
       color: gray;
+      
     }
+    .recipes input{
+      margin-left: 30px;
+    }
+     
+    .recipes li:hover {
+      background-color: #DDD;
+          }
+          .recipes li:hover button{
+            background-color: #DDD;
+          }
+           .recipes li button:hover{
+            background-color: #EEE;
+          }
     #recipeName{
        font-family: "fantasy";
        font:Impact;
        font-weight: bold;
-       /*color: gray;*/
+     
     }
-      #recipeName .selected{
- /*color: white;*/
-      }
-    .recipes li.selected:hover {
-      background-color: gray !important;
-      /*color: white;*/
+    li label{
+      float: right;
+      margin-top: 15px;
     }
-    .recipes li:hover {
-         /*color: #607D8B;*/
-      background-color: #DDD;
-      /*left: .1em;*/
-    }
+#recipeName img{
+  width:70px;
+  height:70px;
+   margin-left:-30px; 
+}
     .recipes .text {
       position: relative;
       top: -3px;

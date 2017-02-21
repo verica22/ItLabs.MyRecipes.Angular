@@ -55,9 +55,11 @@ margin-top:15px;
     font-style: italic;
     text-align: justify;
     font-size: larger;
+    border-radius: 10px;
 }
 .recipeName input{
   width: 95%;
+   border-radius: 5px;
 }
 .recipeName{
   max-width: 95%;

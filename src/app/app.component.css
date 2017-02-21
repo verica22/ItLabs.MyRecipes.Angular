@@ -21,4 +21,50 @@ footer {
       padding: 25px;
 }
 
- 
+ #recipeSearchFormContainer{
+   position: absolute;
+   top:220px;
+margin-left: auto;
+margin-right: auto;
+  z-index:2;
+  margin-right:auto;
+  margin-left: 30px; 
+  width:1000px;
+  max-width: 1000px;
+  height:70px;  
+   vertical-align: middle;
+ }
+ #recipeSearchForm{
+   background:white;
+   opacity: .9;
+   position: relative;
+   height:70px;
+   margin: 0 40px;
+   vertical-align: middle;
+   margin-left:190px; 
+ }
+ .row{
+   width: 100%;
+ }
+ #homeSearchBox{
+   color: black;
+   opacity: .8;
+   float: left;
+   font-weight: lighter;
+   height:70px;
+   width: 90%;
+   
+font-family:verdana,arial,sans-serif;   
+font-size:28px;
+ }
+ .icon-search{
+   background-image: url('../../Photos/loop.png');
+   display:inline-block;
+   background-repeat: no-repeat;
+   background-size: 50px 50px;
+   background-position: center;
+   /*color: gray;*/
+   /*background:0 0;*/
+width: 75px;
+height: 70px;
+ }

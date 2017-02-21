@@ -32,12 +32,19 @@ button .selected{
       font-weight: bold;
       
 }
+.recipes li:hover {
+      background-color: #DDD;
+          }
+          .recipes li:hover button{
+            background-color: #DDD;
+          }
+           .recipes li button:hover{
+            background-color: #EEE;
+          }
 .recipes li.selected:hover {
      background-color: gray !important;
 }
-.recipes li:hover {
-     background-color: #DDD;
-}
+
 .recipes .text {
      position: relative;
      top: -3px;

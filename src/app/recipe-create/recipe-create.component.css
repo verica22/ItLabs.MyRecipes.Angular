@@ -38,6 +38,7 @@ max-width: 100%;
 }
 .recipeName input{
     width: 93%;
+    border-radius: 5px;
 }
 .recipeName .alert{
   width: 93%;
@@ -60,7 +61,7 @@ max-width: 100%;
     text-align: justify;
     font-size: larger;
      width: 90%;
-
+ border-radius: 10px;
 }
 .description .alert{
   margin: 0px;

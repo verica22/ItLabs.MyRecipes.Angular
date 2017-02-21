@@ -42,10 +42,12 @@ export class RecipeBrowseComponent implements OnInit {
 
   onSelect(recipe: Recipe): void {
     this.selectedRecipe = recipe;
+     this.selectedRecipe2 = null;
   }
   onEdit(recipe: Recipe): void {
     this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.Ingredients,recipe.RecipeIngredients);
     this.oldName=recipe.Name;
+     this.selectedRecipe = null;
   }
 
   deleteRecipe(recipe) {
