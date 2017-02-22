@@ -1,70 +1,82 @@
-label{
-      font-weight: bold;
-      color: dimgray;
+input.ng-invalid {
+  border-left: 5px solid red;
 }
-.search-result{
-  border-bottom:1px solid gray;
-  border-left:1px  solid gray;
+
+input.ng-valid {
+  border-left: 5px solid green;
+}
+
+label {
+  font-weight: bold;
+  color: dimgray;
+}
+
+.search-result {
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
   border-right: 1px solid gray;
   cursor: pointer;
-  /*background-color: white;*/
 }
 
 .bgimg {
-    /*width: 600px;*/
-     min-height: 700px;
-    background-image: url('../../Photos/paperTransparent2.png');
-     background-repeat: repeat-y;
-     /*background-position: 6px 6px; */
-     background-size: 100%; 
-     /*background: fixed;*/
-     max-width: 100%;
-}
-.edit{
-     width: 560px;
-    height: 700px;
-    padding-left: 60px;
-}
-.panel-heading h2{
-/*padding: 35px 15px;*/
-margin-top:15px;
-}
-#description p{
-    /*font:serif;*/
-   font-family: "cursive";
-    font-style: italic;
-    text-align: justify;
-    font-size: larger;
-}
-.bgimg label{
-    font:serif;
-    font-style: bold;
-    color: black;
-    font-size: 15px;
-}
-.description{
+  min-height: 700px;
+  background-image: url('../../Photos/paperTransparent2.png');
+  background-repeat: repeat-y;
+  background-size: 100%;
   max-width: 100%;
 }
-.description textarea{
+
+.edit {
+  width: 560px;
+  height: 700px;
+  padding-left: 60px;
+}
+
+.panel-heading h2 {
+  margin-top: 15px;
+}
+
+#description p {
+  font-family: "cursive";
+  font-style: italic;
+  text-align: justify;
+  font-size: larger;
+}
+
+.bgimg label {
+  font: serif;
+  font-style: bold;
+  color: black;
+  font-size: 15px;
+}
+
+.description {
+  max-width: 100%;
+}
+
+.description textarea {
   margin: 0px;
-   width: 95%;
-   height: 138px;
-    resize: none;
+  width: 95%;
+  height: 138px;
+  resize: none;
   text-decoration-style: italic;
   font-family: "cursive";
-    font-style: italic;
-    text-align: justify;
-    font-size: larger;
-    border-radius: 10px;
+  font-style: italic;
+  text-align: justify;
+  font-size: larger;
+  border-radius: 10px;
 }
-.recipeName input{
+
+.recipeName input {
   width: 95%;
-   border-radius: 5px;
+  border-radius: 5px;
 }
-.recipeName{
+
+.recipeName {
   max-width: 95%;
 }
-.alert{
+
+.alert {
   margin: 0px;
-   width: 500px;
+  width: 500px;
 }

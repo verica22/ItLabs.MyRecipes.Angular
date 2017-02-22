@@ -8,7 +8,6 @@ import { Subject } from 'rxjs/Subject';
 import { RecipeIngredient } from '../models/recipeIngredient';
 import 'rxjs/Rx';
 
-
 @Component({
   selector: 'app-recipe-about',
   providers: [RecipeService],
@@ -16,9 +15,7 @@ import 'rxjs/Rx';
   styleUrls: ['./recipe-about.component.css']
 })
 export class RecipeAboutComponent implements OnInit {
-
   constructor(private _recipeService: RecipeService) { }
-
   ngOnInit() {
   }
 

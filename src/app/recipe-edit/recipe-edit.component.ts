@@ -3,7 +3,7 @@ import { RecipeService } from '../services/recipe.service';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { Recipe } from '../models/recipe';
 import { Ingredient } from '../models/ingredient';
-
+import { RecipeIngredient } from '../models/recipeingredient';
 @Component({
   selector: 'app-recipe-edit',
   providers: [RecipeService],
@@ -16,32 +16,30 @@ export class RecipeEditComponent {
   recipes: Recipe[];
   oldName: string;
   constructor(private _recipeService: RecipeService) { }
-
-  addRecipe() {
+  
+  listRecipes() {
     this._recipeService.getRecipe().subscribe(recipes => {
       this.recipes = recipes;
     });
   }
-  updateRecipe(OldName: string, Name: string, Description: string, IsDone:boolean, IsFavorite:boolean, Ingredients) {
-    this._recipeService.updateRecipe(OldName,new Recipe(Name, Description, IsDone, IsFavorite, Ingredients))
+  updateRecipe(OldName: string, Name: string, Description: string, IsDone: boolean, IsFavorite: boolean, Ingredients) {
+    this._recipeService.updateRecipe(OldName, new Recipe(Name, Description, IsDone, IsFavorite, Ingredients))
       .subscribe(recipes => {
-        this.addRecipe();
+        this.listRecipes();
       });
   }
-
   getIngredients(term) {
     this._recipeService.getIngredient(term).subscribe(ingredients => {
       this.ingredients = ingredients;
     });
   }
-
-  addedIngredients: Ingredient[] = [];
+  addedIngredients: RecipeIngredient[] = [];
   addIngredient(name: string, measurement: string, quantity: number) {
-    this.addedIngredients.push(new Ingredient(name, measurement, quantity));
+    this.addedIngredients.push(new RecipeIngredient(name, measurement, quantity));
   }
-
-  removeIngredient(ingredient: any) {
-    this.addedIngredients.splice(this.addedIngredients.indexOf(ingredient));
+  removeIngredient(ingredient: RecipeIngredient) {
+    var index = this.addedIngredients.indexOf(ingredient);
+    this.addedIngredients.splice(index, 1);
   }
   chooseIngredient(ingredient) {
     this.ingredients = [];

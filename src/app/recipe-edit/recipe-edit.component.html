@@ -111,10 +111,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let recipeIngredient of recipe.RecipeIngredients">
-                                    <td>{{ recipeIngredient.IngredientName | lowercase}}</td>
-                                    <td>{{ recipeIngredient.Quantity }}</td>
-                                    <td>{{ recipeIngredient.Measurement | lowercase }}</td>
+                                <tr *ngFor="let ingredient of recipe.RecipeIngredients">
+                                    <td>{{ ingredient.IngredientName | lowercase}}</td>
+                                    <td>{{ ingredient.Quantity }}</td>
+                                    <td>{{ ingredient.Measurement | lowercase }}</td>
                                     <td><button (click)="removeIngredient(ingredient)">
                          <img src="../Photos/minus.png"  opacity="0" title="Delete" width="20px" height="20px" value="Delete" /></button>
                                     </td>

@@ -15,20 +15,5 @@ export class AppComponent {
   ingredients: Ingredient[];
   constructor() { }
   ngOnInit() {
-   
-   }
+  }
 }
-// interface Recipe {
-//   name: string,
-//   done?: boolean,
-//   favourite?: boolean
-//   description: string;
-// }
-// interface Ingredient {
-//   name: string,
-//   measurement: string;
-//   // quantity: number;
-// }
-// interface RecipeIngredient {
-//   quantity: number;
-// }
