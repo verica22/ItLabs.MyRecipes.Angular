@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
-import { Ingredient } from '../models/ingredient';
+import { RecipeIngredient } from '../models/recipeIngredient';
 import { RouterModule } from '@angular/router';
 import { Ng2PaginationModule } from 'ng2-pagination';
 import { Observable } from 'rxjs/Observable';
@@ -43,7 +43,7 @@ export class RecipeBrowseComponent implements OnInit {
     this.selectedRecipe2 = null;
   }
   onEdit(recipe: Recipe): void {
-    this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.Ingredients, recipe.RecipeIngredients);
+    this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.RecipeIngredients);
     this.oldName = recipe.Name;
     this.selectedRecipe = null;
   }

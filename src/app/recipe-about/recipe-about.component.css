@@ -1,8 +1,9 @@
-blockquote{
+blockquote {
     font-style: italic;
     font: "Comic Sans MS";
 }
-#paragraph{
+
+#paragraph {
     font: "Comic Sans MS";
     font-size: 19px;
 }

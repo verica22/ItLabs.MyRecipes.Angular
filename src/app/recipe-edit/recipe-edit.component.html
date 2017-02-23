@@ -5,80 +5,110 @@
                 <h2 class="panel-title"><b>Edit {{recipe.Name}}!</b> </h2>
             </div>
             <div class="panel-body">
+
                 <div>
-                    <div class="recipeName form-group">
-                        <label>Recipe Name:</label>
-                        <input type="text" required minlength="3" maxlength="25" #nameRef="ngModel" [(ngModel)]="recipe.Name" placeholder="name"
-                        />
-                        <div name="name" *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class="alert alert-danger">
-                            <div [hidden]="!nameRef.errors.required">
-                                Please enter a name
+                    <form name="checkoutBillingForm" #userForm="ngForm">
+                        <div class="recipeName form-group" [ngClass]="{ 
+                    'has-error':nameRef.invalid && nameRef.touched,
+                    'has-success':nameRef.valid && nameRef.touched
+                  }">
+                            <label>Recipe Name</label>
+                            <!--class="control-label"-->
+                            <input type="text" #nameRef="ngModel" required minlength="3" maxlength="25" class="form-control" name="name" [(ngModel)]="recipe.Name">
+
+                            <div class="help-block" *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)">
+                                <div [hidden]="!nameRef.errors.required">
+                                    Please enter a name
+                                </div>
+                                <div [hidden]="!nameRef.errors.minlength">
+                                    Please enter atleast 3 characters
+                                </div>
+                                <div [hidden]="!nameRef.errors.maxlength">
+                                    Please enter 25 characters max
+                                </div>
                             </div>
-                            <div [hidden]="!nameRef.errors.minlength">
-                                Please enter atleast 3 characters
-                            </div>
-                            <div [hidden]="!nameRef.errors.maxlength">
-                                Please enter 25 characters max
-                            </div>
+                            <b>{{nameRef.className}}</b>
+                </div>
+                <div class="description form-group" [ngClass]="{ 
+                    'has-error':description.invalid  && description.touched,
+                    'has-success':description.valid && description.touched
+                     }">
+                    <label> Description</label>
+                    <textarea #description="ngModel" required minlength="10" maxlength="1000" name="description" [(ngModel)]="recipe.Description">
+                            </textarea>
+
+                    <div class="help-block" *ngIf="description.errors &&  (description.dirty || nameRef.touched)">
+                        <div [hidden]="!description.errors.required">
+                            Please enter description
                         </div>
-                        <b>{{nameRef.className}}</b>
+                        <div [hidden]="!description.errors.minlength">
+                            Recipe Description must be between 10 and 1000 characters
+                        </div>
+                        <div [hidden]="!description.errors.maxlength">
+                            Recipe Description must be between 10 and 1000 characters
+                        </div>
                     </div>
-                    <div class="description form-group">
-                        <label class="item item-input">Description:</label>
-                        <textarea #description [(ngModel)]="recipe.Description" placeholder="description"></textarea>
+                    <b>{{description.className}}</b>
+            </div>
+            <div class="chackboxes">
+                <div class="form-group col-xs-5">
+                    <label>
+                        <input #isDone type="checkbox" name="done" ng-true-value="true" [(ngModel)]="recipe.IsDone">
+                        Done Recipe </label>
+
+                </div>
+                <div class="form-group col-xs-6">
+                    <label>
+                        <input #isFavorite type="checkbox" name="favourite" ng-true-value="true" [(ngModel)]="recipe.IsFavorite">
+                       Favorite Recipe </label>
+
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="container col-sm-12 form-group">
+               <form name="checkoutBillingForm" #ingForm="ngForm">
+            <div class="addIngredient container col-xs-12">
+                <div class="ingredientName col-xs-5 form-group" [ngClass]="{ 
+                    'has-error':ingredientName.invalid && ingredientName.touched,
+                    'has-success':ingredientName.valid && ingredientName.touched
+                  }">
+                    <label> Ingredient</label>
+                    <input #ingredientName name="ingredientName" required type="text" class="form-control" (keyup)="getIngredients(ingredientName.value)"
+                        [ngModel]="ingredientname" />
+                    <!--<span class="help-block" *ngIf="ingredientName.errors.required &&  ingredientName.touched">
+                       <b> Please enter a name</b>
+                    </span>-->
+                    <div *ngFor="let ingredient of ingredients" class="form-control">
+                        <span (click)="ingredientName.value=ingredient.Name; chooseIngredient(ingredient)"> 
+                       {{ingredient.Name}}
+                </span>
                     </div>
-                    <div>
-                        <div class="form-group col-sm-4">
-                            <label>Done Recipe </label>
-                            <input #isDone type="checkbox" [(ngModel)]="recipe.IsDone" placeholder="done" />
-                        </div>
-                        <div class="form-group col-sm-7">
-                            <label>Favorite Recipe </label>
-                            <input #isFavorite type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" />
-                        </div>
+                    <!--<div class="help-block" *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)">
+                    <div [hidden]="!ingredientName.errors.required">
+                        Please enter a name
                     </div>
                 </div>
-                <div class="container col-sm-12 form-group">
-                    <div class="ingredientName col-xs-5 form-group">
-                        <label>Ingredient</label>
-                        <input #ingredientName required minlength="3" maxlength="25" type="text" class="form-control" (keyup)="getIngredients(ingredientName.value)"
-                            [(ngModel)]="ingredientname" />
-
-                        <div *ngFor="let ingredient of ingredients" class="form-control">
-                            <span (click)="ingredientName.value=ingredient.Name; chooseIngredient(ingredient)"> 
-                       {{ingredient.Name}}
-                   </span>
-                        </div>
-
-                        <div *ngIf="ingredientName.errors && (ingredientName.dirty || ingredientName.touched)" class="alert alert-danger">
-                            <div [hidden]="!ingredientName.errors.required">
-                                Please enter ingredient
-                            </div>
-                            <div [hidden]="!ingredientName.errors.minlength">
-                                Please enter atleast 3 characters
-                            </div>
-                            <div [hidden]="!ingredientName.errors.maxlength">
-                                Please enter 25 characters max
-                            </div>
-                        </div>
-                        <!--<b>{{ingredientName.className}}</b>-->
+                <b>{{ingredientName.className}}</b>-->
+            </div>
+            <div class="quantity col-xs-2 form-group" [ngClass]="{ 
+                    'has-error':quantity.invalid && quantity.touched,
+                    'has-success':quantity.valid && quantity.touched
+                     }">
+                <label>Quantity </label>
+                <input type="text" #quantity="ngModel" required class="form-control" name="quantity" [ngModel]="qua" />
+                <div class="help-block" *ngIf="quantity.errors && (quantity.dirty || quantity.touched)">
+                    <div [hidden]="!quantity.errors.required" style="margin-left:-13px;">
+                        Required
                     </div>
 
-                    <div class="quantity col-xs-2 form-group">
-                        <label>Quantity </label>
-                        <input type="text" #quantity="ngModel" required class="form-control" name="quantity" [ngModel]="qua" />
-                        <div *ngIf="quantity.errors && (quantity.dirty || quantity.touched)" class="alert alert-danger">
-                            <div [hidden]="!quantity.errors.required" style="margin-left:-13px;">
-                                Required
-                            </div>
-
-                        </div>
-                        <b>{{quantity.className}}</b>
-                    </div>
-                    <div class="measurement col-xs-3 form-group">
-                        <label>Measurement </label>
-                        <select #measurement name="measurement" class="form-control">
-                <option value="kg">kg</option>
+                </div>
+                <b>{{quantity.className}}</b>
+    </div>
+    <div class="measurement col-xs-3 form-group">
+        <label>Measurement </label>
+        <!--<select #measurement name="measurement" class="form-control">
+                <option value="kg">Kg</option>
                 <option value="g">g</option>
                 <option value="l">l</option>
                 <option value="number">Number</option>
@@ -88,48 +118,55 @@
                 <option value="gallon">Gallon</option>
                 <option value="cup">Cup</option>
                 <option value="litre">Litre</option>
-                  </select>
-                    </div>
-                    <!--</form>-->
-                    <div class="addButton col-xs-1">
-                        <label> </label>
-                        <button (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)">
-             <img src="../Photos/Plus.png"  opacity="0" title="Delete" width="20px" height="20px" value="Delete" />
+                  </select>-->
+        <select #measurement name="measurement" class="form-control" (change)="parseValue($event.target.value)">
+             <!--<option>--select--</option>-->
+            <option *ngFor="let name of options"
+                     [value]="name">{{name}}</option>
+        </select>
+    </div>
+    <!--</form>-->
+    <div class="addButton col-xs-1">
+        <label> </label>
+        <button [disabled]="!ingForm.form.valid" (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)">
+             <img src="../Photos/Plus.png"  opacity="0" title="Add" width="20px" height="20px" value="Delete" />
              </button>
-                    </div>
-                </div>
-                <br/>
-                <div class="container col-sm-12">
-                    <div class="panel-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Ingredient</th>
-                                    <th>Quantity </th>
-                                    <th>Measurement </th>
+    </div>
+</div>
+</form>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let ingredient of recipe.RecipeIngredients">
-                                    <td>{{ ingredient.IngredientName | lowercase}}</td>
-                                    <td>{{ ingredient.Quantity }}</td>
-                                    <td>{{ ingredient.Measurement | lowercase }}</td>
-                                    <td><button (click)="removeIngredient(ingredient)">
+        <br/>
+        <div class="container col-sm-12">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Ingredient</th>
+                            <th>Quantity </th>
+                            <th>Measurement </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ingredient of recipe.RecipeIngredients">
+                            <td>{{ ingredient.IngredientName | lowercase}}</td>
+                            <td>{{ ingredient.Quantity }}</td>
+                            <td>{{ ingredient.Measurement | lowercase }}</td>
+                            <td><button (click)="removeIngredient(ingredient)">
                          <img src="../Photos/minus.png"  opacity="0" title="Delete" width="20px" height="20px" value="Delete" /></button>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            </td>
+                        </tr>
+                    </tbody>
 
-                        </table>
-                    </div>
+                </table>
+            </div>
 
 
-                </div>
-                <div class="addedIngredients container col-sm-12" *ngIf="addedIngredients.length > 0">
-                    <div class="panel-body">
-                        <table class="table">
-                            <!--<thead>
+        </div>
+        <div class="addedIngredients container col-sm-12" *ngIf="addedIngredients.length > 0">
+            <div class="panel-body">
+                <table class="table">
+                    <!--<thead>
                                 <tr>
                                     <th>Quantity</th>
                                     <th>Measurement</th>
@@ -137,26 +174,27 @@
                                     <th></th>
                                 </tr>
                             </thead>-->
-                            <tbody>
-                                <tr *ngFor="let ingredient of addedIngredients">
-                                    <td>{{ingredient.Quantity}}</td>
-                                    <td>{{ingredient.Measurement}}</td>
-                                    <td>{{ingredient.Name}}</td>
-                                    <td><button (click)="removeIngredient(ingredient)">
+                    <tbody>
+                        <tr *ngFor="let ingredient of addedIngredients">
+                             <td>{{ingredient.Name}}</td>
+                            <td>{{ingredient.Quantity}}</td>
+                            <td>{{ingredient.Measurement}}</td>
+                           
+                            <td><button (click)="removeIngredient(ingredient)">
                          <img src="../Photos/minus.png"  opacity="0" title="Delete" width="20px" height="20px" value="Delete" /></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="container col-sm-10"></div>
-
-                <button (click)="updateRecipe(recipe.Name,nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)"
-                    type="submit" class="btn btn-default"> Save </button>
-
-
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+        <div class="container col-sm-10"></div>
+
+        <button [disabled]="!userForm.form.valid || !addedIngredients.length > 0" (click)="updateRecipe(recipe.Name,nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)"
+            type="submit" class="btn btn-default"> Save </button>
+
+
     </div>
+</div>
+</div>
 </div>

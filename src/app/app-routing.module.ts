@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RecipeAboutComponent } from './recipe-about/recipe-about.component';

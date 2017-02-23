@@ -2,12 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
 </head>
 
 <body>
@@ -21,13 +17,20 @@
             <form id="recipeSearchForm">
                 <div class="row">
                     <div class="col-xs-11">
-                        <input type="hidden" name="searchType" value="recipe">
-                        <input type="text" id="homeSearchBox" name="searchTerm" class="searchFromField" placeholder="Search recipe">
+                        <input type="hidden"  name="searchType">
+                        <input type="text"  #searchName id="homeSearchBox" name="searchTerm" class="searchFromField" p
+                        laceholder="Search recipe"  (keyup)="getRecipes(searchName.value)" >
+                         
                     </div>
                     <div class="col-xs-1">
-                        <button class="icon-search"></button>
+                        <button class="icon-search" (click)="searchRecipe(searchName.value)"></button>
                     </div>
                 </div>
+                  <div  *ngFor="let recipe of recipes" class="form-control">
+                        <span  (click)="searchName.value=recipe.Name; chooseRecipes(recipe)"> 
+                       {{recipe.Name}}
+                        </span>
+                    </div>
             </form>
         </div>
         <div class="fullimagebleed">

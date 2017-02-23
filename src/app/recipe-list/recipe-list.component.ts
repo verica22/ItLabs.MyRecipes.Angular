@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { Recipe } from '../models/recipe';
-import { Ingredient } from '../models/ingredient';
+import { RecipeIngredient } from '../models/recipeIngredient';
 import { RouterModule } from '@angular/router';
 import { Ng2PaginationModule } from 'ng2-pagination';
 import { ChangeDetectionStrategy, Input } from "@angular/core";
@@ -38,16 +38,17 @@ export class RecipeListComponent implements OnInit {
     });
   }
   searchRecipe(name, done, favorite, currentPage, itemsPerPage) {
-    this._recipeService.searchRecipe(name, done, favorite, currentPage, itemsPerPage).subscribe(recipes => {
-      this.recipes = recipes;
-    });
+    this._recipeService.searchRecipe(name, done, favorite, currentPage, itemsPerPage)
+      .subscribe(recipes => {
+        this.recipes = recipes;
+      });
   }
   onSelect(recipe: Recipe): void {
     this.selectedRecipe = recipe;
     this.selectedRecipe2 = null;
   }
   onEdit(recipe: Recipe): void {
-    this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.Ingredients, recipe.RecipeIngredients);
+    this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.RecipeIngredients);
     this.oldName = recipe.Name;
     this.selectedRecipe = null;
   }

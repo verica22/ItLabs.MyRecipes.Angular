@@ -108,7 +108,7 @@
    border-radius: 9px;
    font-size: 16px;
    background-color: white;
-   background-image: url('../../Photos/searchiconn.png');
+   /*background-image: url('../../Photos/searchiconn.png');*/
    background-position: 6px 6px;
    background-repeat: no-repeat;
    padding: 12px 20px 12px 40px;
@@ -216,3 +216,86 @@
  .row {
    margin-right: -55px;
  }
+
+ 
+/*
+
+#nav {
+  font: "Comic Sans MS", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#navigation {
+  max-width: 126rem;
+}
+
+#bgContainer {
+  background-color: #454f51;
+  display: block;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+#recipeSearchFormContainer {
+  max-width: 1000px;
+  height: 70px;
+  top: 220px;
+}
+
+#recipeLogo--dynamicLead, #recipeSearchFormContainer {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+#recipeSearchForm {
+  background: white;
+  opacity: .9;
+  position: relative;
+  margin: 0 40px;
+  vertical-align: middle;
+}
+
+.row {
+  width: 100%;
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+#homeSearchBox {
+  color: black;
+  opacity: .8;
+  float: left;
+  font-weight: lighter;
+  height: 70px;
+  width: 100%;
+  border: none;
+  font-family: verdana, arial, sans-serif;
+  font-size: 28px;
+}
+
+.icon-search {
+  background-image: url('../../Photos/loop.png');
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  background-position: center;
+  width: 75px;
+  height: 70px;
+}
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.fullimagebleed {
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}*/
