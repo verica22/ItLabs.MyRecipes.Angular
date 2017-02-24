@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { RecipeService } from './services/recipe.service';
-import { FilterPipe } from './pipes/filter.pipe';
 import { Recipe } from './models/recipe';
-import { RecipeIngredient } from './models/recipeIngredient';
+import { RecipeIngredients } from './models/recipeIngredients';
 import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-root',
@@ -12,7 +11,7 @@ import { RouterModule } from '@angular/router';
 export class AppComponent {
   title = 'My Recipes!';
   recipes: Recipe[];
-  ingredients: RecipeIngredient[];
+  ingredients: RecipeIngredients[];
   constructor( private _recipeService: RecipeService,) { }
   ngOnInit() {
   }

@@ -1,23 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
-import { FilterPipe } from '../pipes/filter.pipe';
 import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { RecipeIngredient } from '../models/recipeIngredient';
-// import { Measurement } from '../models/measurement';
-
-enum Measurement {
-  Kg = 1,
-  g = 2,
-  l = 3,
-  Number = 4,
-  Spoon = 5,
-  Teaspoon = 6,
-  Dessertspoon = 7,
-  Gallon = 8,
-  Cup = 9
-}
+import { RecipeIngredients } from '../models/recipeIngredients';
+import { Measurement } from '../models/measurement';
 
 @Component({
   selector: 'app-recipe-create',
@@ -31,18 +18,17 @@ export class RecipeCreateComponent implements OnInit {
   myValue: Measurement;
   Measurement: typeof Measurement = Measurement;
   recipes: Recipe[];
-  ingredients: RecipeIngredient[];
+  recipeIngredients: RecipeIngredients[] = [];
   constructor(private _recipeService: RecipeService) { }
 
   ngOnInit() {
-    var x = Measurement;
+   var x = Measurement;
     var options = Object.keys(Measurement);
     this.options = options.slice(options.length / 2);
   }
 
   parseValue(value: string) {
     this.myValue = Measurement[value];
-    // this.isOffline = this.myValue == Measurement.offline;
   }
 
   listRecipes() {
@@ -51,8 +37,8 @@ export class RecipeCreateComponent implements OnInit {
     });
   }
 
-  saveRecipe(Name, Description, IsDone, IsFavorite, Ingredients) {
-    this._recipeService.saveRecipe({ Name, Description, IsDone, IsFavorite, Ingredients })
+  saveRecipe(Name, Description, IsDone, IsFavorite, RecipeIngredients) {
+    this._recipeService.saveRecipe({ Name, Description, IsDone, IsFavorite, RecipeIngredients })
       .subscribe(recipes => {
         this.listRecipes();
       });
@@ -61,23 +47,22 @@ export class RecipeCreateComponent implements OnInit {
   getIngredients(term) {
     this._recipeService.getIngredient(term)
       .subscribe(ingredients => {
-        this.ingredients = ingredients;
-        console.log(this.ingredients);
+        this.recipeIngredients = ingredients;
+          console.log(this.recipeIngredients);
       });
   }
 
-  addedIngredients: RecipeIngredient[] = [];
+  addedIngredients: RecipeIngredients[] = [];
   addIngredient(ingredientName: string, measurement: string, quantity: number) {
-    this.addedIngredients.push(new RecipeIngredient(ingredientName, measurement, quantity));
+    this.addedIngredients.push(new RecipeIngredients(ingredientName, measurement, quantity));
+  }
+  removeIngredient(ingredient: RecipeIngredients) {
+    var index = this.recipeIngredients.indexOf(ingredient);
+    this.recipeIngredients.splice(index, 1);
   }
 
-  removeIngredient(ingredient: RecipeIngredient) {
-    var index = this.addedIngredients.indexOf(ingredient);
-    this.addedIngredients.splice(index, 1);
-  }
-  
   chooseIngredient(ingredient) {
-    this.ingredients = [];
+    this.recipeIngredients = [];
   }
 
 } 

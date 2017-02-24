@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RecipeService } from './services/recipe.service';
 import { AppComponent } from './app.component';
-import { FilterPipe } from './pipes/filter.pipe';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { RecipeCreateComponent } from './recipe-create/recipe-create.component';
@@ -29,7 +28,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    FilterPipe,
     RecipeCreateComponent,
     RecipeListComponent,
     RecipeEditComponent,

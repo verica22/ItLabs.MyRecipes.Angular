@@ -86,7 +86,7 @@
                     <label> Ingredient</label>
                     <input #ingredientName name="ingredientName" required type="text" class="form-control" (keyup)="getIngredients(ingredientName.value)"
                         [ngModel]="ingredientname" />
-                    <div *ngFor="let ingredient of ingredients" class="form-control">
+                    <div *ngFor="let ingredient of recipeIngredients" class="form-control">
                         <span (click)="ingredientName.value=ingredient.Name; chooseIngredient(ingredient)"> 
                        {{ingredient.Name}}
                         </span>
@@ -109,7 +109,7 @@
     <div class="measurement col-xs-3 form-group">
         <label>Measurement </label>
         <select #measurement name="measurement" class="form-control" (change)="parseValue($event.target.value)">
-             <option>--select--</option>
+             <!--<option>--select--</option>-->
             <option *ngFor="let name of options"
                      [value]="name">{{name}}</option>
         </select>

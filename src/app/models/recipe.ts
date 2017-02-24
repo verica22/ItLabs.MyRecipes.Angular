@@ -1,4 +1,4 @@
-import { RecipeIngredient } from './recipeingredient';
+import { RecipeIngredients } from './recipeingredients';
 
 export class Recipe {
     constructor(
@@ -6,7 +6,7 @@ export class Recipe {
         public Description: string = '',
         public IsDone: boolean = false,
         public IsFavorite: boolean = false,
-        public RecipeIngredients: RecipeIngredient[] = []
+        public RecipeIngredients: RecipeIngredients[] = []
     ) {
     }
 }

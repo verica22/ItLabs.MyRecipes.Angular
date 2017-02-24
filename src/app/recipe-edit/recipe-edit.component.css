@@ -91,3 +91,7 @@ label {
 button[disabled], html input[disabled] {
   cursor: not-allowed;
 }
+/*.ingredientName{
+  max-height: 230px;
+  overflow: scroll;
+}*/

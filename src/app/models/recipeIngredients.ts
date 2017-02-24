@@ -1,4 +1,4 @@
-export class RecipeIngredient {
+export class RecipeIngredients {
     constructor(
         public IngredientName: string = '',
         public Measurement: string = '',
