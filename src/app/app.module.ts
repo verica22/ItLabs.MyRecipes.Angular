@@ -42,7 +42,8 @@ const appRoutes: Routes = [
     HttpModule,
     AppRoutingModule,
     Ng2PaginationModule,
-    Ng2AutoCompleteModule
+    Ng2AutoCompleteModule,
+    
   ],
   providers: [RecipeService],
   bootstrap: [AppComponent]

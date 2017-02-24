@@ -13,7 +13,7 @@ import { Measurement } from '../models/measurement';
 
 export class RecipeEditComponent {
   @Input() recipe: Recipe;
-  recipeingredients: RecipeIngredients[]= [];
+  recipeingredients: RecipeIngredients[] = [];
   recipes: Recipe[];
   oldName: string;
   options: string[];
@@ -38,8 +38,7 @@ export class RecipeEditComponent {
     });
   }
 
-  // updateRecipe(OldName: string, Name: string, Description: string, IsDone: boolean, IsFavorite: boolean, RecipeIngredients) {
-     updateRecipe(name, Name, Description, IsDone, IsFavorite , RecipeIngredients) {
+  updateRecipe(name, Name, Description, IsDone, IsFavorite, RecipeIngredients) {
     this._recipeService.updateRecipe(name, new Recipe(Name, Description, IsDone, IsFavorite, RecipeIngredients))
       .subscribe(recipes => {
         this.listRecipes();
@@ -53,7 +52,7 @@ export class RecipeEditComponent {
   }
 
   addIngredient(IngredientName: string, Measurement: string, Quantity: number) {
-      this.recipe.RecipeIngredients.push(new RecipeIngredients(IngredientName, Measurement, Quantity));
+    this.recipe.RecipeIngredients.push(new RecipeIngredients(IngredientName, Measurement, Quantity));
   }
 
   removeIngredient(recipeingredients: RecipeIngredients) {

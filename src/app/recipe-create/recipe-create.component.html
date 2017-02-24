@@ -1,4 +1,77 @@
 <!--*CREATE RECIPE-->
+<div *ngIf="recipe">
+    <div class="bgimg container col-sm-12" id="edit">
+        <div class="edit">
+            <div class="panel-heading">
+                <h2 class="panel-title"><b>Edit {{recipe.Name}}!</b> </h2>
+            </div>
+            <div class="panel-body">
+
+                <div>
+                    <form name="checkoutBillingForm" #userForm="ngForm">
+                        <div class="recipeName form-group" [ngClass]="{ 
+                    'has-error':nameRef.invalid && nameRef.touched,
+                    'has-success':nameRef.valid && nameRef.touched
+                  }">
+                            <label>Recipe Name</label>
+                               <input type="text" #nameRef="ngModel" required minlength="3" maxlength="25" class="form-control" name="name" [(ngModel)]="recipe.Name">
+
+                            <div class="help-block" *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)">
+                                <div [hidden]="!nameRef.errors.required">
+                                    Please enter a name
+                                </div>
+                                <div [hidden]="!nameRef.errors.minlength">
+                                    Please enter atleast 3 characters
+                                </div>
+                                <div [hidden]="!nameRef.errors.maxlength">
+                                    Please enter 25 characters max
+                                </div>
+                            </div>
+                            <b>{{nameRef.className}}</b>
+                </div>
+                <div class="description form-group" [ngClass]="{ 
+                    'has-error':description.invalid  && description.touched,
+                    'has-success':description.valid && description.touched
+                     }">
+                    <label> Description</label>
+                    <textarea #description="ngModel" required minlength="10" maxlength="1000" name="description" [(ngModel)]="recipe.Description">
+                            </textarea>
+
+                    <div class="help-block" *ngIf="description.errors &&  (description.dirty || nameRef.touched)">
+                        <div [hidden]="!description.errors.required">
+                            Please enter description
+                        </div>
+                        <div [hidden]="!description.errors.minlength">
+                            Recipe Description must be between 10 and 1000 characters
+                        </div>
+                        <div [hidden]="!description.errors.maxlength">
+                            Recipe Description must be between 10 and 1000 characters
+                        </div>
+                    </div>
+                    <b>{{description.className}}</b>
+            </div>
+            <div class="chackboxes">
+                <div class="form-group col-xs-5">
+                    <label>
+                        <input #isDone type="checkbox" name="done" ng-true-value="true" [(ngModel)]="recipe.IsDone">
+                        Done Recipe </label>
+
+                </div>
+                <div class="form-group col-xs-6">
+                    <label>
+                        <input #isFavorite type="checkbox" name="favourite" ng-true-value="true" [(ngModel)]="recipe.IsFavorite">
+                       Favorite Recipe </label>
+
+                </div>
+            </div>
+            </form>
+        </div>
+
+ </div>
+  </div>
+   </div>
+    </div>
+
 <div class="img container">
 
     <div class="bgimg container col-sm-6">
@@ -155,4 +228,5 @@
 </div>
 </div>
 
+</div>
 </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
 import { RecipeIngredients } from '../models/recipeIngredients';
-import { RouterModule } from '@angular/router';
+import { RouterModule,Router } from '@angular/router';
 import { Ng2PaginationModule } from 'ng2-pagination';
 import { ChangeDetectionStrategy, Input } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
@@ -10,7 +10,8 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
-  styleUrls: ['./recipe-list.component.css']
+  styleUrls: ['./recipe-list.component.css'],
+  
 })
 
 export class RecipeListComponent implements OnInit {
@@ -23,7 +24,9 @@ export class RecipeListComponent implements OnInit {
 
   constructor(
     private _recipeService: RecipeService,
-    private _router: RouterModule
+    private _router: RouterModule,
+    private router: Router
+   
   ) { }
 
   ngOnInit() {
@@ -55,6 +58,10 @@ export class RecipeListComponent implements OnInit {
     this.oldName = recipe.Name;
     this.selectedRecipe = null;
   }
+
+//  onEdit(recipe) {
+//         this.router.navigate(['recipe-create',recipe.Id])
+//   }
 
   deleteRecipe(recipe) {
     if (confirm('Are you sure?')) {

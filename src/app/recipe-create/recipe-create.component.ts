@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs/Observable';
@@ -14,6 +14,7 @@ import { Measurement } from '../models/measurement';
 })
 
 export class RecipeCreateComponent implements OnInit {
+   @Input() recipe: Recipe;
   options: string[];
   myValue: Measurement;
   Measurement: typeof Measurement = Measurement;
@@ -56,9 +57,10 @@ export class RecipeCreateComponent implements OnInit {
   addIngredient(ingredientName: string, measurement: string, quantity: number) {
     this.addedIngredients.push(new RecipeIngredients(ingredientName, measurement, quantity));
   }
-  removeIngredient(ingredient: RecipeIngredients) {
-    var index = this.recipeIngredients.indexOf(ingredient);
-    this.recipeIngredients.splice(index, 1);
+  
+  removeIngredient(addedIngredients: RecipeIngredients) {
+    var index = this.recipeIngredients.indexOf(addedIngredients);
+    this.addedIngredients.splice(index, 1);
   }
 
   chooseIngredient(ingredient) {

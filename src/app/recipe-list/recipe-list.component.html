@@ -1,38 +1,4 @@
 <!--RECIPES-->
-    <!--<section id="bgContainer">
-        <span id="recipeLogo--dynamicLead"></span>
-        <div id="recipeSearchFormContainer">
-
-            <form id="recipeSearchForm">
-                <div class="row">
-                    <div class="col-xs-11">
-                        <input type="hidden"  name="searchType">
-                        <input type="text"  #searchName id="homeSearchBox" name="searchTerm" class="searchFromField" p
-                        laceholder="Search recipe">
-                    </div>
-                    <div class="col-xs-1">
-                        <button class="icon-search" (click)="searchRecipe(searchName.value)"></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="fullimagebleed">
-            <img id="bgImage" class="img-responsive" src="../Photos/Screenshot.png">
-        </div>
-    </section>
-    <nav id="nav" class="navbar navbar-default">
-        <div id="navigation" class="container-fluid">
-            <div class="navbar-header text-center">
-                <a class="active" class="navbar-brand" [routerLink]="['/recipe-list']" routerLinkActive="active" href="#">My Recipes</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a [routerLink]="['/recipe-browse']" routerLinkActive="active" href="#">Browse Recipe</a></li>
-                <li><a [routerLink]="['/recipe-create']" routerLinkActive="active" href="#">New Recipe</a></li>
-                <li><a [routerLink]="['/recipe-about']" routerLinkActive="active" href="#">About</a></li>
-                <li><a [routerLink]="['/recipe-findUs']" routerLinkActive="active" href="#">Find Us</a></li>
-            </ul>
-        </div>
-    </nav>-->
 <div class="container">
   <div class="row content">
     <div class="container col-sm-12" onclick="this.style.width = '45%';">
@@ -53,8 +19,11 @@
               </div>
               <div class="col-xs-1">
                 <label>
-              <button [class.selected]="recipe === selectedRecipe2" value="edit" (click)="onEdit(recipe)" > 
-              <img src="../Photos/Pencil2.png" title="Edit" width="22px" height="30px" value="Edit" /></button>
+              <button [class.selected]="recipe === selectedRecipe2" value="edit" (click)="onEdit(recipe)">
+               <!--[routerLink]="['/recipe-create']" routerLinkActive="active">-->
+                 <!--[recipe]="selectedRecipe2" -->
+              <img src="../Photos/Pencil2.png" title="Edit" width="22px" height="30px" value="Edit"/>
+              </button>
             </label>
               </div>
               <div class="col-xs-1">
