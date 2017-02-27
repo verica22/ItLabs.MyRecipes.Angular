@@ -26,9 +26,9 @@
 <!--RECIPES-->
 <div class="container">
   <div class="row content">
-    <div class="col-sm-6 recipeList">
+    <div class="col-sm-12 recipeList"  [hidden]="flagDetails">
       <div class="row">
-        <div class="container col-sm-12">
+        <div class="header container col-sm-12">
           <div class=" col-sm-5">
             <label>Recipe Name</label>
           </div>
@@ -44,7 +44,7 @@
           <li *ngFor="let recipe of recipes | paginate: { itemsPerPage: 14, currentPage: p }" value="details">
 
             <div class="container col-xs-12">
-              <div id="recipeName" class="col-xs-5">
+              <div id="recipeName" class="col-xs-6">
                 {{recipe.Name | uppercase}}
               </div>
               <div class="col-xs-2">
@@ -60,17 +60,17 @@
               <div class="col-xs-1">
                 <label>
                  
-                 <button  [class.selected]="recipe === selectedRecipe" (click)="onSelect(recipe)"  data-toggle="tooltip" data-placement="top" tooltip="View"> 
+                 <button  [class.selected]="recipe === selectedRecipe" (click)="flagDetails=true; onSelect(recipe)"  data-toggle="tooltip" data-placement="top" tooltip="View"> 
                  <img src="../Photos/view.png"  opacity="0"  width="25px" height="25px" value="Select" /></button>
             <!--<span class="tooltiptext">Tooltip text</span>-->
             </label>
               </div>
-              <div class="col-xs-1">
+              <!--<div class="col-xs-1">
                 <label>
               <button [class.selected]="recipe === selectedRecipe2" value="edit" (click)="onEdit(recipe)" > 
               <img src="../Photos/Pencil2.png" title="Edit" width="25px" height="25px" value="Edit" /></button>
             </label>
-              </div>
+              </div>-->
               <div class="col-xs-1">
                 <label>
                  <button (click)="deleteRecipe(recipe)"> 
@@ -90,10 +90,10 @@
 
     <!--EDIT & DETAILS-->
     <br/>
-    <div class="col-sm-6" ng-if="value=details">
+    <div class="col-sm-12" ng-if="value=details">
       <app-recipe-details [recipe]="selectedRecipe"></app-recipe-details>
     </div>
-    <div class="col-sm-6" ng-if="value=edit">
+    <div class="col-sm-12" ng-if="value=edit">
       <app-recipe-edit [recipe]="selectedRecipe2"></app-recipe-edit>
     </div>
   </div>

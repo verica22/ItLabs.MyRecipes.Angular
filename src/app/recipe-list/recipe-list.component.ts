@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
 import { RecipeIngredients } from '../models/recipeIngredients';
-import { RouterModule,Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { Ng2PaginationModule } from 'ng2-pagination';
 import { ChangeDetectionStrategy, Input } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css'],
-  
+
 })
 
 export class RecipeListComponent implements OnInit {
@@ -21,12 +21,12 @@ export class RecipeListComponent implements OnInit {
   selectedRecipe2: Recipe;
   oldName: string;
   loading: boolean = false;
+  id: number;
 
   constructor(
     private _recipeService: RecipeService,
-    private _router: RouterModule,
     private router: Router
-   
+
   ) { }
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class RecipeListComponent implements OnInit {
 
   listRecipes() {
     this.loading = true;
-    this._recipeService.getRecipe().subscribe(recipes => {
+    this._recipeService.getRecipes().subscribe(recipes => {
       this.recipes = recipes;
       this.loading = false;
     });
@@ -49,19 +49,21 @@ export class RecipeListComponent implements OnInit {
   }
 
   onSelect(recipe: Recipe): void {
-    this.selectedRecipe = recipe;
-    this.selectedRecipe2 = null;
+    this.router.navigate(['/recipe-details', recipe.Name]);
+
+    // this.selectedRecipe = recipe;
+    // this.selectedRecipe2 = null;
   }
 
-  onEdit(recipe: Recipe): void {
-    this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.RecipeIngredients);
-    this.oldName = recipe.Name;
-    this.selectedRecipe = null;
-  }
+  // onEdit(recipe: Recipe): void {
+  //   this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.RecipeIngredients);
+  //   this.oldName = recipe.Name;
+  //   this.selectedRecipe = null;
+  // }
 
-//  onEdit(recipe) {
-//         this.router.navigate(['recipe-create',recipe.Id])
-//   }
+  //  onEdit(recipe) {
+  //         this.router.navigate(['recipe-create',recipe.Id])
+  //   }
 
   deleteRecipe(recipe) {
     if (confirm('Are you sure?')) {

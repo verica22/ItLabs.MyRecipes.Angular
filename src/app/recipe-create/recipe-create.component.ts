@@ -1,11 +1,12 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { RecipeIngredients } from '../models/recipeIngredients';
 import { Measurement } from '../models/measurement';
-
+import { RouterModule, Router } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
 @Component({
   selector: 'app-recipe-create',
   providers: [RecipeService],
@@ -14,16 +15,19 @@ import { Measurement } from '../models/measurement';
 })
 
 export class RecipeCreateComponent implements OnInit {
-   @Input() recipe: Recipe;
+  @Input() recipe: Recipe;
   options: string[];
   myValue: Measurement;
   Measurement: typeof Measurement = Measurement;
   recipes: Recipe[];
   recipeIngredients: RecipeIngredients[] = [];
-  constructor(private _recipeService: RecipeService) { }
+  constructor(
+    private _recipeService: RecipeService,
+    private _router: Router
+    ) { }
 
   ngOnInit() {
-   var x = Measurement;
+    var x = Measurement;
     var options = Object.keys(Measurement);
     this.options = options.slice(options.length / 2);
   }
@@ -32,24 +36,25 @@ export class RecipeCreateComponent implements OnInit {
     this.myValue = Measurement[value];
   }
 
-  listRecipes() {
-    this._recipeService.getRecipe().subscribe(recipes => {
-      this.recipes = recipes;
-    });
-  }
+  // listRecipes() {
+  //   this._recipeService.getRecipe().subscribe(recipes => {
+  //     this.recipes = recipes;
+  //   });
+  // }
 
   saveRecipe(Name, Description, IsDone, IsFavorite, RecipeIngredients) {
     this._recipeService.saveRecipe({ Name, Description, IsDone, IsFavorite, RecipeIngredients })
       .subscribe(recipes => {
-        this.listRecipes();
+        // this.listRecipes();
       });
+    this._router.navigate(['/recipe-list']);
   }
 
   getIngredients(term) {
     this._recipeService.getIngredient(term)
       .subscribe(ingredients => {
         this.recipeIngredients = ingredients;
-          console.log(this.recipeIngredients);
+        console.log(this.recipeIngredients);
       });
   }
 
@@ -57,7 +62,7 @@ export class RecipeCreateComponent implements OnInit {
   addIngredient(ingredientName: string, measurement: string, quantity: number) {
     this.addedIngredients.push(new RecipeIngredients(ingredientName, measurement, quantity));
   }
-  
+
   removeIngredient(addedIngredients: RecipeIngredients) {
     var index = this.recipeIngredients.indexOf(addedIngredients);
     this.addedIngredients.splice(index, 1);

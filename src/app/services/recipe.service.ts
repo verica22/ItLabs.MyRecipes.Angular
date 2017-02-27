@@ -9,14 +9,19 @@ export class RecipeService {
   constructor(private _http: Http) {
   }
 
-  getRecipe() {
-    // let headers = new Headers({ 'Content-Type': 'application/json' });
-    // let options = new RequestOptions({ headers: headers });
+  getRecipes() {
     return this._http.get(ApiConfig.ApiGetRecipes)
       .map(res => {
         return res.json();
       });
   }
+  
+  // let recipesPromise = Promise.resolve(res);
+
+  // getRecipe(id: number | string) {
+      // return recipe
+      //   .then(recipes => recipes.find(recipe => recipe.Id === +id));
+    // }
 
   searchRecipe(name, done, favorite, page, pageSize) {
     return this._http.get(`http://recipes-api.devweb.office.it-labs.com/recipes?searchRequest.name=${name}&searchRequest.isDone=${done}&searchRequest.isFavorite=${favorite}&searchRequest.page=${page}&searchRequest.pageSize=${pageSize}`)
@@ -26,7 +31,8 @@ export class RecipeService {
   }
 
   saveRecipe(recipe) {
-    return this._http.post(ApiConfig.ApiPostRecipes, recipe)
+    return this._http.post('http://localhost:7520/recipes/', recipe)
+      // return this._http.post(ApiConfig.ApiPostRecipes, recipe)
       .map(res => res.json());
   }
 

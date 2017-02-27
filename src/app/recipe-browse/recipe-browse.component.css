@@ -12,21 +12,27 @@ button .selected {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 42em;
+  width: 90%;
   font-family: "cursive";
 }
 
 .recipes li {
+  padding-top: 15px;
+  font-size: 20px;
   cursor: pointer;
   position: relative;
   left: 0;
   background-color: #EEE;
   margin: .5em;
-  padding: .3em 0;
   height: 3.0em;
   border-radius: 4px;
   font-family: "cursive";
   color: gray;
+}
+
+.header {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #recipeName {
@@ -191,26 +197,3 @@ pagination-controls /deep/ .ng2-pagination .current {
     height: auto;
   }
 }
-/*.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-
-  
-    position: absolute;
-    z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}*/

@@ -29,7 +29,7 @@ export class RecipeBrowseComponent implements OnInit {
 
   listRecipes() {
     this.loading = true;
-    this._recipeService.getRecipe()
+    this._recipeService.getRecipes()
       .subscribe(recipes => {
         this.recipes = recipes;
         this.loading = false;
@@ -48,11 +48,11 @@ export class RecipeBrowseComponent implements OnInit {
     this.selectedRecipe2 = null;
   }
 
-  onEdit(recipe: Recipe): void {
-    this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.RecipeIngredients);
-    this.oldName = recipe.Name;
-    this.selectedRecipe = null;
-  }
+  // onEdit(recipe: Recipe): void {
+  //   this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.RecipeIngredients);
+  //   this.oldName = recipe.Name;
+  //   this.selectedRecipe = null;
+  // }
 
   deleteRecipe(recipe) {
     if (confirm('Are you sure?')) {

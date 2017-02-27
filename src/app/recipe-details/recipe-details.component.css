@@ -3,25 +3,45 @@ label {
     color: dimgray;
 }
 
+input.ng-invalid {
+    border-left: 5px solid red;
+}
+
+input.ng-valid {
+    border-left: 5px solid green;
+}
+
+textarea.ng-invalid {
+    border-left: 5px solid red;
+}
+
+textarea.ng-valid {
+    border-left: 5px solid green;
+}
+
 #details {
     background-color: OldLace;
 }
 
 .bgimg {
-    min-height: 700px;
-    background-image: url('../../Photos/paperTransparent2.png');
+    /*min-height: 700px;*/
+    background-image: url('../../Photos/AddRecipe.png');
     background-repeat: repeat-y;
-    background-size: 100%;
+    min-height: 800px;
     max-width: 100%;
 }
 
 .details {
-    max-width: 95%;
-    padding-left: 90px;
+    /*max-width: 95%;*/
+    /*padding-left: 20px;*/
+    /*width: 45%;*/
+    height: 700px;
+    margin-left: -15px;
+    /*padding-left: 60px;*/
 }
 
 .panel-heading h2 {
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 #description p {
@@ -52,4 +72,99 @@ hr {
     font-family: "cursive";
     font-style: italic;
     text-align: justify;
+}
+
+#description p {
+    font-family: "cursive";
+    font-style: italic;
+    text-align: justify;
+    font-size: larger;
+}
+
+.description textarea {
+    margin: 0px;
+    width: 95%;
+    height: 450px;
+    resize: none;
+    text-decoration-style: italic;
+    font-family: "cursive";
+    font-style: italic;
+    text-align: justify;
+    font-size: larger;
+    border-radius: 10px;
+}
+
+input[type='checkbox'] {
+    width: 25px;
+    height: 25px;
+    background: white;
+    border: none;
+    font-weight: normal;
+}
+
+.addedIng {
+    height: 500px;
+    overflow-y: scroll;
+    max-width: 90%;
+    margin-left: 25px;
+    /*position:absolute;
+    margin-top:65px;*/
+}
+
+.addedIngredients {
+    max-height: 400px;
+    overflow-y: scroll;
+    max-width: 80%;
+    margin-left: 25px;
+}
+
+.quantity {
+    margin-bottom: -15px;
+}
+
+.details panel-body {
+    margin-right: 15%;
+}
+
+.recipeName {
+    width: 90%;
+}
+
+.recipeName input {
+    width: 95%;
+}
+
+.description {
+    width: 90%;
+}
+
+.ingredients .panel-body {
+    margin-left: -35px;
+    /*max-width: 100%;
+  float: left;*/
+}
+
+.addButton {
+    padding: 6px 12px;
+    height: 34px;
+}
+
+.table th {
+    border-bottom: 1px, black;
+}
+
+th, td {
+    border-bottom: 1px solid black;
+}
+
+.editButtons {
+    float: right;
+}
+
+.detailsButtons {
+    float: right;
+}
+
+.ingredientName {
+    overflow: auto;
 }
