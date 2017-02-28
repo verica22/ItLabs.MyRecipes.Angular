@@ -9,8 +9,7 @@ import { RecipeFindUsComponent } from './recipe-find-us/recipe-find-us.component
 import { RecipeBrowseComponent } from './recipe-browse/recipe-browse.component';
 
 const appRoutes: Routes = [
-  { path: 'recipe-list', component: RecipeListComponent },
-  { path: '', redirectTo: 'recipe-list', pathMatch: 'full' },
+  { path: '', redirectTo: 'recipe-browse', pathMatch: 'full' },
   { path: 'recipe-browse', component: RecipeBrowseComponent },
   { path: 'recipe-create', component: RecipeCreateComponent },
   { path: 'recipe-about', component: RecipeAboutComponent },

@@ -1,30 +1,31 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 import { RecipeIngredients } from '../models/recipeIngredients';
 import { Measurement } from '../models/measurement';
-import { RouterModule, Router } from '@angular/router';
-import { AppRoutingModule } from '../app-routing.module';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar'
+
 @Component({
   selector: 'app-recipe-create',
-  providers: [RecipeService],
   templateUrl: './recipe-create.component.html',
-  styleUrls: ['./recipe-create.component.css']
+  styleUrls: ['./recipe-create.component.css'],
+  providers: [RecipeService]
 })
 
-export class RecipeCreateComponent implements OnInit {
-  @Input() recipe: Recipe;
+export class RecipeCreateComponent {
+  recipes: Recipe[];
+  recipeIngredients: RecipeIngredients[] = [];
+
   options: string[];
   myValue: Measurement;
   Measurement: typeof Measurement = Measurement;
-  recipes: Recipe[];
-  recipeIngredients: RecipeIngredients[] = [];
+
   constructor(
     private _recipeService: RecipeService,
-    private _router: Router
-    ) { }
+    private _router: Router,
+    private  _notificationBarService: NotificationBarService
+  ) { }
 
   ngOnInit() {
     var x = Measurement;
@@ -36,25 +37,20 @@ export class RecipeCreateComponent implements OnInit {
     this.myValue = Measurement[value];
   }
 
-  // listRecipes() {
-  //   this._recipeService.getRecipe().subscribe(recipes => {
-  //     this.recipes = recipes;
-  //   });
-  // }
-
   saveRecipe(Name, Description, IsDone, IsFavorite, RecipeIngredients) {
     this._recipeService.saveRecipe({ Name, Description, IsDone, IsFavorite, RecipeIngredients })
       .subscribe(recipes => {
-        // this.listRecipes();
+        this.recipes = recipes;
+        this._notificationBarService.create({ message: 'USER_SAVED', type: NotificationType.Success});
+        this._router.navigate(['/recipe-details', recipes.Name]);
       });
-    this._router.navigate(['/recipe-list']);
+    //  this._router.navigateByUrl('recipe-list');
   }
 
   getIngredients(term) {
     this._recipeService.getIngredient(term)
       .subscribe(ingredients => {
         this.recipeIngredients = ingredients;
-        console.log(this.recipeIngredients);
       });
   }
 
@@ -64,12 +60,13 @@ export class RecipeCreateComponent implements OnInit {
   }
 
   removeIngredient(addedIngredients: RecipeIngredients) {
-    var index = this.recipeIngredients.indexOf(addedIngredients);
+    var index = this.addedIngredients.indexOf(addedIngredients);
     this.addedIngredients.splice(index, 1);
   }
 
   chooseIngredient(ingredient) {
     this.recipeIngredients = [];
   }
+
 
 } 

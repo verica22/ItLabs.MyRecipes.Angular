@@ -1,9 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Ng2PaginationModule } from 'ng2-pagination';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
-import { RecipeIngredients } from '../models/recipeIngredients';
-import { Ng2PaginationModule } from 'ng2-pagination';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-recipe-browse',
@@ -14,13 +13,11 @@ import { Observable } from 'rxjs/Observable';
 export class RecipeBrowseComponent implements OnInit {
   title = 'My Recipes!';
   recipes: Recipe[];
-  selectedRecipe: Recipe;
-  selectedRecipe2: Recipe;
-  oldName: string;
   loading: boolean = false;
 
   constructor(
-    private _recipeService: RecipeService
+    private _recipeService: RecipeService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -44,19 +41,12 @@ export class RecipeBrowseComponent implements OnInit {
   }
 
   onSelect(recipe: Recipe): void {
-    this.selectedRecipe = recipe;
-    this.selectedRecipe2 = null;
+    this.router.navigate(['/recipe-details', recipe.Name]);
   }
 
-  // onEdit(recipe: Recipe): void {
-  //   this.selectedRecipe2 = new Recipe(recipe.Name, recipe.Description, recipe.IsDone, recipe.IsFavorite, recipe.RecipeIngredients);
-  //   this.oldName = recipe.Name;
-  //   this.selectedRecipe = null;
-  // }
-
-  deleteRecipe(recipe) {
+ deleteRecipe(name) {
     if (confirm('Are you sure?')) {
-      this._recipeService.deleteRecipe({ name: recipe.Name })
+      this._recipeService.deleteRecipe(name)
         .subscribe(recipes => {
           this.listRecipes();
         });

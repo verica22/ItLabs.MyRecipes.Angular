@@ -1,9 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
 import { RecipeIngredients } from '../models/recipeIngredients';
 import { Measurement } from '../models/measurement';
-import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-details',
@@ -13,19 +13,14 @@ import { RouterModule, Router, ActivatedRoute, Params } from '@angular/router';
 
 })
 
-export class RecipeDetailsComponent implements OnInit {
-  //  recipe: Recipe;
-
-  @Input() recipe: Recipe;
-  recipeingredients: RecipeIngredients[] = [];
-  recipes: Recipe[];
-  @Input() oldName: string;
+export class RecipeDetailsComponent{
+  recipe: Recipe;
+  oldName: string;
   options: string[];
   myValue: Measurement;
+  recipeingredients: RecipeIngredients[] = [];
   Measurement: typeof Measurement = Measurement;
-  id: number;
-  name: string;
-  private sub: any;
+
   constructor(
     private route: ActivatedRoute,
     private _recipeService: RecipeService,
@@ -33,39 +28,31 @@ export class RecipeDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    //  this.route.params
-    //   .switchMap((params: Params) => this._recipeService.searchRecipe(+params['name']))
-    //   .subscribe((recipe: Recipe) => this.recipe = recipe);
-
     var x = Measurement;
     var options = Object.keys(Measurement);
     this.options = options.slice(options.length / 2);
 
-    // this.sub = this.route.params.subscribe(params => {
-    //   this.name = +params['Name']; 
-    // });
-
- this.sub = this.route.params.subscribe(params => {
-      this.name = name; 
-     
-      //  this._recipeService.searchRecipe(name)
-      // .subscribe(recipes => {
-      //   this.recipes = recipes;
-      // });
-    });
-
+    let name = this.route.snapshot.params['name'];
+    this._recipeService.searchRecipeByName(name)
+      .subscribe(recipe => {
+        this.recipe = recipe[0];
+        this.oldName = recipe[0].Name;
+      });
   }
 
   parseValue(value: string) {
     this.myValue = Measurement[value];
   }
 
-  updateRecipe(name, Name, Description, IsDone, IsFavorite, RecipeIngredients) {
-    this._recipeService.updateRecipe(name, new Recipe(Name, Description, IsDone, IsFavorite, RecipeIngredients))
+  updateRecipe(oldname, Name, Description, IsDone, IsFavorite, RecipeIngredients) {
+    this._recipeService.updateRecipe(oldname, new Recipe(Name, Description, IsDone, IsFavorite, RecipeIngredients))
       .subscribe(recipes => {
+        this.recipe = recipes;
+         if (confirm('The recipe was successfully updated!')) {
+          this._router.navigate(['/recipe-details', recipes.Name]);
+        }
       });
-    this._router.navigate(['/recipe-list']);
+    // this._router.navigate(['/recipe-list']);
   }
 
   getIngredients(term) {

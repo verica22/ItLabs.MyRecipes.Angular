@@ -8,4 +8,5 @@ export  enum Measurement {
   Dessertspoon = 7,
   Gallon = 8,
   Cup = 9,
+  Dash = 10,
 }

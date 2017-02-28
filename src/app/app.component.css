@@ -1,25 +1,4 @@
-input.ng-invalid {
-  border-left: 5px solid red;
-}
-
-input.ng-valid {
-  border-left: 5px solid green;
-}
-
-#footer {
-  right: 0;
-  left: 0;
-  background-color: papayawhip;
-  text-align: center;
-}
-
-#copyright {
-  background-color: darkred;
-  color: white;
-  font-style: italic;
-}
-
-#nav {
+.navbar {
   font: "Comic Sans MS", sans-serif;
   font-weight: bold;
   text-transform: uppercase;
@@ -80,13 +59,17 @@ input.ng-valid {
 
 .icon-search {
   background-image: url('../../Photos/loop.png');
-  display: inline-block;
+   display: inline-block;
   background-repeat: no-repeat;
   background-size: 50px 50px;
   background-position: center;
   width: 75px;
   height: 70px;
-}
+  float: right;
+  }
+  .searchBtn{
+padding-right: 0px;
+  }
 
 img {
   display: inline-block;
@@ -110,5 +93,8 @@ footer {
 }
 
 #recipeSearchForm .row button {
-  margin-left: -15px;
+  margin-left: -10px;
+}
+.recipeSearchForm .row .col-xs-2{
+  padding-right:0px 
 }

@@ -33,7 +33,7 @@ export class RecipeEditComponent {
   }
 
   listRecipes() {
-    this._recipeService.getRecipe().subscribe(recipes => {
+    this._recipeService.getRecipes().subscribe(recipes => {
       this.recipes = recipes;
     });
   }

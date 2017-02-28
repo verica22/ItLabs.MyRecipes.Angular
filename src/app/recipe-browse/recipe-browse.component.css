@@ -7,16 +7,22 @@
 button .selected {
   background-color: gray !important;
 }
+ h4 {
+   font: bold 20px/1.5 Helvetica, Verdana, sans-serif, black;
+   font-family: "fantasy";
+   font: Impact;
+   font-weight: bold;
+ }
 
 .recipes {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 90%;
+  width: 100%;
   font-family: "cursive";
 }
 
-.recipes li {
+/*.recipes li {
   padding-top: 15px;
   font-size: 20px;
   cursor: pointer;
@@ -28,7 +34,20 @@ button .selected {
   border-radius: 4px;
   font-family: "cursive";
   color: gray;
-}
+}*/
+
+ .recipes li {
+   cursor: pointer;
+   position: relative;
+   left: 0;
+   background-color: #EEE;
+   margin: .5em;
+   /*padding: .3em 0;*/
+   height: 6.0em;
+   border-radius: 4px;
+   font-family: "cursive";
+   color: gray;
+ }
 
 .header {
   font-size: 20px;
@@ -39,7 +58,12 @@ button .selected {
   font-family: "fantasy";
   font: Impact;
   font-weight: bold;
+  margin-left: -20px;
+  margin-top: -20px;
 }
+/*#recipeName p{
+ font-size: 20px;
+}*/
 
 .recipes li:hover {
   background-color: #DDD;
@@ -83,7 +107,7 @@ input[type=text] {
   padding: 12px 20px 12px 40px;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
-  float: right;
+  float: center;
 }
 
 input[type=text]:focus {
@@ -173,7 +197,7 @@ input[type=text]:focus {
   color: gray;
   border-radius: 9px;
   height: 50px;
-  float: left;
+  float: center;
 }
 
 .mypagination .ng2-pagination .current {
@@ -181,6 +205,21 @@ input[type=text]:focus {
   color: white;
   cursor: default;
 }
+
+ li p {
+   font: 200 14px/1.5 Georgia, Times New Roman, serif;
+ }
+ 
+ li {
+   padding: 12px;
+   overflow: hidden;
+ }
+ .list .col-xs-8{
+   width: 80.66666667%;
+ }
+  .list .col-xs-1{
+   width: 4.9%;
+ }
 
 pagination-controls /deep/ .ng2-pagination .current {
   background: gray !important;

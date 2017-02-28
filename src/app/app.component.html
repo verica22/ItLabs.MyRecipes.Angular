@@ -2,48 +2,51 @@
 <html lang="en">
 
 <head>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
-    <!--<div>
-        <img class="img-responsive" src="../Photos/Screenshot.png" alt="Image">
-    </div>-->
+     <notification-bar class="notifications"></notification-bar>
+    <!--HEADER-->
     <section id="bgContainer">
         <span id="recipeLogo--dynamicLead"></span>
         <div id="recipeSearchFormContainer">
 
             <form id="recipeSearchForm">
                 <div class="row">
-                    <div class="col-xs-11">
-                        <input type="hidden"  name="searchType">
-                        <input type="text"  #searchName id="homeSearchBox" name="searchTerm" class="searchFromField" p
-                        laceholder="Search recipe"  (keyup)="getRecipes(searchName.value)" >
-                         
+                    <div class="col-xs-10">
+                        <input type="hidden" name="searchType">
+                        <input type="text" #searchName id="homeSearchBox" name="searchTerm" class="searchFromField" placeholder="Search recipe"
+                            (keyup)="getRecipes(searchName.value)">
                     </div>
-                    <div class="col-xs-1">
-                        <button class="icon-search" (click)="searchRecipe(searchName.value)"></button>
+                    <div class="searchBtn col-xs-2">
+                        <button class="icon-search" (click)="onSelect(searchName.value)"></button>
                     </div>
                 </div>
-                  <div  *ngFor="let recipe of recipes" class="form-control">
-                        <span  (click)="searchName.value=recipe.Name; chooseRecipes(recipe)"> 
+                <!--AUTOCOMPLETE FOR RECIPES-->
+                <div *ngFor="let recipe of recipes" class="form-control">
+                    <span (click)="searchName.value=recipe.Name;onSelect(searchName.value); chooseRecipes(recipe)"> 
                        {{recipe.Name}}
                         </span>
-                    </div>
+                </div>
             </form>
         </div>
         <div class="fullimagebleed">
             <img id="bgImage" class="img-responsive" src="../Photos/Screenshot.png">
         </div>
     </section>
-    <nav id="nav" class="navbar navbar-default">
+
+    <!--NAVIGATION-->
+    <nav  class="navbar navbar-default">
         <div id="navigation" class="container-fluid">
             <div class="navbar-header text-center">
-                <a class="active" class="navbar-brand" [routerLink]="['/recipe-list']" routerLinkActive="active" href="#">My Recipes</a>
+                <!--<a class="active" class="navbar-brand" [routerLink]="['/recipe-list']" routerLinkActive="active" href="#">My Recipes</a>-->
+            <!--<li><a [routerLink]="['/recipe-browse']" routerLinkActive="active" href="#">Recipes</a></li>-->
+                <a class="active" class="navbar-brand"  [routerLink]="['/recipe-browse']" routerLinkActive="active" href="#">My Recipes</a>
+          
             </div>
             <ul class="nav navbar-nav">
-                <li><a [routerLink]="['/recipe-browse']" routerLinkActive="active" href="#">Browse Recipe</a></li>
+                <!--<li><a [routerLink]="['/recipe-browse']" routerLinkActive="active" href="#">Browse Recipe</a></li>-->
                 <li><a [routerLink]="['/recipe-create']" routerLinkActive="active" href="#">New Recipe</a></li>
                 <li><a [routerLink]="['/recipe-about']" routerLinkActive="active" href="#">About</a></li>
                 <li><a [routerLink]="['/recipe-findUs']" routerLinkActive="active" href="#">Find Us</a></li>
@@ -54,6 +57,8 @@
     <div class="container">
         <router-outlet></router-outlet>
     </div>
+
+    <!--FOOTER-->
     <footer class="container-fluid text-center">
         <div class="container text-center">
             <br>

@@ -15,6 +15,9 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { RecipeAboutComponent } from './recipe-about/recipe-about.component';
 import { RecipeFindUsComponent } from './recipe-find-us/recipe-find-us.component';
 import { RecipeBrowseComponent } from './recipe-browse/recipe-browse.component';
+import { NotificationBarModule } from 'angular2-notification-bar'
+
+
 const appRoutes: Routes = [
   { path: 'recipe-list', component: RecipeListComponent },
   { path: '', redirectTo: 'recipe-list', pathMatch: 'full' },
@@ -25,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'recipe-details/:id', component: RecipeDetailsComponent },
   { path: 'recipe-edit', component: RecipeEditComponent }
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +38,9 @@ const appRoutes: Routes = [
     RecipeDetailsComponent,
     RecipeAboutComponent,
     RecipeFindUsComponent,
-    RecipeBrowseComponent,
+    RecipeBrowseComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -43,8 +48,9 @@ const appRoutes: Routes = [
     AppRoutingModule,
     Ng2PaginationModule,
     Ng2AutoCompleteModule,
-    
+    NotificationBarModule
   ],
+
   providers: [RecipeService],
   bootstrap: [AppComponent]
 })

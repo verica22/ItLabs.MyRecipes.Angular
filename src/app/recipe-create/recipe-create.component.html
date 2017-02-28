@@ -1,12 +1,10 @@
 <!--*CREATE RECIPE-->
 <div class="img container">
-
     <div class="bgimg container col-sm-6">
         <br/>
         <div class="panel-heading">
             <h3 class="panel-title">Create New Recipe </h3>
         </div>
-
         <div class="panel-body">
             <form name="checkoutBillingForm" #userForm="ngForm">
                 <div class="recipeName form-group" [ngClass]="{ 
@@ -29,6 +27,7 @@
                     </div>
                     <b>{{nameRef.className}}</b>
         </div>
+        <br>
         <div class="description form-group" [ngClass]="{ 
                     'has-error':description.invalid  && description.touched,
                     'has-success':description.valid && description.touched
@@ -68,9 +67,8 @@
 </div>
 </div>
 
-
+<!--INGREDIENTS-->
 <div class="bgimg2 container col-sm-6">
-
     <br>
     <div class="panel-heading">
         <h3 class="panel-title">Add Ingredients </h3>
@@ -109,15 +107,14 @@
     <div class="measurement col-xs-3 form-group">
         <label>Measurement </label>
         <select #measurement name="measurement" class="form-control" (change)="parseValue($event.target.value)">
-             <!--<option>--select--</option>-->
-            <option *ngFor="let name of options"
+                       <option *ngFor="let name of options"
                      [value]="name">{{name}}</option>
         </select>
     </div>
     <div class="addButton col-xs-1">
         <label> </label>
         <button [disabled]="!ingForm.form.valid" (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)">
-             <img src="../Photos/Plus.png"  opacity="0" title="Add" width="20px" height="20px" value="Delete" />
+             <img src="../Photos/Plus.png"  opacity="0" title="Add" width="25px" height="25px" value="Delete" />
              </button>
     </div>
 </div>
@@ -142,7 +139,7 @@
                     <td>{{ingredient.Measurement}}</td>
 
                     <td><button (click)="removeIngredient(ingredient)">
-                         <img src="../Photos/minus.png"  opacity="0" title="Remove" width="20px" height="20px" value="Delete" /></button>
+                         <img src="../Photos/minus.png"  opacity="0" title="Remove" width="25px" height="25px" value="Delete" /></button>
                     </td>
                 </tr>
             </tbody>
@@ -150,9 +147,12 @@
     </div>
 </div>
 <div class="saveButton col-xs">
-    <button #saveButton [disabled]="!userForm.form.valid || !addedIngredients.length > 0" (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients)"
+    <button  #saveButton [disabled]="!userForm.form.valid || !addedIngredients.length > 0" 
+        (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients);showSuccess()"
         type="submit" class="btn btn-default" [routerLink]="['/recipe-list']"> Save </button>
+        <!--<ng2-popup #popup></ng2-popup>-->
 </div>
+<!--<notification-bar class="notifications">  </notification-bar>-->
 </div>
 
 </div>

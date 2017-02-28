@@ -111,7 +111,7 @@ textarea.ng-valid {
   width: 38px;
   height: 38px;
   border: none;
-  background-color: none;
+  background-color: transparent;
 }
 
 .saveButton button {
@@ -142,10 +142,8 @@ th, td {
 }
 
 td button {
-  width: 28px;
-  height: 28px;
   border: none;
-  background-color: none;
+  background-color: transparent;
 }
 
 .ingredientName .alert {
