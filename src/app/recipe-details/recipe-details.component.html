@@ -163,7 +163,7 @@
             <td>{{ recipeIngredient.IngredientName | lowercase}}</td>
             <td>{{ recipeIngredient.Quantity }}</td>
             <td>{{ recipeIngredient.Measurement | lowercase }}</td>
-            <td><button (click)="removeIngredient(recipe.RecipeIngredients)">
+            <td><button (click)="removeIngredient(recipeIngredient)">
                          <img src="../Photos/minus.png"  opacity="0" title="Delete" width="20px" height="20px" value="Delete" /></button>
             </td>
           </tr>

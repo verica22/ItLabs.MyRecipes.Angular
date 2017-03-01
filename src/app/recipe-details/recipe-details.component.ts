@@ -65,8 +65,8 @@ export class RecipeDetailsComponent{
     this.recipe.RecipeIngredients.push(new RecipeIngredients(IngredientName, Measurement, Quantity));
   }
 
-  removeIngredient(recipeingredients: RecipeIngredients) {
-    var index = this.recipe.RecipeIngredients.indexOf(recipeingredients);
+  removeIngredient(recipeingredient: RecipeIngredients) {
+    var index = this.recipe.RecipeIngredients.indexOf(recipeingredient);
     this.recipe.RecipeIngredients.splice(index, 1);
   }
 
