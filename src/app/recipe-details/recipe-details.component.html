@@ -85,15 +85,12 @@
   </div>
   <br>
   <div class="panel-body">
-    <div *ngIf="!flagEdit" class="addedIngredients conteiner">
-
-      <div *ngFor="let recipeIngredient of recipe.RecipeIngredients" id="ingredients">
-        <div class="col-xs-1">{{ recipeIngredient.Quantity }}</div>
-        <div class="measurement col-xs-2">{{ recipeIngredient.Measurement | lowercase }}</div>
-        <div class="name col-xs-9">{{ recipeIngredient.IngredientName | lowercase}}</div>
-        <!--<div class="col-xs-0"> .</div>-->
-        <br />
-      </div>
+    <div *ngIf="!flagEdit" class="addedIngredients container">
+<div class="row" *ngFor="let recipeIngredient of recipe.RecipeIngredients" id="ingredients">
+        <div class="col-sm-1">{{ recipeIngredient.Quantity }}</div>
+        <div class="measurement col-sm-3">{{ recipeIngredient.Measurement | lowercase }}</div>
+        <div class="name col-sm-6 col-lg-8">{{ recipeIngredient.IngredientName | lowercase}}</div>
+</div>
       <br />
     </div>
     <div [hidden]="!flagEdit" class="container col-sm-12 form-group">
@@ -192,7 +189,7 @@
 </div>
 <div *ngIf="flagEdit" class="editButtons col-xs-5">
   <label class="cancelButton">
-              <button  value="Cancel" (click)="flagEdit=false">
+              <button  value="Cancel" (click)="flagEdit=false; onCancel(oldName)">
                 Cancel
                   </button>
             </label>

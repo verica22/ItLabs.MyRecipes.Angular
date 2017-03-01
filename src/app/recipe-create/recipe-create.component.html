@@ -1,5 +1,6 @@
 <!--*CREATE RECIPE-->
 <div class="img container">
+    <!--<div  [ngClass]="{'imgAll': width > 800px, 'imgHalf': width < 800px}">-->
     <div class="bgimg container col-sm-6">
         <br/>
         <div class="panel-heading">
@@ -53,7 +54,10 @@
         <div class="form-group col-xs-5">
             <label>
                         <input #isDone type="checkbox" name="done" ng-true-value="true">
-                        Done Recipe </label>
+                        <span>
+                        Done Recipe 
+                        </span>
+                        </label>
 
         </div>
         <div class="form-group col-xs-6">
@@ -146,14 +150,14 @@
         </table>
     </div>
 </div>
+<br/>
+
+<!--<notification-bar class="notifications">  </notification-bar>-->
+</div>
 <div class="saveButton col-xs">
-    <button  #saveButton [disabled]="!userForm.form.valid || !addedIngredients.length > 0" 
-        (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients);showSuccess()"
+    <button #saveButton [disabled]="!userForm.form.valid || !addedIngredients.length > 0" (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients);showSuccess()"
         type="submit" class="btn btn-default" [routerLink]="['/recipe-list']"> Save </button>
         <!--<ng2-popup #popup></ng2-popup>-->
 </div>
-<!--<notification-bar class="notifications">  </notification-bar>-->
-</div>
-
 </div>
 </div>

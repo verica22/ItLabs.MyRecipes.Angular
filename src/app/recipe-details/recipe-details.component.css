@@ -29,6 +29,7 @@ textarea.ng-valid {
     background-repeat: repeat-y;
     min-height: 800px;
     max-width: 100%;
+    background-size: contain;
 }
 
 .details {
@@ -46,7 +47,7 @@ textarea.ng-valid {
 
 #description p {
      margin: 0px;
-  height: 450px;
+  height: 540px;
   resize: none;
   text-decoration-style: italic;
   font-family: "cursive";
@@ -101,6 +102,7 @@ hr {
     font-style: italic;
     text-align: justify;
     font-size: larger;
+     height: 520px;
 }
 
 .description textarea {
@@ -150,6 +152,7 @@ input[type='checkbox'] {
 
 .recipeName {
     width: 90%;
+    font-size: 17px;
 }
 
 .recipeName input {
@@ -161,7 +164,8 @@ input[type='checkbox'] {
 }
 
 .ingredients .panel-body {
-    margin-left: -30px;
+    margin-left: -20px;
+    height: 570px;
     /*max-width: 100%;
   float: left;*/
 }

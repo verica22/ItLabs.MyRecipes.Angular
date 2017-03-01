@@ -9,4 +9,5 @@ export  enum Measurement {
   Gallon = 8,
   Cup = 9,
   Dash = 10,
+  Package=11
 }

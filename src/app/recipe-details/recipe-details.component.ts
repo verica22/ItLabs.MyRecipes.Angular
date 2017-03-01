@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar'
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
 import { RecipeIngredients } from '../models/recipeIngredients';
@@ -13,9 +14,14 @@ import { Measurement } from '../models/measurement';
 
 })
 
-export class RecipeDetailsComponent{
+export class RecipeDetailsComponent {
   recipe: Recipe;
   oldName: string;
+  // oldDescription: string;
+  // oldIsDone: boolean;
+  // oldIsFavorite: boolean;
+  // oldIngredients:RecipeIngredients[] = [];
+  oldRecipe: Recipe;
   options: string[];
   myValue: Measurement;
   recipeingredients: RecipeIngredients[] = [];
@@ -24,7 +30,8 @@ export class RecipeDetailsComponent{
   constructor(
     private route: ActivatedRoute,
     private _recipeService: RecipeService,
-    private _router: Router
+    private _router: Router,
+    private _notificationBarService: NotificationBarService
   ) { }
 
   ngOnInit() {
@@ -37,6 +44,8 @@ export class RecipeDetailsComponent{
       .subscribe(recipe => {
         this.recipe = recipe[0];
         this.oldName = recipe[0].Name;
+        this.oldRecipe = recipe[0];
+  
       });
   }
 
@@ -48,11 +57,10 @@ export class RecipeDetailsComponent{
     this._recipeService.updateRecipe(oldname, new Recipe(Name, Description, IsDone, IsFavorite, RecipeIngredients))
       .subscribe(recipes => {
         this.recipe = recipes;
-         if (confirm('The recipe was successfully updated!')) {
-          this._router.navigate(['/recipe-details', recipes.Name]);
-        }
+        this._notificationBarService.create({ message: 'The recipe was successfully updated', type: NotificationType.Success });
+        this._router.navigate(['/recipe-details', recipes.Name]);
       });
-    // this._router.navigate(['/recipe-list']);
+
   }
 
   getIngredients(term) {
@@ -72,6 +80,15 @@ export class RecipeDetailsComponent{
 
   chooseIngredient(ingredient) {
     this.recipeingredients = [];
+  }
+  onCancel(){
+     let name = this.route.snapshot.params['name'];
+    this._recipeService.searchRecipeByName(name)
+      .subscribe(recipe => {
+        this.recipe = recipe[0];
+        
+  
+      });
   }
 
 }

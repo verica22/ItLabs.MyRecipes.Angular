@@ -41,10 +41,10 @@ export class RecipeCreateComponent {
     this._recipeService.saveRecipe({ Name, Description, IsDone, IsFavorite, RecipeIngredients })
       .subscribe(recipes => {
         this.recipes = recipes;
-        this._notificationBarService.create({ message: 'USER_SAVED', type: NotificationType.Success});
+        this._notificationBarService.create({ message: 'The recipe was successfully saved', type: NotificationType.Success});
         this._router.navigate(['/recipe-details', recipes.Name]);
       });
-    //  this._router.navigateByUrl('recipe-list');
+  
   }
 
   getIngredients(term) {

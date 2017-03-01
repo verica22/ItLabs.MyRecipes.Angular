@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ng2PaginationModule } from 'ng2-pagination';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar'
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
 
@@ -17,7 +18,8 @@ export class RecipeBrowseComponent implements OnInit {
 
   constructor(
     private _recipeService: RecipeService,
-    private router: Router
+    private router: Router,
+    private _notificationBarService: NotificationBarService
   ) { }
 
   ngOnInit() {
@@ -37,6 +39,10 @@ export class RecipeBrowseComponent implements OnInit {
     this._recipeService.searchRecipe(name, done, favorite, currentPage, itemsPerPage)
       .subscribe(recipes => {
         this.recipes = recipes;
+        if(recipes.length ==0){
+
+this._notificationBarService.create({ message: 'There are no results that match your search', type: NotificationType.Info });
+        }
       });
   }
 
@@ -44,12 +50,12 @@ export class RecipeBrowseComponent implements OnInit {
     this.router.navigate(['/recipe-details', recipe.Name]);
   }
 
- deleteRecipe(name) {
-    if (confirm('Are you sure?')) {
-      this._recipeService.deleteRecipe(name)
-        .subscribe(recipes => {
-          this.listRecipes();
-        });
-    }
+  deleteRecipe(name) {
+    this._recipeService.deleteRecipe(name)
+      .subscribe(recipes => {
+        this._notificationBarService.create({ message: 'The recipe was successfully deleted', type: NotificationType.Success });
+        this.listRecipes();
+      });
+
   }
 }
