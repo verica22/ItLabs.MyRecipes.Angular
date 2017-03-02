@@ -14,6 +14,7 @@ textarea.ng-valid {
   border-left: 5px solid green;
 }
 
+
 .search-result {
   border-bottom: 1px solid gray;
   border-left: 1px solid gray;
@@ -25,6 +26,12 @@ textarea.ng-valid {
 .panel-title {
   font-weight: bold;
   text-align: center;
+}
+.autocompleteIng{
+  background:white;
+  opacity: .9;
+  position: relative;
+
 }
 
 .addIngredient {
@@ -38,7 +45,7 @@ textarea.ng-valid {
   margin-right: 15px;
   max-width: 92%;
   height: 500px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .img {
@@ -48,12 +55,15 @@ textarea.ng-valid {
   max-width: 100%;
   background-size: contain;
 }
-  @media only screen and (max-width:750px) {
-  .img{
-    
-    background-image: url('../../Photos/paperTransparent2.png');
+
+
+/*@media only screen and (max-width:530px) {
+  .description textarea {
+    height: 150px;
+   
   }
-}
+}*/
+
 .recipeName {
   margin: 0px;
   width: 100%;
@@ -79,7 +89,7 @@ textarea.ng-valid {
 
 .description textarea {
   margin: 0px;
-  height: 450px;
+  height: 250px;
   resize: none;
   text-decoration-style: italic;
   font-family: "cursive";
@@ -111,7 +121,7 @@ textarea.ng-valid {
 }
 
 .addButton {
-  padding: 6px 12px;
+  padding: 2px 0px;
   height: 34px;
 }
 
@@ -122,17 +132,53 @@ textarea.ng-valid {
   background-color: transparent;
 }
 
+
+/*
 .saveButton button {
   float: right;
   border: 2px solid gray;
   width: 58px;
   margin-right: 35px;
   margin-top: 30px;
+}*/
 
-}
-.saveButton{
+.saveButton {
   margin-right: 15px;
   /*margin-top: 500px;*/
+}
+
+.saveButton button {
+  float: right;
+  border: 2px solid gray;
+  margin-right: 35px;
+  margin-top: 30px;
+  width: 70px;
+  height: 40px;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: seagreen;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 5px #999;
+}
+
+.saveButton button:hover {
+  background-color: ForestGreen;
+}
+
+.saveButton button:active {
+  background-color: green;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+.saveButton button[disabled] {
+  cursor: not-allowed;
 }
 
 input[type='checkbox'] {
@@ -169,11 +215,37 @@ td button {
   margin-left: 5px;
 }
 
-.addButton button:disabled 
-g {
+button:disabled g {
   cursor: not-allowed;
 }
 
 button[disabled], html input[disabled] {
   cursor: not-allowed;
+}
+
+.addButton {
+  float: right;
+  margin-right: 10px;
+}
+
+@media only screen and (max-width:766px) {
+  .img {
+    background-image: url('../../Photos/paperTransparent2.png');
+  }
+  .bgimg {
+    margin-left: 10%;
+  }
+  .bgimg2 {
+    margin-left: 6%;
+  }
+  .description textarea {
+    height: 130px;
+    /*resize: vertical;*/
+  }
+  .bgimg .container {
+    margin-right: 0px;
+  }
+  .addButton {
+    float: right;
+  }
 }

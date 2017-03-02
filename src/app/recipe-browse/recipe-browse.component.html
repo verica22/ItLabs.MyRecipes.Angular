@@ -49,17 +49,17 @@
                 <h4> {{recipe.Name | uppercase}} </h4>
                  <p>{{recipe.Description}}</p>
               </div>
-              <div class="col-xs-1">
+              <div class="isDone col-xs-1">
                 <label>
               <input type="checkbox" [(ngModel)]="recipe.IsDone" placeholder="done" disabled="disabled"/> 
             </label>
               </div>
-              <div class="col-xs-1">
+              <div class="isFavorite col-xs-1">
                 <label>
                 <input type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" disabled="disabled"/>
              </label>
               </div>
-              <div class="col-xs-1">
+              <div class="view col-xs-1">
                 <label>
                  
                  <button  [class.selected]="recipe === selectedRecipe" (click)="flagDetails=true; onSelect(recipe)"  data-toggle="tooltip" data-placement="top" tooltip="View"> 
@@ -67,7 +67,7 @@
            
             </label>
               </div>
-              <div class="col-xs-1">
+              <div class="delete col-xs-1">
                 <label>
                  <button (click)="deleteRecipe(recipe.Name)"> 
                  <img src="../Photos/delete2.png"  opacity="0" title="Delete" width="25px" height="25px" value="Delete" /></button>

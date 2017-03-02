@@ -46,29 +46,32 @@ textarea.ng-valid {
 }
 
 #description p {
-     margin: 0px;
-  height: 540px;
-  resize: none;
-  text-decoration-style: italic;
-  font-family: "cursive";
-  font-style: italic;
-  text-align: justify;
-  font-size: larger;
-  /*width: 90%;*/
-  border-radius: 10px;
+    margin: 0px;
+    height: 250px;
+    resize: none;
+    text-decoration-style: italic;
+    font-family: "cursive";
+    font-style: italic;
+    text-align: justify;
+    font-size: larger;
+    /*width: 90%;*/
+    border-radius: 10px;
 }
+
 #description2 p {
-     margin: 0px;
-  height: 450px;
-  resize: none;
-  text-decoration-style: italic;
-  font-family: "cursive";
-  font-style: italic;
-  text-align: justify;
-  font-size: larger;
-  /*width: 90%;*/
-  border-radius: 10px;
+    margin: 0px;
+    height: 450px;
+    overflow: auto;
+    resize: none;
+    text-decoration-style: italic;
+    font-family: "cursive";
+    font-style: italic;
+    text-align: justify;
+    font-size: larger;
+    /*width: 90%;*/
+    border-radius: 10px;
 }
+
 .bgimg label {
     font: serif;
     font-style: bold;
@@ -85,12 +88,15 @@ hr {
     border-style: inset;
     border-width: 1px;
 }
-.ingredients{
-    margin-left: 15px;
+
+.ingredients {
+    /*margin-left: 15px;*/
 }
-.ingredients .panel-title{
+
+.ingredients .panel-title {
     margin-left: 55px;
 }
+
 #ingredients {
     font-family: "cursive";
     font-style: italic;
@@ -102,7 +108,8 @@ hr {
     font-style: italic;
     text-align: justify;
     font-size: larger;
-     height: 520px;
+    height: 320px;
+    overflow: auto;
 }
 
 .description textarea {
@@ -128,16 +135,16 @@ input[type='checkbox'] {
 
 .addedIng {
     height: 500px;
-    overflow-y: scroll;
-    max-width: 90%;
-    margin-left: 40px;
+    overflow-y: auto;
+    /*max-width: 90%;*/
+    /*margin-left: 40px;*/
     /*position:absolute;
     margin-top:65px;*/
 }
 
 .addedIngredients {
     max-height: 400px;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-width: 80%;
     margin-left: 65px;
 }
@@ -164,7 +171,7 @@ input[type='checkbox'] {
 }
 
 .ingredients .panel-body {
-    margin-left: -20px;
+    /*margin-left: -20px;*/
     height: 570px;
     /*max-width: 100%;
   float: left;*/
@@ -174,11 +181,12 @@ input[type='checkbox'] {
     padding: 6px 12px;
     height: 34px;
 }
+
 .addButton button {
-  width: 38px;
-  height: 38px;
-  border: none;
-  background-color: transparent;
+    width: 38px;
+    height: 38px;
+    border: none;
+    background-color: transparent;
 }
 
 .table th {
@@ -188,10 +196,12 @@ input[type='checkbox'] {
 th, td {
     border-bottom: 1px solid black;
 }
+
 td button {
-  border: none;
-  background-color: transparent;
+    border: none;
+    background-color: transparent;
 }
+
 .editButtons {
     float: right;
 }
@@ -206,4 +216,90 @@ td button {
 
 button[disabled], html input[disabled] {
     cursor: not-allowed;
+}
+
+.editButtons button {
+    width: 70px;
+    height: 40px;
+    font-weight: bold;
+    display: inline-block;
+    /*padding: 15px 25px;*/
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: seagreen;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px #999;
+}
+
+.editButtons button:hover {
+    background-color: ForestGreen;
+}
+
+.editButtons button:active {
+    background-color: green;
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
+}
+
+.detailsButtons button {
+    width: 70px;
+    height: 40px;
+    font-weight: bold;
+    display: inline-block;
+    /*padding: 15px 25px;*/
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: seagreen;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px #999;
+}
+.editButtons button[disabled] {
+  cursor: not-allowed;
+}
+
+@media only screen and (max-width:766px) {
+    .bgimg {
+        background-image: url('../../Photos/paperTransparent2.png');
+    }
+    .details {
+        margin-left: 10%;
+        height: auto;
+    }
+    .ingredients {
+        margin-left: 0;
+        /*margin-top: 15%;*/
+    }
+    .ingredients .panel-body {
+        height: auto;
+    }
+    .description textarea {
+        height: 130px;
+        /*resize: vertical;*/
+    }
+    #description2 P {
+        height: 130px;
+        /*resize: vertical;*/
+    }
+    .bgimg .container {
+        margin-right: 0px;
+    }
+    .addButton {
+        float: right;
+    }
+    .addIngredient .measurement {
+        margin-top: 10%;
+    }
+    /*.addedIng {
+        height: 300px;
+    }*/
 }

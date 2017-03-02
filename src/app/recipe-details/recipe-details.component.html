@@ -62,13 +62,13 @@
   </div>
 
   <div class="conteiner">
-    <div class="form-group col-xs-6">
+    <div class="form-group col-sm-6">
 
       <input *ngIf="!flagEdit" type="checkbox" [(ngModel)]="recipe.IsDone" placeholder="done" disabled="disabled" />
       <input [hidden]="!flagEdit" #isDone type="checkbox" name="done" ng-true-value="true" [(ngModel)]="recipe.IsDone">
       <label>Done Recipe </label>
     </div>
-    <div class="form-group col-xs-6">
+    <div class="form-group col-sm-6">
 
       <input *ngIf="!flagEdit" type="checkbox" [(ngModel)]="recipe.IsFavorite" placeholder="favorite" disabled="disabled" />
       <input [hidden]="!flagEdit" #isFavorite type="checkbox" name="favourite" ng-true-value="true" [(ngModel)]="recipe.IsFavorite">
@@ -86,22 +86,22 @@
   <br>
   <div class="panel-body">
     <div *ngIf="!flagEdit" class="addedIngredients container">
-<div class="row" *ngFor="let recipeIngredient of recipe.RecipeIngredients" id="ingredients">
-        <div class="col-sm-1">{{ recipeIngredient.Quantity }}</div>
-        <div class="measurement col-sm-3">{{ recipeIngredient.Measurement | lowercase }}</div>
-        <div class="name col-sm-6 col-lg-8">{{ recipeIngredient.IngredientName | lowercase}}</div>
-</div>
+      <div class="row" *ngFor="let recipeIngredient of recipe.RecipeIngredients" id="ingredients">
+        <div class="col-xs-1">{{ recipeIngredient.Quantity }}</div>
+        <div class="measurement col-xs-3">{{ recipeIngredient.Measurement | lowercase }}</div>
+        <div class="name col-xs-6 col-lg-8">{{ recipeIngredient.IngredientName | lowercase}}</div>
+      </div>
       <br />
     </div>
     <div [hidden]="!flagEdit" class="container col-sm-12 form-group">
       <form name="checkoutBillingForm" #ingForm="ngForm">
         <div class="addIngredient container col-xs-12">
-          <div class="ingredientName col-xs-5 form-group" [ngClass]="{ 
+          <div class="ingredientName col-md-4 form-group" [ngClass]="{ 
                     'has-error':ingredientName.invalid && ingredientName.touched,
                     'has-success':ingredientName.valid && ingredientName.touched
                   }">
             <label> Ingredient</label>
-            <input #ingredientName name="ingredientName" required type="text" class="form-control" (keyup)="getIngredients(ingredientName.value)"
+            <input autocomplete="off" #ingredientName name="ingredientName" required type="text" class="form-control" (keyup)="getIngredients(ingredientName.value)"
               [ngModel]="ingredientname" />
 
             <div *ngFor="let ingredient of recipeingredients" class="autocomplete form-control">
@@ -111,7 +111,7 @@
             </div>
 
         </div>
-        <div class="quantity col-xs-2 form-group" [ngClass]="{ 
+        <div class="quantity col-md-3 form-group" [ngClass]="{ 
                     'has-error':quantity.invalid && quantity.touched,
                     'has-success':quantity.valid && quantity.touched
                      }">
@@ -125,7 +125,7 @@
           </div>
           <b>{{quantity.className}}</b>
     </div>
-    <div class="measurement col-xs-3 form-group">
+    <div class="measurement col-md-3 form-group">
       <label>Measurement </label>
       <select #measurement name="measurement" class="form-control" (change)="parseValue($event.target.value)">
            
@@ -134,7 +134,7 @@
         </select>
     </div>
 
-    <div class="addButton col-xs-1">
+    <div class="addButton col-md-1">
       <label> </label>
       <button [disabled]="!ingForm.form.valid" (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)">
              <img src="../Photos/Plus.png"  opacity="0" title="Add" width="20px" height="20px" value="Delete" />
@@ -188,16 +188,18 @@
             </label>
 </div>
 <div *ngIf="flagEdit" class="editButtons col-xs-5">
-  <label class="cancelButton">
-              <button  value="Cancel" (click)="flagEdit=false; onCancel(oldName)">
+  <div class="row">
+    <label class="cancelButton">
+    <button value="Cancel" (click)="flagEdit=false; onCancel(oldName)">
                 Cancel
                   </button>
-            </label>
-  <label class="saveButton">
+    </label>
+    <label class="saveButton">
             <button [disabled]="!recipe.RecipeIngredients.length > 0 || nameRef.errors || description.errors" 
               (click)="updateRecipe(oldName,nameRef.value,description.value,isDone.checked,isFavorite.checked,recipe.RecipeIngredients);flagEdit=false"   
             class="btn btn-default"> Save </button>
             </label>
+  </div>
 </div>
 
 </div>

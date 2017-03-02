@@ -7,12 +7,13 @@
 button .selected {
   background-color: gray !important;
 }
- h4 {
-   font: bold 20px/1.5 Helvetica, Verdana, sans-serif, black;
-   font-family: "fantasy";
-   font: Impact;
-   font-weight: bold;
- }
+
+h4 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif, black;
+  font-family: "fantasy";
+  font: Impact;
+  font-weight: bold;
+}
 
 .recipes {
   margin: 0 0 2em 0;
@@ -21,6 +22,7 @@ button .selected {
   width: 100%;
   font-family: "cursive";
 }
+
 
 /*.recipes li {
   padding-top: 15px;
@@ -36,18 +38,18 @@ button .selected {
   color: gray;
 }*/
 
- .recipes li {
-   cursor: pointer;
-   position: relative;
-   left: 0;
-   background-color: #EEE;
-   margin: .5em;
-   /*padding: .3em 0;*/
-   height: 6.0em;
-   border-radius: 4px;
-   font-family: "cursive";
-   color: gray;
- }
+.recipes li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  /*padding: .3em 0;*/
+  height: 6.0em;
+  border-radius: 4px;
+  font-family: "cursive";
+  color: gray;
+}
 
 .header {
   font-size: 20px;
@@ -61,6 +63,8 @@ button .selected {
   margin-left: -20px;
   margin-top: -20px;
 }
+
+
 /*#recipeName p{
  font-size: 20px;
 }*/
@@ -143,7 +147,8 @@ input[type=text]:focus {
   user-select: none;
   border-radius: 9px;
 }
-.isFavourite{
+
+.isFavourite {
   padding-left: 35px;
 }
 
@@ -209,28 +214,31 @@ input[type=text]:focus {
   cursor: default;
 }
 
- li p {
-   font: 200 14px/1.5 Arial, Helvetica, sans-serif;
-   text-align:justify;
-   width: 100%;
+li p {
+  font: 200 14px/1.5 Arial, Helvetica, sans-serif;
+  text-align: justify;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
- }
- 
- li {
-   padding: 12px;
-   overflow: hidden;
- }
- .list .col-xs-8{
-   width: 80.66666667%;
- }
-  .list .col-xs-1{
-   width: 4.9%;
- }
- .list div{
-   margin-top:8px; 
- }
+}
+
+li {
+  padding: 12px;
+  overflow: hidden;
+}
+
+.list .col-xs-8 {
+  width: 80.66666667%;
+}
+
+.list .col-xs-1 {
+  width: 4.9%;
+}
+
+.list div {
+  margin-top: 8px;
+}
 
 pagination-controls /deep/ .ng2-pagination .current {
   background: gray !important;
@@ -238,7 +246,24 @@ pagination-controls /deep/ .ng2-pagination .current {
   cursor: default;
 }
 
-@media screen and (max-width: 1200px) {
+@media only screen and (max-width:730px) {
+  .list .container .isDone {
+    margin-top: -20px;
+  }
+  .list .container .isFavorite {
+    margin-top: -20px;
+  }
+  .list .container .view {
+    margin-top: 5px;
+    margin-left: -8px;
+  }
+  .list .container .delete {
+    margin-left: 8px;
+  }
+}
+
+
+/*@media screen and (max-width: 1200px) {
   .recipeList {
     height: auto;
     padding: 15px;
@@ -246,4 +271,4 @@ pagination-controls /deep/ .ng2-pagination .current {
   .row.content {
     height: auto;
   }
-}
+}*/

@@ -45,7 +45,7 @@ export class RecipeDetailsComponent {
         this.recipe = recipe[0];
         this.oldName = recipe[0].Name;
         this.oldRecipe = recipe[0];
-  
+
       });
   }
 
@@ -58,7 +58,12 @@ export class RecipeDetailsComponent {
       .subscribe(recipes => {
         this.recipe = recipes;
         this._notificationBarService.create({ message: 'The recipe was successfully updated', type: NotificationType.Success });
-        this._router.navigate(['/recipe-details', recipes.Name]);
+        // this._router.navigate(['/recipe-details', recipes.Name]);
+        let name = this.route.snapshot.params['name'];
+        this._recipeService.searchRecipeByName(name)
+          .subscribe(recipe => {
+            this.recipe = recipe[0];
+        });
       });
 
   }
@@ -81,13 +86,13 @@ export class RecipeDetailsComponent {
   chooseIngredient(ingredient) {
     this.recipeingredients = [];
   }
-  onCancel(){
-     let name = this.route.snapshot.params['name'];
+  onCancel() {
+    let name = this.route.snapshot.params['name'];
     this._recipeService.searchRecipeByName(name)
       .subscribe(recipe => {
         this.recipe = recipe[0];
-        
-  
+
+
       });
   }
 

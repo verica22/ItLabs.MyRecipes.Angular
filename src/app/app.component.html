@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-xs-10">
                         <input type="hidden" name="searchType">
-                        <input type="text" #searchName id="homeSearchBox" name="searchTerm" class="searchFromField" placeholder="Search recipe"
+                        <input autocomplete="off" type="text" #searchName id="homeSearchBox" name="searchTerm" class="searchFromField" placeholder="Search recipe"
                             (keyup)="getRecipes(searchName.value)">
                     </div>
                     <div class="searchBtn col-xs-2">

@@ -13,7 +13,7 @@
                     'has-success':nameRef.valid && nameRef.touched
                   }">
                     <label>Recipe Name</label>
-                    <input type="text" #nameRef="ngModel" required minlength="3" maxlength="25" class="form-control" name="name" [ngModel]="Name">
+                    <input type="text" #nameRef="ngModel" pattern="[a-zA-Z]+" required minlength="3" maxlength="25" class="form-control" name="name" [ngModel]="Name">
 
                     <div class="help-block" *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)">
                         <div [hidden]="!nameRef.errors.required">
@@ -24,6 +24,9 @@
                         </div>
                         <div [hidden]="!nameRef.errors.maxlength">
                             Please enter 25 characters max
+                        </div>
+                        <div [hidden]="!nameRef.errors.pattern">
+                           Please enter only letters
                         </div>
                     </div>
                     <b>{{nameRef.className}}</b>
@@ -51,7 +54,7 @@
             <b>{{description.className}}</b>
     </div>
     <div class="chackboxes">
-        <div class="form-group col-xs-5">
+        <div class="form-group col-sm-6">
             <label>
                         <input #isDone type="checkbox" name="done" ng-true-value="true">
                         <span>
@@ -60,7 +63,7 @@
                         </label>
 
         </div>
-        <div class="form-group col-xs-6">
+        <div class="form-group col-sm-6">
             <label>
                         <input #isFavorite type="checkbox" name="favourite" ng-true-value="true">
                        Favorite Recipe </label>
@@ -81,41 +84,46 @@
     <div class="panel-body">
         <form name="checkoutBillingForm" #ingForm="ngForm">
             <div class="addIngredient container col-xs-12">
-                <div class="ingredientName col-xs-5 form-group" [ngClass]="{ 
+                <div class="ingredientName col-md-4 form-group" [ngClass]="{ 
                     'has-error':ingredientName.invalid && ingredientName.touched,
                     'has-success':ingredientName.valid && ingredientName.touched
                   }">
-                    <label> Ingredient</label>
-                    <input #ingredientName name="ingredientName" required type="text" class="form-control" (keyup)="getIngredients(ingredientName.value)"
-                        [ngModel]="ingredientname" />
-                    <div *ngFor="let ingredient of recipeIngredients" class="form-control">
-                        <span (click)="ingredientName.value=ingredient.Name; chooseIngredient(ingredient)"> 
+                    <form id="recipeSearchForm">
+                        <label> Ingredient</label>
+                        <input autocomplete="off" #ingredientName name="ingredientName" required type="text" class="form-control" (keyup)="getIngredients(ingredientName.value)"
+                            [ngModel]="ingredientname" />
+                        <div *ngFor="let ingredient of recipeIngredients" class="autocompleteIng form-control">
+                            <span (click)="ingredientName.value=ingredient.Name; chooseIngredient(ingredient)"> 
                        {{ingredient.Name}}
                         </span>
-                    </div>
+                        </div>
+                    </form>
             </div>
-            <div class="quantity col-xs-2 form-group" [ngClass]="{ 
+            <div class="quantity col-md-3 form-group" [ngClass]="{ 
                     'has-error':quantity.invalid && quantity.touched,
                     'has-success':quantity.valid && quantity.touched
                      }">
                 <label>Quantity </label>
-                <input type="text" #quantity="ngModel" required class="form-control" name="quantity" [ngModel]="qua" />
+                <input type="text" #quantity="ngModel" required pattern="[0-9]+" class="form-control" name="quantity" [ngModel]="qua" />
                 <div class="help-block" *ngIf="quantity.errors && (quantity.dirty || quantity.touched)">
                     <div [hidden]="!quantity.errors.required" style="margin-left:-13px;">
                         Required
+                    </div>
+                     <div [hidden]="!quantity.errors.pattern" style="margin-left:-13px;">
+                        Numbers only
                     </div>
 
                 </div>
                 <b>{{quantity.className}}</b>
     </div>
-    <div class="measurement col-xs-3 form-group">
+    <div class="measurement col-md-3 form-group">
         <label>Measurement </label>
         <select #measurement name="measurement" class="form-control" (change)="parseValue($event.target.value)">
                        <option *ngFor="let name of options"
                      [value]="name">{{name}}</option>
         </select>
     </div>
-    <div class="addButton col-xs-1">
+    <div class="addButton col-md-1">
         <label> </label>
         <button [disabled]="!ingForm.form.valid" (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)">
              <img src="../Photos/Plus.png"  opacity="0" title="Add" width="25px" height="25px" value="Delete" />
