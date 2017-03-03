@@ -125,7 +125,8 @@
     </div>
     <div class="addButton col-md-1">
         <label> </label>
-        <button [disabled]="!ingForm.form.valid" (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)">
+        <button [disabled]="!ingForm.form.valid" (click)="addIngredient(ingredientName.value, measurement.value, quantity.value);
+        quantity.value=null;ingredientName.value=null">
              <img src="../Photos/Plus.png"  opacity="0" title="Add" width="25px" height="25px" value="Delete" />
              </button>
     </div>

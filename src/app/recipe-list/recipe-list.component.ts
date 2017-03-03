@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ng2PaginationModule } from 'ng2-pagination';
+import { NotificationBarService, NotificationType } from 'angular2-notification-bar'
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
 
@@ -17,7 +18,8 @@ export class RecipeListComponent {
 
   constructor(
     private _recipeService: RecipeService,
-    private router: Router
+    private router: Router,
+    private _notificationBarService: NotificationBarService
   ) { }
 
   ngOnInit() {
@@ -32,24 +34,24 @@ export class RecipeListComponent {
     });
   }
 
-  searchRecipe(name, done, favorite, currentPage, itemsPerPage) {
-    this._recipeService.searchRecipe(name, done, favorite, currentPage, itemsPerPage)
-      .subscribe(recipes => {
-        this.recipes = recipes;
-      });
-  }
+  // searchRecipe(name, done, favorite, currentPage, itemsPerPage) {
+  //   this._recipeService.searchRecipe(name, done, favorite, currentPage, itemsPerPage)
+  //     .subscribe(recipes => {
+  //       this.recipes = recipes;
+  //     });
+  // }
 
   onSelect(recipe: Recipe): void {
     this.router.navigate(['/recipe-details', recipe.Name]);
   }
 
   deleteRecipe(name) {
-    if (confirm('Are you sure?')) {
-      this._recipeService.deleteRecipe(name)
-        .subscribe(recipes => {
-          this.listRecipes();
-        });
-    }
+    this._recipeService.deleteRecipe(name)
+      .subscribe(recipes => {
+        this._notificationBarService.create({ message: 'The recipe was successfully deleted', type: NotificationType.Success });
+        this.listRecipes();
+      });
+
   }
-  
+
 }

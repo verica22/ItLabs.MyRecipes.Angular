@@ -1,3 +1,7 @@
+ .list {
+   margin-top: -30px;
+ }
+ 
  .selected {
    background-color: gray !important;
    color: white !important;
@@ -26,7 +30,12 @@
  }
  
  li p {
-   font: 200 12px/1.5 Georgia, Times New Roman, serif;
+   font: 200 14px/1.5 Arial, Helvetica, sans-serif;
+   text-align: justify;
+   width: 100%;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
  }
  
  li {
@@ -35,11 +44,12 @@
  }
  
  .recipes {
-   margin: 0 0 2em 0;
+   /*margin: 0 0 2em 0;*/
    list-style-type: none;
    padding: 0;
-   width: 95%;
+   width: 90%;
    font-family: "cursive";
+   margin-left: -15px;
  }
  
  .recipes li {
@@ -75,6 +85,7 @@
    font-family: "fantasy";
    font: Impact;
    font-weight: bold;
+   margin-top: 1%;
  }
  
  li label {
@@ -216,5 +227,3 @@
  .row {
    margin-right: -55px;
  }
-
- 

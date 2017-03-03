@@ -229,7 +229,7 @@ li {
 }
 
 .list .col-xs-8 {
-  width: 80.66666667%;
+  width: 79.66666667%;
 }
 
 .list .col-xs-1 {
@@ -238,6 +238,9 @@ li {
 
 .list div {
   margin-top: 8px;
+}
+.headerFavorite{
+  margin-left: -30px;
 }
 
 pagination-controls /deep/ .ng2-pagination .current {
