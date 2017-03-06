@@ -19,15 +19,13 @@ import { NotificationBarModule } from 'angular2-notification-bar'
 
 
 const appRoutes: Routes = [
-  { path: 'recipe-list', component: RecipeListComponent },
-  { path: '', redirectTo: 'recipe-list', pathMatch: 'full' },
+  { path: '', redirectTo: 'recipe-about', pathMatch: 'full' },
   { path: 'recipe-browse', component: RecipeBrowseComponent },
   { path: 'recipe-create', component: RecipeCreateComponent },
   { path: 'recipe-about', component: RecipeAboutComponent },
   { path: 'recipe-findUs', component: RecipeFindUsComponent },
   { path: 'recipe-details/:id', component: RecipeDetailsComponent },
-  { path: 'recipe-edit', component: RecipeEditComponent }
-];
+  ];
 
 @NgModule({
   declarations: [

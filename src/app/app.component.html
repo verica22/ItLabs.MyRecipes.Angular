@@ -6,7 +6,7 @@
 </head>
 
 <body>
-     <notification-bar class="notifications"></notification-bar>
+    <notification-bar class="notifications"></notification-bar>
     <!--HEADER-->
     <section id="bgContainer">
         <span id="recipeLogo--dynamicLead"></span>
@@ -37,18 +37,14 @@
     </section>
 
     <!--NAVIGATION-->
-    <nav  class="navbar navbar-default">
+    <nav class="navbar navbar-default">
         <div id="navigation" class="container-fluid">
             <div class="navbar-header text-center">
-                <a class="active" class="navbar-brand" [routerLink]="['/recipe-list']" routerLinkActive="active" href="#">My Recipes</a>
-            <!--<li><a [routerLink]="['/recipe-browse']" routerLinkActive="active" href="#">Recipes</a></li>-->
-                <!--<a class="active" class="navbar-brand"  [routerLink]="['/recipe-browse']" routerLinkActive="active" href="#">My Recipes</a>-->
-          
+                <a class="active" class="navbar-brand" [routerLink]="['/recipe-about']" routerLinkActive="active" href="#">Home</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a [routerLink]="['/recipe-browse']" routerLinkActive="active" href="#">Browse Recipe</a></li>
+                <li><a [routerLink]="['/recipe-browse']" routerLinkActive="active" href="#">Browse</a></li>
                 <li><a [routerLink]="['/recipe-create']" routerLinkActive="active" href="#">New Recipe</a></li>
-                <li><a [routerLink]="['/recipe-about']" routerLinkActive="active" href="#">About</a></li>
                 <li><a [routerLink]="['/recipe-findUs']" routerLinkActive="active" href="#">Find Us</a></li>
             </ul>
         </div>

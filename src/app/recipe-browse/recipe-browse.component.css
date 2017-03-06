@@ -23,28 +23,12 @@ h4 {
   font-family: "cursive";
 }
 
-
-/*.recipes li {
-  padding-top: 15px;
-  font-size: 20px;
-  cursor: pointer;
-  position: relative;
-  left: 0;
-  background-color: #EEE;
-  margin: .5em;
-  height: 3.0em;
-  border-radius: 4px;
-  font-family: "cursive";
-  color: gray;
-}*/
-
 .recipes li {
   cursor: pointer;
   position: relative;
   left: 0;
   background-color: #EEE;
   margin: .5em;
-  /*padding: .3em 0;*/
   height: 6.0em;
   border-radius: 4px;
   font-family: "cursive";
@@ -63,11 +47,6 @@ h4 {
   margin-left: -20px;
   margin-top: -20px;
 }
-
-
-/*#recipeName p{
- font-size: 20px;
-}*/
 
 .recipes li:hover {
   background-color: #DDD;
@@ -109,9 +88,6 @@ input[type=text] {
   background-position: 9px 12px;
   background-repeat: no-repeat;
   padding: 12px 20px 12px 40px;
-  /*-webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;*/
-  /*float: center;*/
 }
 
 input[type=text]:focus {
@@ -138,7 +114,6 @@ input[type=text]:focus {
 .funkyradio input[type="checkbox"]:empty ~ label {
   position: relative;
   line-height: 2.5em;
-  /*text-indent: 1.50em;*/
   margin-top: 0em;
   cursor: pointer;
   -webkit-user-select: none;
@@ -173,7 +148,6 @@ input[type=text]:focus {
   content: '\2714';
   font-weight: bold;
   font-size: 17px;
-  /*text-indent: .3em;*/
   color: #C2C2C2;
 }
 
@@ -185,7 +159,6 @@ input[type=text]:focus {
   content: '\2714';
   font-size: 17px;
   font-weight: bold;
-  /*text-indent: .3em;*/
   color: #333;
   background-color: #ccc;
 }
@@ -239,7 +212,8 @@ li {
 .list div {
   margin-top: 8px;
 }
-.headerFavorite{
+
+.headerFavorite {
   margin-left: -30px;
 }
 
@@ -264,14 +238,3 @@ pagination-controls /deep/ .ng2-pagination .current {
     margin-left: 8px;
   }
 }
-
-
-/*@media screen and (max-width: 1200px) {
-  .recipeList {
-    height: auto;
-    padding: 15px;
-  }
-  .row.content {
-    height: auto;
-  }
-}*/

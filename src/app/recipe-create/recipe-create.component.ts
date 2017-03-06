@@ -14,6 +14,7 @@ import { NotificationBarService, NotificationType } from 'angular2-notification-
 })
 
 export class RecipeCreateComponent {
+  title = 'Create New Recipe';
   recipes: Recipe[];
   recipeIngredients: RecipeIngredients[] = [];
 

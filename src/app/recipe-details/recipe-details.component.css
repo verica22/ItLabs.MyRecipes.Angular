@@ -24,7 +24,6 @@ textarea.ng-valid {
 }
 
 .bgimg {
-    /*min-height: 700px;*/
     background-image: url('../../Photos/AddRecipe.png');
     background-repeat: repeat-y;
     min-height: 800px;
@@ -33,12 +32,8 @@ textarea.ng-valid {
 }
 
 .details {
-    /*max-width: 95%;*/
-    /*padding-left: 20px;*/
-    /*width: 45%;*/
     height: 700px;
     margin-left: -15px;
-    /*padding-left: 60px;*/
 }
 
 .panel-heading h2 {
@@ -54,7 +49,6 @@ textarea.ng-valid {
     font-style: italic;
     text-align: justify;
     font-size: larger;
-    /*width: 90%;*/
     border-radius: 10px;
 }
 
@@ -68,7 +62,6 @@ textarea.ng-valid {
     font-style: italic;
     text-align: justify;
     font-size: larger;
-    /*width: 90%;*/
     border-radius: 10px;
 }
 
@@ -87,10 +80,6 @@ hr {
     margin-right: auto;
     border-style: inset;
     border-width: 1px;
-}
-
-.ingredients {
-    /*margin-left: 15px;*/
 }
 
 .ingredients .panel-title {
@@ -136,10 +125,6 @@ input[type='checkbox'] {
 .addedIng {
     height: 500px;
     overflow-y: auto;
-    /*max-width: 90%;*/
-    /*margin-left: 40px;*/
-    /*position:absolute;
-    margin-top:65px;*/
 }
 
 .addedIngredients {
@@ -171,10 +156,7 @@ input[type='checkbox'] {
 }
 
 .ingredients .panel-body {
-    /*margin-left: -20px;*/
     height: 570px;
-    /*max-width: 100%;
-  float: left;*/
 }
 
 .addButton {
@@ -223,7 +205,6 @@ button[disabled], html input[disabled] {
     height: 40px;
     font-weight: bold;
     display: inline-block;
-    /*padding: 15px 25px;*/
     font-size: 15px;
     cursor: pointer;
     text-align: center;
@@ -251,7 +232,6 @@ button[disabled], html input[disabled] {
     height: 40px;
     font-weight: bold;
     display: inline-block;
-    /*padding: 15px 25px;*/
     font-size: 15px;
     cursor: pointer;
     text-align: center;
@@ -263,8 +243,9 @@ button[disabled], html input[disabled] {
     border-radius: 8px;
     box-shadow: 0 5px #999;
 }
+
 .editButtons button[disabled] {
-  cursor: not-allowed;
+    cursor: not-allowed;
 }
 
 @media only screen and (max-width:766px) {
@@ -277,18 +258,15 @@ button[disabled], html input[disabled] {
     }
     .ingredients {
         margin-left: 0;
-        /*margin-top: 15%;*/
     }
     .ingredients .panel-body {
         height: auto;
     }
     .description textarea {
         height: 130px;
-        /*resize: vertical;*/
     }
     #description2 P {
         height: 130px;
-        /*resize: vertical;*/
     }
     .bgimg .container {
         margin-right: 0px;
@@ -299,7 +277,4 @@ button[disabled], html input[disabled] {
     .addIngredient .measurement {
         margin-top: 10%;
     }
-    /*.addedIng {
-        height: 300px;
-    }*/
 }

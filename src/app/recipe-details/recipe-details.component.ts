@@ -17,11 +17,7 @@ import { Measurement } from '../models/measurement';
 export class RecipeDetailsComponent {
   recipe: Recipe;
   oldName: string;
-  // oldDescription: string;
-  // oldIsDone: boolean;
-  // oldIsFavorite: boolean;
-  // oldIngredients:RecipeIngredients[] = [];
-  oldRecipe: Recipe;
+   oldRecipe: Recipe;
   options: string[];
   myValue: Measurement;
   recipeingredients: RecipeIngredients[] = [];
@@ -63,7 +59,6 @@ export class RecipeDetailsComponent {
       });
   }
 
-
   parseValue(value: string) {
     this.myValue = Measurement[value];
   }
@@ -73,13 +68,11 @@ export class RecipeDetailsComponent {
       .subscribe(recipes => {
         this.recipe = recipes;
         this._notificationBarService.create({ message: 'The recipe was successfully updated', type: NotificationType.Success });
-        // this._router.navigate(['/recipe-details', recipes.Name]);
         let name = this.route.snapshot.params['name'];
         if (name) {
         this.getRecipe(name);
             }
       });
-
   }
 
   getIngredients(term) {
@@ -100,6 +93,7 @@ export class RecipeDetailsComponent {
   chooseIngredient(ingredient) {
     this.recipeingredients = [];
   }
+  
   onCancel() {
     let name = this.route.snapshot.params['name'];
     this._recipeService.searchRecipeByName(name)
