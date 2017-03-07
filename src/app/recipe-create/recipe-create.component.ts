@@ -45,8 +45,7 @@ export class RecipeCreateComponent {
         this._notificationBarService.create({ message: 'The recipe was successfully saved', type: NotificationType.Success});
         this._router.navigate(['/recipe-details', recipes.Name]);
       });
-  
-  }
+    }
 
   getIngredients(term) {
     this._recipeService.getIngredient(term)

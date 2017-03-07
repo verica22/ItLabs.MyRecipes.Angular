@@ -20,7 +20,8 @@
                     'has-error':nameRef.invalid && nameRef.touched,
                     'has-success':nameRef.valid && nameRef.touched
                   }">
-        <input type="text" #nameRef="ngModel" required minlength="3" maxlength="25" class="form-control" name="name" [(ngModel)]="recipe.Name">
+        <input type="text" #nameRef="ngModel" required minlength="3" maxlength="25" pattern="[a-zA-Z\s]+" class="form-control" name="name"
+          [(ngModel)]="recipe.Name">
 
         <div class="help-block" *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)">
           <div [hidden]="!nameRef.errors.required">
@@ -31,6 +32,9 @@
           </div>
           <div [hidden]="!nameRef.errors.maxlength">
             Please enter 25 characters max
+          </div>
+          <div [hidden]="!nameRef.errors.pattern">
+            Please enter only letters
           </div>
         </div>
         <b>{{nameRef.className}}</b>
@@ -116,12 +120,14 @@
                     'has-success':quantity.valid && quantity.touched
                      }">
               <label>Quantity </label>
-              <input type="text" #quantity="ngModel" required class="form-control" name="quantity" [ngModel]="qua" />
+              <input type="text" #quantity="ngModel" required  pattern="[0-9]+" class="form-control" name="quantity" [ngModel]="qua" />
               <div class="help-block" *ngIf="quantity.errors && (quantity.dirty || quantity.touched)">
                 <div [hidden]="!quantity.errors.required" style="margin-left:-13px; margin-bottom: 0px;">
                   Required
                 </div>
-
+                <div [hidden]="!quantity.errors.pattern" style="margin-left:-13px;">
+                  Numbers only
+                </div>
               </div>
               <b>{{quantity.className}}</b>
             </div>

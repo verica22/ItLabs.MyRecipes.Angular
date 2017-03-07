@@ -4,8 +4,6 @@ import { DebugElement } from '@angular/core';
 import { RecipeCreateComponent } from './recipe-create.component';
 import { element, by, browser } from 'protractor';
 
-
-
 describe('CreateRecipeComponent', () => {
   let component: RecipeCreateComponent;
   let fixture: ComponentFixture<RecipeCreateComponent>;
@@ -23,17 +21,16 @@ describe('CreateRecipeComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
-  describe('CreateRecipeComponent', () => {
-
-    it('should have title', () => {
-      browser.get('/recipe-create');
-      let title = element(by.tagName('h3')).getText();
-      expect(title).toEqual('Create New Recipe');
-    });
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
-  
+  // describe('CreateRecipeComponent', () => {
+
+  //   it('should have title', () => {
+  //     browser.get('/recipe-create');
+  //     let title = element(by.tagName('h3')).getText();
+  //     expect(title).toEqual('Create New Recipe');
+  //   });
+  // });
 });

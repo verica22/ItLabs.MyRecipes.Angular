@@ -26,7 +26,7 @@
 <!--RECIPES-->
 <div class="container">
   <div class="row content">
-    <div class="col-sm-12 recipeList" >
+    <div class="col-sm-12 recipeList">
       <div class="row">
         <div class="header container col-sm-12">
           <div class=" col-sm-9">
@@ -41,13 +41,12 @@
         </div>
         <br/>
         <ul class="recipes">
-          <li *ngFor="let recipe of recipes | paginate: { itemsPerPage: 14, currentPage: p }"
-           value="details" class="list">
+          <li *ngFor="let recipe of recipes | paginate: { itemsPerPage: 8, currentPage: p }" value="details" class="list">
 
             <div class="container col-xs-12">
               <div id="recipeName" class="col-xs-8">
                 <h4> {{recipe.Name | uppercase}} </h4>
-                 <p>{{recipe.Description}}</p>
+                <p>{{recipe.Description}}</p>
               </div>
               <div class="isDone col-xs-1">
                 <label>
@@ -62,7 +61,7 @@
               <div class="view col-xs-1">
                 <label>
                  
-                 <button title="View" [class.selected]="recipe === selectedRecipe" (click)="flagDetails=true; onSelect(recipe)"  data-toggle="tooltip" data-placement="top"> 
+                 <button title="View" [class.selected]="recipe === selectedRecipe" (click)="flagDetails=true; onSelect(recipe)" data-placement="top"> 
                  <img src="../Photos/view.png"  opacity="0"  width="25px" height="25px" value="Select" /></button>
            
             </label>
@@ -83,7 +82,5 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </div>

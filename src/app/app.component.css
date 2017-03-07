@@ -22,7 +22,7 @@
   top: 220px;
 }
 
-#recipeLogo--dynamicLead, #recipeSearchFormContainer {
+#recipeLogo, #recipeSearchFormContainer {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
@@ -59,17 +59,18 @@
 
 .icon-search {
   background-image: url('../../Photos/loop.png');
-   display: inline-block;
+  display: inline-block;
   background-repeat: no-repeat;
   background-size: 50px 50px;
   background-position: center;
   width: 75px;
   height: 70px;
   float: right;
-  }
-  .searchBtn{
-padding-right: 0px;
-  }
+}
+
+.searchBtn {
+  padding-right: 0px;
+}
 
 img {
   display: inline-block;
@@ -95,6 +96,7 @@ footer {
 #recipeSearchForm .row button {
   margin-left: -10px;
 }
-.recipeSearchForm .row .col-xs-2{
-  padding-right:0px 
+
+.recipeSearchForm .row .col-xs-2 {
+  padding-right: 0px
 }

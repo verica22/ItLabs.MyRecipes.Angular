@@ -37,7 +37,7 @@ export class RecipeDetailsComponent {
 
     let name = this.route.snapshot.params['name'];
         if (name) {
-    this.getRecipe(name);
+          this.getRecipe(name);
         }
     this._router.events
       .subscribe((recipe) => {

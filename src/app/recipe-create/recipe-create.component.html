@@ -12,7 +12,7 @@
                     'has-success':nameRef.valid && nameRef.touched
                   }">
                     <label>Recipe Name</label>
-                    <input type="text" #nameRef="ngModel" pattern="[a-zA-Z]+" required minlength="3" maxlength="25" class="form-control" name="name"
+                    <input type="text" #nameRef="ngModel" pattern="[a-zA-Z\s]+" required minlength="3" maxlength="25" class="form-control" name="name"
                         [ngModel]="Name">
 
                     <div class="help-block" *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)">
@@ -102,8 +102,7 @@
                     </div>
                     <div class="quantity col-md-3 form-group" [ngClass]="{ 
                     'has-error':quantity.invalid && quantity.touched,
-                    'has-success':quantity.valid && quantity.touched
-                     }">
+                    'has-success':quantity.valid && quantity.touched}">
                         <label>Quantity </label>
                         <input type="text" #quantity="ngModel" required pattern="[0-9]+" class="form-control" name="quantity" [ngModel]="qua" />
                         <div class="help-block" *ngIf="quantity.errors && (quantity.dirty || quantity.touched)">
@@ -126,8 +125,7 @@
                     </div>
                     <div class="addButton col-md-1">
                         <label> </label>
-                        <button [disabled]="!ingForm.form.valid" (click)="addIngredient(ingredientName.value, measurement.value, quantity.value);
-        quantity.value=null;ingredientName.value=null">
+                        <button [disabled]="!ingForm.form.valid" (click)="addIngredient(ingredientName.value, measurement.value, quantity.value)">
              <img src="../Photos/Plus.png"  opacity="0" title="Add" width="25px" height="25px" value="Delete" />
              </button>
                     </div>
@@ -163,14 +161,10 @@
                 </div>
             </div>
             <br/>
-
-
         </div>
-
     </div>
     <div class="saveButton col-xs">
         <button #saveButton [disabled]="!userForm.form.valid || !addedIngredients.length > 0" (click)="saveRecipe(nameRef.value,description.value,isDone.checked,isFavorite.checked,addedIngredients);showSuccess()"
-            type="submit" class="btn btn-default" [routerLink]="['/recipe-list']"> Save </button>
-
+            type="submit" class="btn btn-default"> Save </button>
     </div>
 </div>
