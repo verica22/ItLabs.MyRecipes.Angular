@@ -27,10 +27,10 @@ describe('CreateRecipeComponent', () => {
 
   // describe('CreateRecipeComponent', () => {
 
-  //   it('should have title', () => {
-  //     browser.get('/recipe-create');
-  //     let title = element(by.tagName('h3')).getText();
-  //     expect(title).toEqual('Create New Recipe');
-  //   });
+    it('should have title', () => {
+      //  browser.get('/recipe-create');
+      let title = element(by.tagName('h3')).getText();
+      expect(title).toEqual('Create New Recipe');
+    });
   // });
 });

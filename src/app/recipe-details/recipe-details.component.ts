@@ -17,7 +17,7 @@ import { Measurement } from '../models/measurement';
 export class RecipeDetailsComponent {
   recipe: Recipe;
   oldName: string;
-   oldRecipe: Recipe;
+  oldRecipe: Recipe;
   options: string[];
   myValue: Measurement;
   recipeingredients: RecipeIngredients[] = [];
@@ -43,7 +43,7 @@ export class RecipeDetailsComponent {
       .subscribe((recipe) => {
         let name = this.route.snapshot.params['name'];
             if (name) {
-        this.getRecipe(name);
+                 this.getRecipe(name);
             }
       });
   }
@@ -59,9 +59,6 @@ export class RecipeDetailsComponent {
       });
   }
 
-  parseValue(value: string) {
-    this.myValue = Measurement[value];
-  }
 
   updateRecipe(oldname, Name, Description, IsDone, IsFavorite, RecipeIngredients) {
     this._recipeService.updateRecipe(oldname, new Recipe(Name, Description, IsDone, IsFavorite, RecipeIngredients))
@@ -99,8 +96,6 @@ export class RecipeDetailsComponent {
     this._recipeService.searchRecipeByName(name)
       .subscribe(recipe => {
         this.recipe = recipe[0];
-
-
       });
   }
 

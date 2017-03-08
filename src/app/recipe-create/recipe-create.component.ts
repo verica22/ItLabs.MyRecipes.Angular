@@ -34,10 +34,6 @@ export class RecipeCreateComponent {
     this.options = options.slice(options.length / 2);
   }
 
-  parseValue(value: string) {
-    this.myValue = Measurement[value];
-  }
-
   saveRecipe(Name, Description, IsDone, IsFavorite, RecipeIngredients) {
     this._recipeService.saveRecipe({ Name, Description, IsDone, IsFavorite, RecipeIngredients })
       .subscribe(recipes => {

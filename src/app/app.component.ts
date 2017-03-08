@@ -34,6 +34,6 @@ export class AppComponent implements OnInit {
 
   onSelect(name) {
     
-       this.router.navigate(['/recipe-details', name]), { replace: true, force: true };
+       this.router.navigate(['/recipe-details', name]);
   }
 }

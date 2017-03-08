@@ -98,7 +98,7 @@
         <br />
       </div>
       <div [hidden]="!flagEdit" class="container col-sm-12 form-group">
-        <form name="checkoutBillingForm" #ingForm="ngForm">
+        <form  #ingForm="ngForm">
           <div class="addIngredient container col-xs-12">
             <div class="ingredientName col-md-4 form-group" [ngClass]="{ 
                     'has-error':ingredientName.invalid && ingredientName.touched,
@@ -133,7 +133,7 @@
             </div>
             <div class="measurement col-md-3 form-group">
               <label>Measurement </label>
-              <select #measurement name="measurement" class="form-control" (change)="parseValue($event.target.value)">
+              <select #measurement name="measurement" class="form-control">
            
             <option *ngFor="let name of options"
                      [value]="name">{{name}}</option>
