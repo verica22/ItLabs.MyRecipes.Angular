@@ -3,11 +3,25 @@ import { Headers, RequestOptions } from '@angular/http';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ApiConfig } from '../api-config';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/delay';
+
 
 @Injectable()
 export class RecipeService {
   constructor(private _http: Http) {
   }
+
+   isLoggedIn: boolean = false;
+
+  // login(): Observable<boolean> {
+  //   return Observable.of(true).delay(8000).do(val => this.isLoggedIn = true);
+  // }
+
+  // logout(): void {
+  //   this.isLoggedIn = false;
+  // }
 
   getRecipes() {
     return this._http.get(ApiConfig.ApiGetRecipes)

@@ -1,0 +1,197 @@
+input.ng-invalid {
+  border-left: 5px solid red;
+}
+
+input.ng-valid {
+  border-left: 5px solid green;
+}
+form {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+/*
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}*/
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+   
+
+}
+
+img.login {
+    width: 40%;
+    border-radius: 50%;
+     width: 200px;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.loginForm {
+    width: 40%;
+}
+
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+
+
+.rememberMe{
+margin-left: 150px;
+}
+.forgotPass{
+    /*margin-left: -350px;*/
+    max-width:1140px;
+}
+
+.button {
+
+  display: inline-block;
+  height: 40px;
+  width: 130px;
+  line-height: 40px;
+  padding-right: 10px;
+  padding-left: 50px;
+  position: relative;
+  background-color:rgb(0,0,0);
+  color:rgb(255,255,255);
+  text-decoration: none;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+
+}
+
+.button:hover{
+    text-decoration: none;
+  color: #eeeaee;
+}
+.span{
+    border: none;
+}
+/*.button p{font-size: 18px;}*/
+.button span {
+    border: none;
+    margin-left: 5px;
+  position: absolute;
+  left: 0;
+  width: 50px;
+  font-size:25px;
+  -webkit-border-top-left-radius: 5px;
+-webkit-border-bottom-left-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-bottomleft: 5px;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+/*border-right: 1px solid  rgba(0,0,0,0.15);*/
+    text-decoration: none;
+}
+
+.button.twitter {
+  background: #00acee;
+}
+
+.button.facebook {
+ background: #3b5998;
+
+}
+
+.button.google-plus{
+  background: #db4a39;
+}
+
+.button.linkedin {
+  background: #0e76a8;
+}
+
+.button.youtube {
+ background: #c4302b;
+}
+
+.button.github{
+  background: #171515;
+}
+
+.button.android {
+  background: #a4c639;
+}
+
+.button.skype {
+ background: #00aff0;
+ }
+
+.button.dropbox{
+  background: #3d9ae8;
+}
+
+.button.foursquare{
+  background: #25a0ca;
+}
+
+.button.apple{
+  background: #cdcdcd;
+}
+
+.button.dribbble{
+  background: #ea4c89;
+}
+
+.button.instagram{
+  background: #3f729b;
+}
+
+.button.pinterest{
+  background: #c8232c;
+}
+
+.button.stackexchange{
+  background: #ef8236;
+}
+
+.button.flickr{
+  background: #ff0084;
+}
+
+.text-center{
+  text-align: center;
+}
+.connect{
+    text-align: center;
+}

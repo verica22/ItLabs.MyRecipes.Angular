@@ -35,15 +35,21 @@
             <img id="bgImage" class="img-responsive" src="../Photos/Screenshot.png">
         </div>
     </section>
-
+    <div class="login">
+        <label [routerLink]="['/recipe-login']">
+         <img src="../Photos/user.png" alt="Login" class="loginIcon">Sign In
+        </label>
+    </div>
     <!--NAVIGATION-->
     <nav class="navbar navbar-default">
         <div id="navigation" class="container-fluid">
-            <div class="navbar-header text-center">
+            <!--<div class="navbar-header text-center">
                 <a class="active" class="navbar-brand" [routerLink]="['/recipe-about']" routerLinkActive="active" href="#">Home</a>
-            </div>
+            </div>-->
             <ul class="nav navbar-nav">
-                <li><a [routerLink]="['/recipe-browse']">Browse</a></li>
+                <li> <a class="active" [routerLink]="['/recipe-about']" routerLinkActive="active" href="#">Home</a></li>
+                <!--<li><a [routerLink]="['/recipe-login']">Login</a></li>-->
+                <li><a [routerLink]="['/recipe-browse']">Browse Recipe</a></li>
                 <li><a [routerLink]="['/recipe-create']">New Recipe</a></li>
                 <li><a [routerLink]="['/recipe-findUs']">Find Us</a></li>
             </ul>
@@ -51,6 +57,7 @@
     </nav>
     <br/>
     <div class="container">
+
         <router-outlet></router-outlet>
     </div>
 

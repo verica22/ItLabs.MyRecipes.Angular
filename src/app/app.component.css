@@ -100,3 +100,25 @@ footer {
 .recipeSearchForm .row .col-xs-2 {
   padding-right: 0px
 }
+
+.login {
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  opacity: .9;
+}
+
+.login label {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.loginIcon {
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  right: 75px;
+  position: absolute;
+}
